@@ -9,7 +9,7 @@
   
   <servlet>
     <servlet-name>login</servlet-name>
-    <servlet-class>com.cugb.javaee.burgerking.action.LoginContrler</servlet-class>
+    <servlet-class>com.cugb.javaee.starbucks.action.LoginContrler</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>login</servlet-name>
@@ -18,7 +18,7 @@
   
   <servlet>
     <servlet-name>action</servlet-name>
-    <servlet-class>com.cugb.javaee.burgerking.action.ActionControl</servlet-class>
+    <servlet-class>com.cugb.javaee.starbucks.action.ActionControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>action</servlet-name>
@@ -28,7 +28,7 @@
   
   <servlet>
     <servlet-name>OrderAdd</servlet-name>
-    <servlet-class>com.cugb.javaee.burgerking.action.OrderAddControl</servlet-class>
+    <servlet-class>com.cugb.javaee.starbucks.action.OrderAddControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>OrderAdd</servlet-name>
@@ -37,7 +37,7 @@
   
     <servlet>
      <servlet-name>dishModify</servlet-name>
-     <servlet-class>com.cugb.javaee.burgerking.action.DishModifyControl</servlet-class>
+     <servlet-class>com.cugb.javaee.starbucks.action.DishModifyControl</servlet-class>
    </servlet>
    <servlet-mapping>
      <servlet-name>dishModify</servlet-name>
@@ -45,7 +45,7 @@
    </servlet-mapping>
    <servlet>
      <servlet-name>dishAdd</servlet-name>
-     <servlet-class>com.cugb.javaee.burgerking.action.DishAddControl</servlet-class>
+     <servlet-class>com.cugb.javaee.starbucks.action.DishAddControl</servlet-class>
    </servlet>
    <servlet-mapping>
      <servlet-name>dishAdd</servlet-name>
@@ -53,7 +53,7 @@
    </servlet-mapping>
    <filter>
      <filter-name>CharFilter</filter-name>
-     <filter-class>com.cugb.javaee.burgerking.utils.CharsetFilter</filter-class>
+     <filter-class>com.cugb.javaee.starbucks.utils.CharsetFilter</filter-class>
    </filter>
    <filter-mapping>
      <filter-name>CharFilter</filter-name>
