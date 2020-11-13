@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
+import com.cugb.javaee.starbucks.utils.ConfigFactory;
+
 class ConfigFactoryTest {
 
 	@BeforeEach
@@ -14,7 +16,7 @@ class ConfigFactoryTest {
 	
 	@Test
 	void test() {
-		
+		assertEquals("root", ConfigFactory.readProperty("username"));
 	}
 
 }

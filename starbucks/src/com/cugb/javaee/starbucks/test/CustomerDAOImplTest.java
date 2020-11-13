@@ -1,25 +1,31 @@
 package com.cugb.javaee.starbucks.test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
+import java.sql.SQLException;
 
 import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
+import com.cugb.javaee.starbucks.bean.Customer;
+import com.cugb.javaee.starbucks.utils.DAOFactory;
 import com.cugb.javaee.starbucks.dao.CustomerDAO;
-
-
 
 class CustomerDAOImplTest {
 	CustomerDAO cusDAO = null;
 	
-	@BeforeEach
+	@Before
 	void setUp() throws Exception {
+		cusDAO = (CustomerDAO)DAOFactory.newInstance("CustomerDAO");
 	}
 	
 	@Test
-	void test() {
-		
+	void test() throws SQLException {
+		Customer cus = new Customer();
+		cus.setUsername("1003");
+		cus.setPassword("admin");
+		cus.setEmail("cus1003");
+		assertEquals(1, cusDAO.addCustomer(cus));
 	}
 
 }

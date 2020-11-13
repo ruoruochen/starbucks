@@ -9,14 +9,16 @@ public class OrderItemDAOImpl extends baseDAO implements OrderItemDAO {
 
 	@Override
 	public int addOrderItem(OrderItem orderItem) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "insert into OrderItem values(?, ?, ?, ?)";
+		Object[] params = {orderItem.getDishid(),orderItem.getOrderid(),orderItem.getCount(),orderItem.getFinalprice()};
+		return modifyObj(sql, params);
 	}
-
+	
 	@Override
 	public ArrayList findOrderItems(String orderId) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select dishid Dishid, orderid Orderid, count Count, finalPrice Finalprice from OrderItem where orderid = '"+orderId+"'";
+		return findObjs(sql, OrderItem.class);
 	}
+
 
 }

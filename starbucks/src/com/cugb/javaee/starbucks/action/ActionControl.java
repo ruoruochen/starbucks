@@ -35,8 +35,63 @@ public class ActionControl extends baseControl {
 	}
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//123
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String actiontype = request.getParameter("actiontype");
+		switch (actiontype) {
+		case "detail":
+			try {
+				showdetail(request, response);
+			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		// 显示某一个菜品的详细信息
+		case "cart":
+			try {
+				addCart(request, response);
+			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case "del":
+			delCart(request, response);
+		    break;
+		case "addone":
+			try {
+				addOne(request, response);
+			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case "goCart":
+			goCart(request,response);
+			break;
+			// 添加到购物车
+		case "logOut":
+			logOut(request,response);
+			break;
+		case "search":
+			try {
+				search(request, response);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		}
+
 	}
 
 	@Override
