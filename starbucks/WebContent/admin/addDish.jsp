@@ -91,6 +91,7 @@ function giveURL()
 								if(admin == null || !admin.getUsername().equals(ConfigFactory.readProperty("username"))){
 									response.sendRedirect("login.jsp");
 								}
+								
 									JSPOutput.outputDishAdd(out);
 								%>
 								
