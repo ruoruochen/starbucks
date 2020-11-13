@@ -71,26 +71,26 @@ else{
 <meta name="description" content="">
 <meta name="author" content="">
 <title>网上订餐</title>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/font-awesome.min.css" rel="stylesheet">
-<link href="css/prettyPhoto.css" rel="stylesheet">
-<link href="css/price-range.css" rel="stylesheet">
-<link href="css/animate.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
-<link href="css/responsive.css" rel="stylesheet">
+ <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prettyPhoto.css" rel="stylesheet">
+    <link href="../css/price-range.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+	<link href="../css/main.css" rel="stylesheet">
+	<link href="../css/responsive.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-<link rel="shortcut icon" href="images/ico/favicon.ico">
+<link rel="shortcut icon" href="../images/ico/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="images/ico/apple-touch-icon-144-precomposed.png">
+	href="../images/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="images/ico/apple-touch-icon-114-precomposed.png">
+	href="../images/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="images/ico/apple-touch-icon-72-precomposed.png">
+	href="../images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
-	href="images/ico/apple-touch-icon-57-precomposed.png">
+	href="../images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <!--/head-->
 
@@ -118,7 +118,7 @@ else{
                                 {
                                     out.println("<div style = \"height:450px; padding-top:50px;\">");
                                 	out.println("<font style=\"font-size:22px;\">未找到符合您口味的食物...去尝试搜索其他美味吧！</font><br />");
-                                	out.println("<img src=\"images/404/404.jpg\" width=\"450px\" height=\"250px\" style = \"margin-top:50px;\">");
+                                	out.println("<img src=\"../images/404/404.jpg\" width=\"450px\" height=\"250px\" style = \"margin-top:50px;\">");
                                     out.println("</div>");
                                 } 
                                 %>  

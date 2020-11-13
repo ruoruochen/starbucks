@@ -16,13 +16,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>网上订餐</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
+     <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prettyPhoto.css" rel="stylesheet">
+    <link href="../css/price-range.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+	<link href="../css/main.css" rel="stylesheet">
+	<link href="../css/responsive.css" rel="stylesheet">
          
 	<script language="javascript">
 	function checkUserInfo() {
@@ -60,7 +60,7 @@
 	<center>
 	<section id="form" style="margin-top:0px; margin-bottom:120px"><!--form-->
 		<div class="container">
-			<img alt="" src="images/home/about.png" width="1024px" height="1536px">
+			<img alt="" src="../images/home/about.png" width="1024px" height="1536px">
 		</div>
 	</section><!--/form-->
 	</center>
