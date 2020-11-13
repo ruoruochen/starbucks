@@ -1,0 +1,77 @@
+BODY {
+	BACKGROUND-POSITION: center 50%;
+	BACKGROUND-IMAGE: url()
+}
+
+HTML {
+	TEXT-DECORATION: none
+}
+
+BODY {
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	FONT-FAMILY: ËÎÌו
+}
+
+TD {
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	FONT-FAMILY: ËÎÌו
+}
+
+TD {
+	FONT-SIZE: 12px;
+	COLOR: #000000
+}
+
+TR {
+	FONT-SIZE: 12px;
+	COLOR: #000000
+}
+
+A:link {
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+
+A:visited {
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+
+A:active {
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+
+A:hover {
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+
+A {
+	FONT-SIZE: 12px;
+	COLOR: #000000
+}
+
+.STYLE1 {
+	color: #FF0000
+}
+
+.input {
+	BORDER-RIGHT: #333333 1px solid;
+	PADDING-RIGHT: 0px;
+	BORDER-TOP: #333333 1px solid;
+	PADDING-LEFT: 1px;
+	FONT-SIZE: 1em;
+	PADDING-BOTTOM: 2px;
+	VERTICAL-ALIGN: middle;
+	BORDER-LEFT: #333333 1px solid;
+	PADDING-TOP: 2px;
+	BORDER-BOTTOM: #333333 1px solid
+	
+}
