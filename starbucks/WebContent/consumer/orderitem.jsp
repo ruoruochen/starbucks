@@ -66,39 +66,36 @@
 					
 						OrderDAO orderdao = (OrderDAO) DAOFactory.newInstance("OrderDAO");
 						DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO");
-						
+						String orderid=request.getParameter("orderid");
 						if (cus == null) {
 							out.println("<tr >还没登录？<a href=\"customerLogin.jsp\">去登录</a></tr><br/><br/><br/><br/><br/><br/><br/><br/>");
 						} else if (orderdao.findOrders(cus.getUsername()).size() == 0) {
 							out.println("hhhhh");
 							out.println("<tr >还没有下过单？<a href=\"customerIndex.jsp\">去订餐</a></tr>");
 						} else {
-							
+						
 							out.println("<thead align=\"center\">");
 							out.println("<tr class=\"cart_menu\">");
 							out.println("<td class=\"description\">订单号</td>");
+							out.println("<td class=\"total\" >商品名称</td>");
 							out.println("<td class=\"total\" >总&nbsp;&nbsp;数</td>");
+							out.println("<td class=\"total\" >价&nbsp;&nbsp;格</td>");
 							out.println("<td class=\"total\" >总&nbsp;&nbsp;价</td>");
-							out.println("<td class=\"total\" >时&nbsp;&nbsp;间</td>");
-							out.println("<td class=\"total\" >地&nbsp;&nbsp;址</td>");
-							out.println("<td class=\"total\" >电&nbsp;&nbsp;话</td>");
-							out.println("<td class=\"total\" >餐&nbsp;&nbsp;厅</td>");
-							out.println("<td class=\"total\" >状&nbsp;&nbsp;态</td>");
 							out.println("</tr>");
 							out.println("</thead>");
 							out.println("<tbody>");
 
-							ArrayList<Order> arr = orderdao.findOrders(cus.getUsername());							
+							ArrayList<OrderItem> arr = ;							
 							
 							float totalPrice = 0.0f;
 							int totalNum = 0;
-							for(Order order:arr) {		
+							for(OrderItem orderitem:arr) {		
 								//System.out.println(order.getRestaurantname());
 								out.println("<tr align=\"center\">");
 								out.println(" <td class=\"description\">");
 								out.println("<a style=\"color:#006439\" href=\"action?actiontype=order&orderid=" + String.valueOf(order.getOrderid()) + "\">");
 								out.println("  <h4>");
-								out.println(order.getOrderid());
+								out.println(orderitem.getOrderid());
 								out.println("  </h4>");
 								out.println("  </a>"); 
 								out.println(" </td>");

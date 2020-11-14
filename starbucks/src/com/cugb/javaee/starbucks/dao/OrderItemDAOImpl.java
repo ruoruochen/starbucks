@@ -10,7 +10,7 @@ public class OrderItemDAOImpl extends baseDAO implements OrderItemDAO {
 	@Override
 	public int addOrderItem(OrderItem orderItem) throws SQLException {
 		String sql = "insert into OrderItem values(?, ?, ?, ?)";
-		Object[] params = {orderItem.getDishid(),orderItem.getOrderid(),orderItem.getCount(),orderItem.getFinalprice()};
+		Object[] params = {orderItem.getDishname(),orderItem.getOrderid(),orderItem.getCount(),orderItem.getFinalprice()};
 		return modifyObj(sql, params);
 	}
 	

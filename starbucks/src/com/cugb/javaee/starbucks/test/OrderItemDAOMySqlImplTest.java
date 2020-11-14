@@ -27,7 +27,7 @@ class OrderItemDAOMySqlImplTest {
 		ArrayList<OrderItem> arr = new ArrayList<OrderItem>();
 		OrderItem oit = new OrderItem();
 		oit.setCount(2);
-		oit.setDishid(3);
+		oit.setDishname("333");
 		oit.setFinalprice(2);
 		oit.setOrderid("1577278260968");
 		assertEquals(1, orderitemdao.addOrderItem(oit));

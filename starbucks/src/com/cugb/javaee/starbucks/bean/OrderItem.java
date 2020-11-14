@@ -1,16 +1,17 @@
 package com.cugb.javaee.starbucks.bean;
 
 public class OrderItem {
-	public int dishid;
+	public String dishname;
 	public String orderid;
 	public int count;
+	public float price;
 	public float finalPrice;
 	
-	public int getDishid() {
-		return dishid;
+	public String getDishname() {
+		return dishname;
 	}
-	public void setDishid(int dishid) {
-		this.dishid = dishid;
+	public void setDishname(String dishname) {
+		this.dishname = dishname;
 	}
 	public String getOrderid() {
 		return orderid;
@@ -29,5 +30,11 @@ public class OrderItem {
 	}
 	public void setFinalprice(float finalprice) {
 		this.finalPrice = finalprice;
+	}
+	public float getprice() {
+		return price;
+	}
+	public void setprice(float price) {
+		this.price = price;
 	}
 }

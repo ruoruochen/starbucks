@@ -101,7 +101,7 @@ Order order = new Order();
 				count += disnumber;
 				OrderItem oit = new OrderItem();
 				oit.setCount(disnumber);
-				oit.setDishid(dishid);
+				oit.setDishname(dishid);
 				oit.setFinalprice(cur.getDiscount());
 				oit.setOrderid(orderID);
 				arr.add(oit);
