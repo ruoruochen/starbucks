@@ -96,12 +96,12 @@ Order order = new Order();
 				
 				int dishid = nc.getId();
 				int disnumber = (Integer) entry.getValue();
-				
+				Dish dish=ff.findDish(dishid);
 				Dish cur = ff.findDish(dishid);
 				count += disnumber;
 				OrderItem oit = new OrderItem();
 				oit.setCount(disnumber);
-				oit.setDishname(dishid);
+				oit.setDishname(dish.getDishname());
 				oit.setFinalprice(cur.getDiscount());
 				oit.setOrderid(orderID);
 				arr.add(oit);
