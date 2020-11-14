@@ -2,6 +2,7 @@ package com.cugb.javaee.starbucks.action;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -16,8 +17,12 @@ import javax.servlet.http.HttpSession;
 import com.cugb.javaee.starbucks.bean.CartItem;
 import com.cugb.javaee.starbucks.bean.Customer;
 import com.cugb.javaee.starbucks.bean.Dish;
+import com.cugb.javaee.starbucks.bean.Order;
+import com.cugb.javaee.starbucks.bean.OrderItem;
 import com.cugb.javaee.starbucks.biz.DishService;
 import com.cugb.javaee.starbucks.dao.DishDAO;
+import com.cugb.javaee.starbucks.dao.OrderDAO;
+import com.cugb.javaee.starbucks.dao.OrderItemDAO;
 import com.cugb.javaee.starbucks.utils.ConfigFactory;
 import com.cugb.javaee.starbucks.utils.DAOFactory;
 import com.cugb.javaee.starbucks.utils.PageModel;
@@ -72,6 +77,14 @@ public class ActionControl extends baseControl {
 			// 添加到购物车
 		case "logOut":
 			logOut(request,response);
+			break;
+		case "order":
+			try {
+				order(request,response);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			break;
 		case "search":
 			try {
@@ -251,9 +264,22 @@ public class ActionControl extends baseControl {
 			response.sendRedirect("cart.jsp");
 		}
 	}
+	
 	private void logOut(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("loginuser");
 		response.sendRedirect("customerIndex.jsp");
+	}
+	
+	private void order(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ServletException{
+		//获取订单号
+		String orderid=request.getParameter("orderid");
+		//获取订单号的orderItems
+		ArrayList<OrderItem> orderitems=new ArrayList<OrderItem>();
+		OrderItemDAO orderitemdao= (OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
+		orderitems=orderitemdao.findOrderItems(orderid);
+		//将orderItems放进request参数中。jsp页面通过 requestScope.orderitems获取数组 参考showdetails.jsp第76行。
+		request.setAttribute("orderitems", orderitems);
+		request.getRequestDispatcher("orderitem.jsp").forward(request, response);
 	}
 }
