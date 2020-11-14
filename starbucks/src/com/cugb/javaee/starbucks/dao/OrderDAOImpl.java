@@ -36,7 +36,7 @@ public class OrderDAOImpl extends baseDAO implements OrderDAO {
 	public ArrayList findOrders(String userId) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		// TODO Auto-generated method stub
 		String sql = "select orderid Orderid,  username Username, time Time, count Count, totalprice Totalprice, paystatus Paystatus,"
-				+ "address Address, tel Tel ,restaurantname Restaurantname from orders where username = \"" + userId + "\" order by time DESC";
+				+ "address Address, tel Tel ,restaurantid Restaurantid from orders where username = \"" + userId + "\" order by time DESC";
 		
 		ArrayList<Order> arr = findObjs(sql, Order.class);
 		for(int i = 0; i < arr.size(); i++){

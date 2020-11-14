@@ -86,6 +86,13 @@ public class ActionControl extends baseControl {
 				e1.printStackTrace();
 			}
 			break;
+		case "comment":
+			try {
+				comment(request,response);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		case "search":
 			try {
 				search(request, response);
@@ -274,12 +281,14 @@ public class ActionControl extends baseControl {
 	private void order(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ServletException{
 		//获取订单号
 		String orderid=request.getParameter("orderid");
-		//获取订单号的orderItems
-//		ArrayList<OrderItem> orderitems=new ArrayList<OrderItem>();
-//		OrderItemDAO orderitemdao= (OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
-//		orderitems=orderitemdao.findOrderItems(orderid);
-		//将orderItems放进request参数中。jsp页面通过 requestScope.orderitems获取数组 参考showdetails.jsp第76行。
 		request.setAttribute("orderid", orderid);
 		request.getRequestDispatcher("orderitem.jsp").forward(request, response);
+	}
+	
+	private void comment(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ServletException{
+		//获取订单号
+		String dishid=request.getParameter("dishid");
+		request.setAttribute("dishid", dishid);
+		request.getRequestDispatcher("dishcomment.jsp").forward(request, response);
 	}
 }

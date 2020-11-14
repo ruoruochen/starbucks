@@ -1,17 +1,17 @@
 package com.cugb.javaee.starbucks.bean;
 
 public class OrderItem {
-	public String dishname;
+	public String dishid;
 	public String orderid;
 	public int count;
 	public float price;
 	public float finalPrice;
 	
-	public String getDishname() {
-		return dishname;
+	public String getDishid() {
+		return dishid;
 	}
-	public void setDishname(String dishname) {
-		this.dishname = dishname;
+	public void setDishname(String dishid) {
+		this.dishid = dishid;
 	}
 	public String getOrderid() {
 		return orderid;
