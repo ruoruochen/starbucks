@@ -16,7 +16,7 @@ public class OrderItemDAOImpl extends baseDAO implements OrderItemDAO {
 	
 	@Override
 	public ArrayList findOrderItems(String orderId) throws SQLException {
-		String sql = "select dishid Dishid, orderid Orderid, count Count, finalPrice Finalprice from OrderItem where orderid = '"+orderId+"'";
+		String sql = "select dishname Dishname, orderid Orderid, count Count, finalPrice Finalprice from OrderItem where orderid = '"+orderId+"'";
 		return findObjs(sql, OrderItem.class);
 	}
 
