@@ -275,11 +275,11 @@ public class ActionControl extends baseControl {
 		//获取订单号
 		String orderid=request.getParameter("orderid");
 		//获取订单号的orderItems
-		ArrayList<OrderItem> orderitems=new ArrayList<OrderItem>();
-		OrderItemDAO orderitemdao= (OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
-		orderitems=orderitemdao.findOrderItems(orderid);
+//		ArrayList<OrderItem> orderitems=new ArrayList<OrderItem>();
+//		OrderItemDAO orderitemdao= (OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
+//		orderitems=orderitemdao.findOrderItems(orderid);
 		//将orderItems放进request参数中。jsp页面通过 requestScope.orderitems获取数组 参考showdetails.jsp第76行。
-		request.setAttribute("orderitems", orderitems);
+		request.setAttribute("orderid", orderid);
 		request.getRequestDispatcher("orderitem.jsp").forward(request, response);
 	}
 }
