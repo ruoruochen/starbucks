@@ -65,6 +65,7 @@
 					Customer cus = (Customer) session.getAttribute("loginuser");
 					
 						OrderDAO orderdao = (OrderDAO) DAOFactory.newInstance("OrderDAO");
+						RestaurantDAO resdao = (RestaurantDAO) DAOFactory.newInstance("RestaurantDAO");
 						
 						if (cus == null) {
 							out.println("<tr >还没登录？<a href=\"customerLogin.jsp\">去登录</a></tr><br/><br/><br/><br/><br/><br/><br/><br/>");
@@ -134,7 +135,7 @@
 								
 								out.println(" <td class=\"total\">");
 								out.println("  <h4>");
-								out.println(order.getRestaurantname());
+								out.println(resdao.findRestaurant(order.getRestaurantid()));
 								out.println("  </h4>");
 								out.println(" </td>");								
 								

@@ -289,6 +289,6 @@ public class ActionControl extends baseControl {
 		//ªÒ»°∂©µ•∫≈
 		String dishid=request.getParameter("dishid");
 		request.setAttribute("dishid", dishid);
-		request.getRequestDispatcher("dishcomment.jsp").forward(request, response);
+		request.getRequestDispatcher("dishComment.jsp").forward(request, response);
 	}
 }

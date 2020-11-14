@@ -97,7 +97,7 @@ request.setAttribute("pageModel", pagemodel);
 													<a href="action?actiontype=detail&dishid=${currentdish.getDishid()}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>详情</a>
 													&nbsp;
 													<a href="action?actiontype=addone&dishid=${currentdish.getDishid()}" class="btn btn-default add-to-cart"><i
-														class="fa fa-shopping-cart"></i>购物车</a>
+														class="fa fa-shopping-cart"></i>加购</a>
 												</div>
 
 											</div>

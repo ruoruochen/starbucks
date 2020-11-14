@@ -14,7 +14,7 @@ public class Order {
 	private String payStatus; //Ö§¸¶×´Ì¬
 	public String address;
 	public String tel;
-	public String restaurantid;
+	public int restaurantid;
 	private ArrayList<OrderItem> items;
 	
 	public String getOrderid() {
@@ -82,10 +82,10 @@ public class Order {
 		this.tel = tel;
 	}
 	
-	public String getRestaurantid() {
+	public int getRestaurantid() {
 		return restaurantid;
 	}
-	public void setRestaurantname(String restaurantid) {
+	public void setRestaurantname(int restaurantid) {
 		this.restaurantid = restaurantid;
 	}
 	public ArrayList<OrderItem> getItems() {

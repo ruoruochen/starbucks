@@ -62,7 +62,7 @@
 					<thead>
 						<tr class="cart_menu">
 							<td class="image"></td>
-							<td class="description">菜品</td>
+							<td class="description">商品</td>
 							<td class="price">原价</td>
 							<td class="total">现价</td>
 							<td class="total">数量</td>
@@ -125,9 +125,6 @@
 								out.println(cur.getDishname());
 								out.println("   </a>");
 								out.println("  </h4>");
-								out.println("  <p>");
-								out.println("   Web ID: " + String.valueOf(dishid));
-								out.println("  </p>");
 								out.println(" </td>");
 								out.println(" <td class=\"cart_total\">");
 								out.println("  <p class=\"cart_total_price\">");
@@ -154,7 +151,7 @@
 								out.println(" <td class=\"cart_delete\">");
 								out.println(
 										"<a class=\"cart_quantity_delete\" style=\"margin-right:10px\" href=\"action?actiontype=del&dishid="
-												+ String.valueOf(dishid) + "\"><i class=\"fa fa-times\"></i></a>");
+												+ String.valueOf(dishid) + "\"><i class=\"fa fa-times\" </i></a>");
 
 								out.println(" </td>");
 								out.println("</tr>");

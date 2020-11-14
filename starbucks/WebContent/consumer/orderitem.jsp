@@ -65,21 +65,23 @@
 					Customer cus = (Customer) session.getAttribute("loginuser");
 					
 						OrderItemDAO orderitemdao = (OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
+						DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO"); 
 						String orderid=request.getParameter("orderid");
 						
 							out.println("<thead align=\"center\">");
 							out.println("<tr class=\"cart_menu\">");
 							out.println("<td class=\"description\">订单号</td>");
-							out.println("<td class=\"total\" >商品名称</td>");
+							out.println("<td class=\"image\"></td>");
+							out.println("<td class=\"description\">商品</td>");
 							out.println("<td class=\"total\" >总&nbsp;&nbsp;数</td>");
 							out.println("<td class=\"total\" >价&nbsp;&nbsp;格</td>");
 							out.println("<td class=\"total\" >总&nbsp;&nbsp;价</td>");
+							out.println("<td class=\"total\" >评&nbsp;&nbsp;论</td>");
 							out.println("</tr>");
 							out.println("</thead>");
 							out.println("<tbody>");
 
 							ArrayList<OrderItem> arr =orderitemdao.findOrderItems(orderid) ;							
-							
 							float totalPrice = 0.0f;
 							int totalNum = 0;
 							for(OrderItem orderitem:arr) {		
@@ -91,9 +93,18 @@
 								out.println("  </h4>");
 								out.println(" </td>");
 								
+								Dish cur = dishdao.findDish(orderitem.getDishid());
+								out.println(" <td class=\"cart_product\">");
+								out.println("  <a href=\"\">");
+								out.println("   <img alt=\"\" src=\"" + cur.getImgurl() + "\" width=\"200px\"/>");
+								out.println("  </a>");
+								out.println(" </td>");
+								
 								out.println(" <td class=\"total\">");
 								out.println("  <h4>");
-								out.println(orderitem.getDishname());
+								out.println("   <a href=\"action?actiontype=detail&dishid=" + String.valueOf(orderitem.getDishid()) + "\">");
+								out.println(cur.getDishname());
+								out.println("   </a>");
 								out.println("  </h4>");
 								out.println(" </td>");
 								
@@ -115,7 +126,10 @@
 								out.println("  </h4>");
 								out.println(" </td>");
 								
-								
+								out.println(" <td class=\"total\">");
+								out.println("<a class=\"cart_quantity_delete\" style=\"margin-right:10px\" href=\"action?actiontype=comment&dishid="
+										+ String.valueOf(orderitem.getDishid()) + "\"><i>评论</i></a>");
+								out.println(" </td>");
 							}
 					%>
 					</tbody>

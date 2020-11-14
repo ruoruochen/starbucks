@@ -92,9 +92,6 @@
 							out.println(cur.getDishname());
 							out.println("   </a>");
 							out.println("  </h4>");
-							out.println("  <p>");
-							out.println("   Web ID: " + String.valueOf(dishid));
-							out.println("  </p>");
 							out.println(" </td>");
 							out.println(" <td class=\"cart_total\">");
 							out.println("  <p class=\"cart_total_price\">");
