@@ -287,7 +287,7 @@ public class ActionControl extends baseControl {
 	
 	private void comment(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ServletException{
 		//ªÒ»°∂©µ•∫≈
-		String dishid=request.getParameter("dishid");
+		int dishid=Integer.parseInt(request.getParameter("dishid"));
 		request.setAttribute("dishid", dishid);
 		request.getRequestDispatcher("dishComment.jsp").forward(request, response);
 	}

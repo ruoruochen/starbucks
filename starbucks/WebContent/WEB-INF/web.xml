@@ -32,6 +32,15 @@
     <url-pattern>/consumer/OrderAdd</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>CommentAdd</servlet-name>
+    <servlet-class>com.cugb.javaee.starbucks.action.CommentControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CommentAdd</servlet-name>
+    <url-pattern>/consumer/CommentAdd</url-pattern>
+  </servlet-mapping>
+  
     <servlet>
      <servlet-name>dishModify</servlet-name>
      <servlet-class>com.cugb.javaee.starbucks.action.DishModifyControl</servlet-class>

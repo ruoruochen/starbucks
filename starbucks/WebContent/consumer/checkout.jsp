@@ -151,7 +151,7 @@
 						<div class="shopper-info">
 							<p>收货人信息</p>
 						</div>
-						<form class="form-horizontal" method="post" action="OrderAddControl">
+						<form class="form-horizontal" method="post" action="OrderAdd">
 								<div class="col-sm-6">
 									<div class="form-group">
 										<label for="inputPassword3" class="col-sm-2 control-label">送餐地址:</label>
