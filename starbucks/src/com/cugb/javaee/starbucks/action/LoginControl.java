@@ -17,7 +17,7 @@ import com.cugb.javaee.starbucks.utils.ConfigFactory;
 /**
  * Servlet implementation class LoginContrler
  */
-@WebServlet("/LoginContrler")
+//@WebServlet("/LoginControl")
 public class LoginControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -25,9 +25,21 @@ public class LoginControl extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public void destroy() {
+		super.destroy(); // Just puts "destroy" string in log
+		// Put your code here
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//doGet(request,response);
 		String adminUsername = ConfigFactory.readProperty("username");
 		String adminPassword = ConfigFactory.readProperty("password");
 		
@@ -45,17 +57,17 @@ public class LoginControl extends HttpServlet {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("loginuser", loginuser);
 				session.setAttribute("admin", true);
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				request.getRequestDispatcher("adminIndex.jsp").forward(request, response);
 			} else if (cService.validateCustomer(loginuser)) {
 				//普通用户 验证通过
 				HttpSession session = request.getSession(true);
 				session.setAttribute("loginuser", loginuser);
 				session.setAttribute("admin", false);
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				request.getRequestDispatcher("customerIndex.jsp").forward(request, response);
 			}
 			else {
 				//否则重新登录
-				response.sendRedirect("login.jsp");
+				response.sendRedirect("customerLogin.jsp");
 			}
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -64,12 +76,6 @@ public class LoginControl extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
 	}
 
 }

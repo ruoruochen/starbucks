@@ -18,19 +18,18 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="logo pull-left">
-						<a href="../consumer/customerIndex.jsp"><img src="../images/home/logo.png" alt="" /></a>
+						<a href="customerIndex.jsp"><img src="../images/home/logo.png" alt="" /></a>
 					</div>
 				</div>
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav">
-							 <li><a href="me.jsp">我的</a></li> 
 							 <li><a href="checkout.jsp">去下单</a></li>
 							<li><a href="action?actiontype=goCart">我的购物车</a></li>
 							<%
 									Customer cuss = (Customer) session.getAttribute("loginuser");
 									if(cuss == null){
-										out.println("<li><a href=\"login.jsp\">请登录</a></li>");
+										out.println("<li><a href=\"customerLogin.jsp\">请登录</a></li>");
 									}
 									else{
 										out.println("<li><a href=\"\"></i>欢迎："+cuss.getUsername()+"</a></li>");
@@ -61,9 +60,9 @@
 					</div>
 					<div class="mainmenu pull-left">
 						<ul class="nav navbar-nav collapse navbar-collapse">
-							<li><a href="../consumer/customerIndex.jsp">首页</a></li>
-							<li><a href="../consumer/order.jsp">我的订单</a></li>
-							<li><a href="../consumer/modifyInf.jsp">修改信息</a></li>
+							<li><a href="customerIndex.jsp">首页</a></li>
+							<li><a href="order.jsp">我的订单</a></li>
+							<li><a href="modifyInformation.jsp">修改信息</a></li>
 							<li class="dropdown"><a href="about.jsp">关于我们</i></a></li>
 						</ul>
 					</div>

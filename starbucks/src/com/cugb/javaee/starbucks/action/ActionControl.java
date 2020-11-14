@@ -97,7 +97,7 @@ public class ActionControl extends baseControl {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		doGet(req, resp);
 	}
 
 	private void search(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException{
@@ -152,7 +152,7 @@ public class ActionControl extends baseControl {
 		HttpSession session = request.getSession(true);
 		CartItem nc = new CartItem();
 		if (session.getAttribute("loginuser") == null) {
-			response.sendRedirect("login.jsp"); 
+			response.sendRedirect("customerLogin.jsp"); 
 		} else {
 			String nn = (request.getParameter("number"));
 			String Did = request.getParameter("dishid");
@@ -212,7 +212,7 @@ public class ActionControl extends baseControl {
 		HttpSession session = request.getSession(true);
 		CartItem nc = new CartItem();
 		if (session.getAttribute("loginuser") == null) {
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("customerLogin.jsp");
 		} else {
 			String Did = request.getParameter("dishid");
 			Dish current = new Dish();
@@ -245,7 +245,7 @@ public class ActionControl extends baseControl {
 	private void goCart(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		HttpSession session = request.getSession(true);
 		if(session.getAttribute("loginuser")==null){
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("customerLogin.jsp");
 		}
 		else{
 			response.sendRedirect("cart.jsp");
@@ -254,6 +254,6 @@ public class ActionControl extends baseControl {
 	private void logOut(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("loginuser");
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("customerIndex.jsp");
 	}
 }

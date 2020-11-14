@@ -27,10 +27,10 @@
           
 
     <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../images/ico/apple-touch-icon-57-precomposed.png">
 
 	<script language="javascript">
 	function checkUserInfo() {
@@ -71,7 +71,7 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>登录到您的账户</h2>
-						<form action="login" method="POST" name="loginForm" onSubmit="return checkUserInfo()">
+						<form action="LoginControl" method="POST" name="loginForm" onSubmit="return checkUserInfo()">
 							<input type="text" placeholder="用户名" name="loginName"/>
 							<input type="password" placeholder="密码" name="loginPass"/>	
 							<input type="hidden" name="actiontype" value="login">						
