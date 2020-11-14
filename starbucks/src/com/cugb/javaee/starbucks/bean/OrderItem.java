@@ -31,10 +31,10 @@ public class OrderItem {
 	public void setFinalprice(float finalprice) {
 		this.finalPrice = finalprice;
 	}
-	public float getprice() {
+	public float getPrice() {
 		return price;
 	}
-	public void setprice(float price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 }

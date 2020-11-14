@@ -65,7 +65,6 @@
 					Customer cus = (Customer) session.getAttribute("loginuser");
 					
 						OrderDAO orderdao = (OrderDAO) DAOFactory.newInstance("OrderDAO");
-						DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO");
 						
 						if (cus == null) {
 							out.println("<tr >还没登录？<a href=\"customerLogin.jsp\">去登录</a></tr><br/><br/><br/><br/><br/><br/><br/><br/>");

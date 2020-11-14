@@ -64,15 +64,8 @@
 					<%
 					Customer cus = (Customer) session.getAttribute("loginuser");
 					
-						OrderDAO orderdao = (OrderDAO) DAOFactory.newInstance("OrderDAO");
-						DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO");
+						OrderItemDAO orderitemdao = (OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
 						String orderid=request.getParameter("orderid");
-						if (cus == null) {
-							out.println("<tr >还没登录？<a href=\"customerLogin.jsp\">去登录</a></tr><br/><br/><br/><br/><br/><br/><br/><br/>");
-						} else if (orderdao.findOrders(cus.getUsername()).size() == 0) {
-							out.println("hhhhh");
-							out.println("<tr >还没有下过单？<a href=\"customerIndex.jsp\">去订餐</a></tr>");
-						} else {
 						
 							out.println("<thead align=\"center\">");
 							out.println("<tr class=\"cart_menu\">");
@@ -85,7 +78,7 @@
 							out.println("</thead>");
 							out.println("<tbody>");
 
-							ArrayList<OrderItem> arr = ;							
+							ArrayList<OrderItem> arr =orderitemdao.findOrderItems(orderid) ;							
 							
 							float totalPrice = 0.0f;
 							int totalNum = 0;
@@ -93,59 +86,37 @@
 								//System.out.println(order.getRestaurantname());
 								out.println("<tr align=\"center\">");
 								out.println(" <td class=\"description\">");
-								out.println("<a style=\"color:#006439\" href=\"action?actiontype=order&orderid=" + String.valueOf(order.getOrderid()) + "\">");
 								out.println("  <h4>");
 								out.println(orderitem.getOrderid());
 								out.println("  </h4>");
-								out.println("  </a>"); 
 								out.println(" </td>");
 								
 								out.println(" <td class=\"total\">");
 								out.println("  <h4>");
-								out.println(order.getCount());
+								out.println(orderitem.getDishname());
+								out.println("  </h4>");
+								out.println(" </td>");
+								
+								out.println(" <td class=\"total\">");
+								out.println("  <h4>");
+								out.println(orderitem.getCount());
 								out.println("  </h4>");
 								out.println(" </td>");
 								
 								out.println(" <td class=\"total\">");
 								out.println("  <h4>¥");
-								out.println(order.getTotalprice());
+								out.println(orderitem.getPrice());
 								out.println("  </h4>");
 								out.println(" </td>");
 								
 								out.println(" <td class=\"total\">");
-								out.println("  <h4>");
-								out.println(order.getTime().toString().substring(0, 19));
+								out.println("  <h4>¥");
+								out.println(orderitem.getFinalprice());
 								out.println("  </h4>");
 								out.println(" </td>");
 								
-								out.println(" <td class=\"total\">");
-								out.println("  <h4>");
-								out.println(order.getAddress());
-								out.println("  </h4>");
-								out.println(" </td>");
-								
-								out.println(" <td class=\"total\">");
-								out.println("  <h4>");
-								out.println(order.getTel());
-								out.println("  </h4>");
-								out.println(" </td>");
-								
-								out.println(" <td class=\"total\">");
-								out.println("  <h4>");
-								out.println(order.getRestaurantname());
-								out.println("  </h4>");
-								out.println(" </td>");								
-								
-								out.println(" <td class=\"total\">");
-								out.println("  <h4>");
-								out.println(order.getPaystatus());
-								out.println("  </h4>");
-								out.println(" </td>");								
-								out.println("</tr>");
 								
 							}
-							out.println("点击订单号查看详情");
-						}
 					%>
 					</tbody>
 				</table>
