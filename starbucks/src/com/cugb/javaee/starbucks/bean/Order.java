@@ -85,8 +85,8 @@ public class Order {
 	public String getRestaurantname() {
 		return restaurantname;
 	}
-	public void setRestaurantname(String res) {
-		this.restaurantname = res;
+	public void setRestaurantname(String restaurantname) {
+		this.restaurantname = restaurantname;
 	}
 	public ArrayList<OrderItem> getItems() {
 		return items;

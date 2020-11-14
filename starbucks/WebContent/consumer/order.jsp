@@ -92,15 +92,15 @@
 							
 							float totalPrice = 0.0f;
 							int totalNum = 0;
-							for(Order order:arr) {							
-
+							for(Order order:arr) {		
+								//System.out.println(order.getRestaurantname());
 								out.println("<tr align=\"center\">");
 								out.println(" <td class=\"description\">");
 								out.println("<a style=\"color:#006439\" href=\"action?actiontype=order&orderid=" + String.valueOf(order.getOrderid()) + "\">");
 								out.println("  <h4>");
 								out.println(order.getOrderid());
 								out.println("  </h4>");
-								 out.println("  </a>"); 
+								out.println("  </a>"); 
 								out.println(" </td>");
 								
 								out.println(" <td class=\"total\">");
@@ -138,7 +138,6 @@
 								out.println(order.getRestaurantname());
 								out.println("  </h4>");
 								out.println(" </td>");								
-								out.println("</tr>");
 								
 								out.println(" <td class=\"total\">");
 								out.println("  <h4>");
