@@ -3,7 +3,6 @@ package com.cugb.javaee.starbucks.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.cugb.javaee.starbucks.bean.Dish;
 import com.cugb.javaee.starbucks.bean.Restaurant;
 
 /**
@@ -15,7 +14,6 @@ import com.cugb.javaee.starbucks.bean.Restaurant;
  */
 public interface RestaurantDAO {
 	
-	
 	public int addRestaurant(Restaurant res) throws SQLException;
 
 	public int removeRestaurant(int restaurantid) throws SQLException; 
@@ -24,4 +22,5 @@ public interface RestaurantDAO {
 
 	public Restaurant findRestaurant(int restaurantid) throws SQLException; 
 
+	public ArrayList findRestaurants() throws SQLException;
 }

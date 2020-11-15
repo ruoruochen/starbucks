@@ -24,7 +24,7 @@
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav">
-							 <li><a href="checkout.jsp">去下单</a></li>
+							 <li><a href="action?actiontype=checkout">去下单</a></li>
 							<li><a href="action?actiontype=goCart">我的购物车</a></li>
 							<%
 									Customer cuss = (Customer) session.getAttribute("loginuser");

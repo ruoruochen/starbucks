@@ -1,6 +1,7 @@
 <%@page import="java.net.URLDecoder"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
 <%@page import="java.util.ArrayList"%>
+<%@ page import="java.util.*" %>
 <%@page import="java.lang.*"%>
 <%@page import="com.cugb.javaee.starbucks.utils.DAOFactory"%>
 <%@page import="com.cugb.javaee.starbucks.bean.Dish"%>
@@ -35,9 +36,10 @@ String str = request.getParameter("query");
 
 
 if(str==null){
-	response.sendRedirect("index.jsp");
+	response.sendRedirect("customerIndex.jsp");
 }
 PageModel<Dish> pagemodel = (PageModel) request.getAttribute("pageModel");
+List<Dish> dishlist=pagemodel.getList();
 //DishService dishserv = new DishService();
 //PageModel<Dish> pagemodel = dishserv.findDish5PageList(pageNO, pageSize,str);
 //request.setAttribute("pageModel", pagemodel); 
@@ -46,7 +48,7 @@ PageModel<Dish> pagemodel = (PageModel) request.getAttribute("pageModel");
 
 String headerfile = "";
 if(session.getAttribute("loginuser") == null){
-	 headerfile = "header.jsp";
+	 headerfile = "customerHeader.jsp";
 }
 else{
 	Customer cusx = (Customer) session.getAttribute("loginuser");
@@ -56,7 +58,7 @@ else{
 		//<jsp:include page="headerAdmin.jsp"></jsp:include>										
 	}
 	else{
-		 headerfile = "header.jsp";
+		 headerfile = "customerHeader.jsp";
 		//<jsp:include page="header.jsp"></jsp:include>
 	}
 }
@@ -122,13 +124,13 @@ else{
                                     out.println("</div>");
                                 } 
                                 %>  
-								<c:forEach items="${requestScope.dishlist}" var="currentdish"
+								<c:forEach items="${dishlist}" var="currentdish"
 									varStatus="status">
 									<div class="col-sm-3">
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<a  href="action?actiontype=detail&dishid=${currentdish.getDishid()}"><img src="${currentdish.picSize("256")}" alt=""></a>													
+													<a  href="action?actiontype=detail&dishid=${currentdish.getDishid()}"><img src="${currentdish.getImgurl()}" alt="" height="256px" width="100%"></a>													
 													<h2>¥${currentdish.getPrice()}</h2>
 													<a href="action?actiontype=detail&dishid=${currentdish.getDishid()}"><p>${currentdish.getDishname()}</p></a>
 													<a href="action?actiontype=detail&dishid=${currentdish.getDishid()}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>详情</a>

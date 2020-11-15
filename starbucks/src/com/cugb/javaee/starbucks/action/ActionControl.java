@@ -93,6 +93,9 @@ public class ActionControl extends baseControl {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			break;
+		case "checkout":
+			checkout(request,response);
 		case "search":
 			try {
 				search(request, response);
@@ -121,10 +124,10 @@ public class ActionControl extends baseControl {
 	}
 
 	private void search(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException{
-		String In = request.getParameter("query");
+		String In = request.getParameter("query"); //查询字符串
 		String kw;
 		if(In.equals("-1")){
-			kw = searchTH;
+			kw = searchTH; 
 		}
 		else{
 			System.out.println(In+" this is In");
@@ -133,16 +136,12 @@ public class ActionControl extends baseControl {
 		}
 		// 获取当前页号
 		int pageNo = Integer.parseInt(request.getParameter("pageNO"));
-		System.out.println(pageNo + "now page");
-		// int pageSize = Integer.parseInt(prop.getProperty("pageSize"));
 		// 分页查询
 		 String pageSize = ConfigFactory.readProperty("pageSize");
 		// 生成pageModel对象
 		DishService dishserv = new DishService();
-		System.out.println(kw + "  111");
 		PageModel<Dish> pagemodel = dishserv.findDish5PageList(pageNo, Integer.parseInt(pageSize), kw);
 		// 跳转到show页面
-		// logger.debug(pagemodel.getList());
 		request.setAttribute("dishlist", pagemodel.getList());
 		System.out.println(pagemodel.getTotalPages() + " 总页数");
 		System.out.println(pagemodel.getList().size() + "大小");
@@ -286,9 +285,19 @@ public class ActionControl extends baseControl {
 	}
 	
 	private void comment(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ServletException{
-		//获取订单号
+		//获取dishid
 		String dishid=request.getParameter("dishid");
 		request.setAttribute("dishid", dishid);
 		request.getRequestDispatcher("dishComment.jsp").forward(request, response);
+	}
+	
+	private void checkout(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		HttpSession session = request.getSession(true);
+		if(session.getAttribute("loginuser")==null){
+			response.sendRedirect("customerLogin.jsp");
+		}
+		else{
+			response.sendRedirect("checkout.jsp");
+		}
 	}
 }

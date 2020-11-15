@@ -8,7 +8,7 @@ public class Dish {
 	public String imgurl;
 	public float discount;
 	
-	public String picSize(String pxl)
+	public String picSize()
 	{
 		return imgurl.substring(0, 93);
 	}

@@ -8,7 +8,6 @@ import com.cugb.javaee.starbucks.bean.Restaurant;
 
 public class RestaurantDAOImpl extends baseDAO implements RestaurantDAO {
 
-
 	@Override
 	public int addRestaurant(Restaurant res) throws SQLException {
 		String sql = "insert into restaurant(restaurantid, restaurantname) values ( ?, ?);";
@@ -32,4 +31,9 @@ public class RestaurantDAOImpl extends baseDAO implements RestaurantDAO {
 		String sql = "select restaurantid Restaurantid, restaurantname Restaurantname from restaurant where restaurantid = ?";
 		Object[] params = {restaurantid};
 		return (Restaurant) findObj(sql, params,  Restaurant.class);
+	}
+	@Override
+	public ArrayList findRestaurants() throws SQLException {
+		String sql = "select restaurantid Restaurantid, restaurantname Restaurantname from restaurant";
+		return findObjs(sql, Restaurant.class);
 	}}
