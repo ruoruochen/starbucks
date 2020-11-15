@@ -128,7 +128,7 @@
 								
 								out.println(" <td class=\"total\">");
 								out.println("<a class=\"cart_quantity_delete\" style=\"margin-right:10px\" href=\"action?actiontype=comment&dishid="
-										+ String.valueOf(orderitem.getDishid()) + "\"><i>评论</i></a>");
+										+ orderitem.getDishid() + "\"><i>评论</i></a>");
 								out.println(" </td>");
 							}
 					%>

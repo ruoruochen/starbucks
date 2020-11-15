@@ -65,7 +65,11 @@
 						Customer cus = (Customer) session.getAttribute("loginuser");
 					
 						OrderDAO orderdao = (OrderDAO) DAOFactory.newInstance("OrderDAO");
+<<<<<<< HEAD
 						RestaurantDAO resdao=(RestaurantDAO) DAOFactory.newInstance("RestaurantDAO");
+=======
+						//RestaurantDAO resdao = (RestaurantDAO) DAOFactory.newInstance("RestaurantDAO");
+>>>>>>> branch 'master' of https://github.com/mystarbucks/starbucks
 						
 						if (cus == null) {
 							out.println("<tr >还没登录？<a href=\"customerLogin.jsp\">去登录</a></tr><br/><br/><br/><br/><br/><br/><br/><br/>");
@@ -96,7 +100,7 @@
 								//System.out.println(order.getRestaurantname());
 								out.println("<tr align=\"center\">");
 								out.println(" <td class=\"description\">");
-								out.println("<a style=\"color:#006439\" href=\"action?actiontype=order&orderid=" + String.valueOf(order.getOrderid()) + "\">");
+								out.println("<a style=\"color:#006439\" href=\"action?actiontype=order&orderid=" + order.getOrderid() + "\">");
 								out.println("  <h4>");
 								out.println(order.getOrderid());
 								out.println("  </h4>");
@@ -136,6 +140,10 @@
 								out.println(" <td class=\"total\">");
 								out.println("  <h4>");
 								out.println(1);
+<<<<<<< HEAD
+=======
+								//out.println(resdao.findRestaurant(order.getRestaurantid()));
+>>>>>>> branch 'master' of https://github.com/mystarbucks/starbucks
 								out.println("  </h4>");
 								out.println(" </td>");								
 								
@@ -155,7 +163,7 @@
 			</div>
 		</div>
 	</section>
-	<!--/#cart_items-->
+	<!--/#order-->
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

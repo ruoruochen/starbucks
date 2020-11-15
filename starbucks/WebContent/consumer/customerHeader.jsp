@@ -69,7 +69,7 @@
 				</div>
 				<div class="col-sm-3">
 					<div class="search_box pull-right">
-					<form action="action" method="post" >
+					<form action="action?actiontype=search" method="post" >
 					<input type="text" placeholder="吃点啥？" name="query" >&nbsp; 
 						<button class="btn btn-default get" style="margin-top: 0px" id="search"><i
 							class="fa fa-search"></i> 搜索 </button>

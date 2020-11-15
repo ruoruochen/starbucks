@@ -21,36 +21,84 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>网上订餐</title>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/font-awesome.min.css" rel="stylesheet">
-<link href="css/prettyPhoto.css" rel="stylesheet">
-<link href="css/price-range.css" rel="stylesheet">
-<link href="css/animate.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
-<link href="css/responsive.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="../css/prettyPhoto.css" rel="stylesheet">
+<link href="../css/price-range.css" rel="stylesheet">
+<link href="../css/animate.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/responsive.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-<link rel="shortcut icon" href="images/ico/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="images/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="images/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="images/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed"
-	href="images/ico/apple-touch-icon-57-precomposed.png">
+<link rel="shortcut icon" href="../images/ico/favicon.ico">
+<link rel="./apple-touch-icon-precomposed" sizes="144x144"
+	href="../images/ico/apple-touch-icon-144-precomposed.png">
+<link rel="./apple-touch-icon-precomposed" sizes="114x114"
+	href="../images/ico/apple-touch-icon-114-precomposed.png">
+<link rel="./apple-touch-icon-precomposed" sizes="72x72"
+	href="../images/ico/apple-touch-icon-72-precomposed.png">
+<link rel="./apple-touch-icon-precomposed"
+	href="../images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <!--/head-->
 
 <body>
 	<jsp:include page="customerHeader.jsp"></jsp:include>
 	
-	111
+	<section id="cart_items" style="margin-bottom:20px">
+
+		<div class="container">
+			<div class="table-responsive cart_info">
+
+				<table class="table table-condensed">
+					<thead>
+						<tr class="cart_menu">
+							<td class="image"></td>
+							<td class="description">商品</td>
+							<td class="price">评论</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+							DishDAO ff = (DishDAO) DAOFactory.newInstance("DishDAO");
+								Customer cuss = (Customer) session.getAttribute("loginuser");
+								int dishid = Integer.parseInt(request.getParameter("dishid"));
+								Dish cur = ff.findDish(dishid);
+								out.println("<tr>");
+								out.println(" <td class=\"cart_product\">");
+								out.println("  <a href=\"\">");
+								out.println("   <img alt=\"\" src=\"" + cur.getImgurl() + "\" width=\"200px\"/>");
+								out.println("  </a>");
+								out.println(" </td>");
+								out.println(" <td class=\"cart_description\">");
+								out.println("  <h4>");
+								out.println("   <a href=\"action?actiontype=detail&dishid=" + String.valueOf(dishid) + "\">");
+								out.println(cur.getDishname());
+								out.println("   </a>");
+								out.println("  </h4>");
+								out.println(" </td>");
+								
+								out.println("<td>");
+								out.println("<form action=\"CommentAdd\" method=\"POST\" name=\"commentForm\">");
+								out.println("<textarea cols=\"50\" rows=\"5\" value=\"请输入您对商品的评论...\">");
+								out.println("</textarea>");
+								out.println("<input type=\"hidden\" name=\"actiontype\" value=\"addComment\">");
+								out.println("<button type=\"submit\" class=\"btn btn-default\">提交</button>");
+								out.println("</form>");
+								out.println("</td>");
+								
+						%>
+					</tbody>
+				</table>
+			</div>
+	</section>
+	<!--/#comment_items-->
 
 	
-<jsp:include page="../footer.jsp"></jsp:include>
+	<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 </html>
