@@ -285,13 +285,8 @@ public class ActionControl extends baseControl {
 	}
 	
 	private void comment(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ServletException{
-<<<<<<< HEAD
 		//获取dishid
-		String dishid=request.getParameter("dishid");
-=======
-		//获取订单号
 		int dishid=Integer.parseInt(request.getParameter("dishid"));
->>>>>>> branch 'master' of https://github.com/mystarbucks/starbucks
 		request.setAttribute("dishid", dishid);
 		request.getRequestDispatcher("dishComment.jsp").forward(request, response);
 	}

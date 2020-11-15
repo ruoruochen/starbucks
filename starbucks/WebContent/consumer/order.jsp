@@ -22,7 +22,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>网上订餐</title>
+<title>我的订单</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/font-awesome.min.css" rel="stylesheet">
 <link href="../css/prettyPhoto.css" rel="stylesheet">
@@ -65,18 +65,14 @@
 						Customer cus = (Customer) session.getAttribute("loginuser");
 					
 						OrderDAO orderdao = (OrderDAO) DAOFactory.newInstance("OrderDAO");
-<<<<<<< HEAD
-						RestaurantDAO resdao=(RestaurantDAO) DAOFactory.newInstance("RestaurantDAO");
-=======
-						//RestaurantDAO resdao = (RestaurantDAO) DAOFactory.newInstance("RestaurantDAO");
->>>>>>> branch 'master' of https://github.com/mystarbucks/starbucks
-						
+						RestaurantDAO resdao=(RestaurantDAO) DAOFactory.newInstance("RestaurantDAO");					
 						if (cus == null) {
 							out.println("<tr >还没登录？<a href=\"customerLogin.jsp\">去登录</a></tr><br/><br/><br/><br/><br/><br/><br/><br/>");
 						} else if (orderdao.findOrders(cus.getUsername()).size() == 0) {
 							out.println("hhhhh");
 							out.println("<tr >还没有下过单？<a href=\"customerIndex.jsp\">去订餐</a></tr>");
-						} else {
+						} 
+						else {
 							
 							out.println("<thead align=\"center\">");
 							out.println("<tr class=\"cart_menu\">");
@@ -140,10 +136,6 @@
 								out.println(" <td class=\"total\">");
 								out.println("  <h4>");
 								out.println(1);
-<<<<<<< HEAD
-=======
-								//out.println(resdao.findRestaurant(order.getRestaurantid()));
->>>>>>> branch 'master' of https://github.com/mystarbucks/starbucks
 								out.println("  </h4>");
 								out.println(" </td>");								
 								
@@ -153,9 +145,8 @@
 								out.println("  </h4>");
 								out.println(" </td>");								
 								out.println("</tr>");
-								
-							}
-							out.println("点击订单号查看详情");
+							
+						}out.println("点击订单号查看详情");
 						}
 					%>
 					</tbody>

@@ -124,7 +124,7 @@ request.setAttribute("pageModel", pagemodel);
 							</div>
 
 						</div>
-					</div><!--/category-tab-->
+					</div>
 					
 					<div class="col-sm-12">
 						<table>

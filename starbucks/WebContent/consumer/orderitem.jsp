@@ -22,7 +22,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>网上订餐</title>
+<title>订单详情</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/font-awesome.min.css" rel="stylesheet">
 <link href="../css/prettyPhoto.css" rel="stylesheet">
@@ -62,12 +62,10 @@
 				
 				<table class="table table-condensed">
 					<%
-					Customer cus = (Customer) session.getAttribute("loginuser");
-					
+						Customer cus = (Customer) session.getAttribute("loginuser");
 						OrderItemDAO orderitemdao = (OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
 						DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO"); 
 						String orderid=request.getParameter("orderid");
-						
 							out.println("<thead align=\"center\">");
 							out.println("<tr class=\"cart_menu\">");
 							out.println("<td class=\"description\">订单号</td>");
@@ -80,12 +78,13 @@
 							out.println("</tr>");
 							out.println("</thead>");
 							out.println("<tbody>");
+							
+							
 
 							ArrayList<OrderItem> arr =orderitemdao.findOrderItems(orderid) ;							
 							float totalPrice = 0.0f;
 							int totalNum = 0;
 							for(OrderItem orderitem:arr) {		
-								//System.out.println(order.getRestaurantname());
 								out.println("<tr align=\"center\">");
 								out.println(" <td class=\"description\">");
 								out.println("  <h4>");
@@ -127,12 +126,14 @@
 								out.println(" </td>");
 								
 								out.println(" <td class=\"total\">");
-								out.println("<a class=\"cart_quantity_delete\" style=\"margin-right:10px\" href=\"action?actiontype=comment&dishid="
-										+ orderitem.getDishid() + "\"><i>评论</i></a>");
+								//out.println("<a class=\"cart_quantity_delete\" style=\"margin-right:10px\" href=\"action?actiontype=comment&dishid="
+								//		+ orderitem.getDishid() + "\"><i>评论</i></a>");
+								out.println("1");
 								out.println(" </td>");
+								out.println("</tr>");
 							}
+							out.println("</tbody>");
 					%>
-					</tbody>
 				</table>
 			</div>
 		</div>

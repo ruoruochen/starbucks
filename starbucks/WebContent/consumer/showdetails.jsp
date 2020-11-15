@@ -18,7 +18,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>网上订餐</title>
+<title>商品详情</title>
  <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/prettyPhoto.css" rel="stylesheet">
@@ -41,12 +41,6 @@
 	href="../images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <!--/head-->
-<script type="text/javascript">
-	function getValue(){
-		
-		alert("hhhh"+document.getElementById("num").value);
-	}
-</script>
 <body>
 	<jsp:include page="customerHeader.jsp"></jsp:include>
 
@@ -91,6 +85,8 @@
 							<option value="4">4</option>
 							<option value="5">5</option>
 							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
 						</select>
 					</p>
 					<input type="hidden" name="dishid"
@@ -111,7 +107,28 @@
 		</div>
 		<!--/product-details-->
 
-
+		<div class="product-details"
+			style="margin-left: 100px; margin-right: 100px;">	
+			<h3 align="center">商品评论</h3>
+					<%
+					DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO");
+					ArrayList<Comment> arr = commentdao.findComments(dishid);	
+							for(Comment comment:arr) 
+							{
+								out.println("<div class=\"product-details\" style=\"margin-left: 100px; margin-right: 100px; border:1px solid gray\">");
+								out.println("<h4>");
+								out.println(comment.getUsername());
+								out.println("</h4>");
+								out.println("<p>&nbsp;&nbsp;");
+								out.println(comment.getCommenttext());
+								out.println("</p>");
+								out.println("<p align=\"right\">");
+								out.println(comment.getTime());
+								out.println("</p>");
+								out.println("</div>");						
+							}
+					%>
+			</div>
 	</section>
 
 	<jsp:include page="../footer.jsp"></jsp:include>
