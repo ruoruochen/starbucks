@@ -5,7 +5,9 @@
     <welcome-file>customerIndex.html</welcome-file>
     <welcome-file>customerIndex.htm</welcome-file>
     <welcome-file>customerIndex.jsp</welcome-file>
-  </welcome-file-list>  <servlet>
+  </welcome-file-list> 
+  
+   <servlet>
     <servlet-name>LoginControl</servlet-name>
     <servlet-class>com.cugb.javaee.starbucks.action.LoginControl</servlet-class>
   </servlet>
@@ -13,6 +15,16 @@
     <servlet-name>LoginControl</servlet-name>
     <url-pattern>/consumer/LoginControl</url-pattern>
   </servlet-mapping>
+  
+<servlet>
+    <servlet-name>register</servlet-name>
+    <servlet-class>com.cugb.javaee.starbucks.action.RegisterControl</servlet-class>
+  </servlet>
+    <servlet-mapping>
+    <servlet-name>register</servlet-name>
+    <url-pattern>/consumer/register</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <servlet-name>action</servlet-name>
     <servlet-class>com.cugb.javaee.starbucks.action.ActionControl</servlet-class>
@@ -21,7 +33,6 @@
     <servlet-name>action</servlet-name>
     <url-pattern>/consumer/action</url-pattern>
   </servlet-mapping>
-  
   
   <servlet>
     <servlet-name>OrderAdd</servlet-name>
@@ -49,6 +60,7 @@
      <servlet-name>dishModify</servlet-name>
      <url-pattern>/admin/dishModify</url-pattern>
    </servlet-mapping>
+   
    <servlet>
      <servlet-name>dishAdd</servlet-name>
      <servlet-class>com.cugb.javaee.starbucks.action.DishAddControl</servlet-class>
@@ -57,6 +69,7 @@
      <servlet-name>dishAdd</servlet-name>
      <url-pattern>/admin/dishAdd</url-pattern>
    </servlet-mapping>
+   
    <filter>
      <filter-name>CharFilter</filter-name>
      <filter-class>com.cugb.javaee.starbucks.utils.CharsetFilter</filter-class>

@@ -3,7 +3,9 @@ package com.cugb.javaee.starbucks.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.cugb.javaee.starbucks.bean.Order;
 import com.cugb.javaee.starbucks.bean.OrderItem;
+import com.cugb.javaee.starbucks.utils.DAOFactory;
 
 public class OrderItemDAOImpl extends baseDAO implements OrderItemDAO {
 
@@ -16,7 +18,7 @@ public class OrderItemDAOImpl extends baseDAO implements OrderItemDAO {
 	
 	@Override
 	public ArrayList findOrderItems(String orderId) throws SQLException {
-		String sql = "select dishid DishId, orderid Orderid, count Count,price Price,finalPrice Finalprice from OrderItem where orderid = '"+orderId+"'";
+		String sql = "select dishid DishId, count Count,price Price,finalPrice Finalprice from OrderItem where orderid = '"+orderId+"'";
 		return findObjs(sql, OrderItem.class);
 	}
 

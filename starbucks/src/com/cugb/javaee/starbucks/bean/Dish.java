@@ -3,6 +3,7 @@ package com.cugb.javaee.starbucks.bean;
 public class Dish {
 	public int dishid;
 	public String dishname;
+	public int categoryid;
 	public float price;
 	public String descri;
 	public String imgurl;
@@ -17,6 +18,12 @@ public class Dish {
 	}
 	public void setDishid(int dishid) {
 		this.dishid = dishid;
+	}
+	public int getCategoryid() {
+		return dishid;
+	}
+	public void setCategoryid(int categoryid) {
+		this.dishid =categoryid;
 	}
 	public String getDishname() {
 		return dishname;

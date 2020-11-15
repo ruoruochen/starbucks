@@ -1,6 +1,8 @@
 package com.cugb.javaee.starbucks.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -67,7 +69,9 @@ public class LoginControl extends HttpServlet {
 			}
 			else {
 				//否则重新登录
-				response.sendRedirect("customerLogin.jsp");
+				PrintWriter out = response.getWriter();
+				String a = URLEncoder.encode("用户名或密码错误，请重新登录！", "UTF-8");  
+		        out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='customerLogin.jsp'</script>");
 			}
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block

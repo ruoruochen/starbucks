@@ -45,7 +45,15 @@
 	href="../images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <!--/head-->
-
+<style>
+	.comment:hover{
+	text-decoration:underline;
+	color:#006439;
+	}
+	.comment{
+	font-size:16px;
+	}
+</style>
 <body>
 	 <jsp:include page="customerHeader.jsp"></jsp:include>
 	
@@ -61,24 +69,23 @@
 			<div class="table-responsive cart_info">
 				
 				<table class="table table-condensed">
+				<thead align="center">
+				<tr class="cart_menu">
+				<td class="description">订单号</td>
+				<td class="image"></td>
+				<td class="description">商&nbsp;&nbsp;品</td>
+				<td class="total" >总&nbsp;&nbsp;数</td>
+				<td class="total" >价&nbsp;&nbsp;格</td>
+				<td class="total" >总&nbsp;&nbsp;价</td>
+				<td class="total" >评&nbsp;&nbsp;论</td>
+				</tr>
+				</thead>
+				<tbody>
 					<%
 						OrderItemDAO orderitemdao = (OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
 						DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO"); 
-						String orderid=request.getParameter("orderid");
-							out.println("<thead align=\"center\">");
-							out.println("<tr class=\"cart_menu\">");
-							out.println("<td class=\"description\">订单号</td>");
-							out.println("<td class=\"image\"></td>");
-							out.println("<td class=\"description\">商&nbsp;&nbsp;品</td>");
-							out.println("<td class=\"total\" >总&nbsp;&nbsp;数</td>");
-							out.println("<td class=\"total\" >价&nbsp;&nbsp;格</td>");
-							out.println("<td class=\"total\" >总&nbsp;&nbsp;价</td>");
-							out.println("<td class=\"total\" >评&nbsp;&nbsp;论</td>");
-							out.println("</tr>");
-							out.println("</thead>");
-							out.println("<tbody>");
-							
-							ArrayList<OrderItem> arr =orderitemdao.findOrderItems(orderid) ;							
+						String orderid=request.getParameter("orderid");		
+						ArrayList<OrderItem> arr =orderitemdao.findOrderItems(orderid) ;							
 							float totalPrice = 0.0f;
 							int totalNum = 0;
 							for(OrderItem orderitem:arr) {		
@@ -91,16 +98,16 @@
 								
 								Dish cur = dishdao.findDish(orderitem.getDishid());
 								out.println(" <td class=\"cart_product\">");
-								out.println("  <a href=\"\">");
-								out.println("   <img alt=\"\" src=" + cur.getImgurl() + " width=\"256px\" height=\"256px\"/>");
+								out.println("  <a href=\"\">1");
+								//out.println("   <img alt=\"\" src=\"" + cur.getImgurl() + "\" width=\"200px\"/>");
 								out.println("  </a>");
 								out.println(" </td>");
 								
-								out.println(" <td class=\"total\">");
-								out.println("  <h4>");
-								out.println(" <a href=\"action?actiontype=detail&dishid=" + String.valueOf(orderitem.getDishid()) + "\">");
-								out.println(cur.getDishname());
-								out.println("   </a>");
+								out.println(" <td class=\"cart_description\">");
+								out.println("  <h4>1");
+								//out.println(" <a href=\"action?actiontype=detail&dishid=" + String.valueOf(orderitem.getDishid()) + "\">");
+								//out.println(cur.getDishname());
+								//out.println("   </a>");
 								out.println("  </h4>");
 								out.println(" </td>");
 								
@@ -123,13 +130,14 @@
 								out.println(" </td>");
 								
 								out.println(" <td class=\"total\">");
-								out.println("<a class=\"cart_quantity_delete\" style=\"margin-right:10px\" href=\"action?actiontype=comment&dishid="+ orderitem.getDishid() + "\">评论</a>");
+								out.println("<a class=\"comment\" href=\"action?comment&dishid=" + String.valueOf(orderitem.getDishid())+ "\">");
+								out.println("评论</a>");			 
 								//out.println("1");
 								out.println(" </td>");
 								out.println("</tr>");
 							}
-							out.println("</tbody>");
-					%>
+						%>	
+				</tbody>
 				</table>
 			</div>
 		</div>
