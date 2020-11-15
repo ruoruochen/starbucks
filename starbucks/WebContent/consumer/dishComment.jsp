@@ -70,7 +70,7 @@
 								out.println("<tr>");
 								out.println(" <td class=\"cart_product\">");
 								out.println("  <a href=\"\">");
-								out.println("   <img alt=\"\" src=\"" + cur.getImgurl() + "\" width=\"200px\"/>");
+								out.println("   <img alt=\"\" src=" + cur.getImgurl() + " width=\"256px\" height=\"256px\"/>");
 								out.println("  </a>");
 								out.println(" </td>");
 								out.println(" <td class=\"cart_description\">");

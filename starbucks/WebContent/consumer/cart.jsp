@@ -50,62 +50,31 @@
 	<section id="cart_items" style="margin-bottom:20px">
 
 		<div class="container">
-			<!-- <div class="breadcrumbs">
-				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li class="active">Shopping Cart</li>
-				</ol>
-			</div> -->
 			<div class="table-responsive cart_info">
-
 				<table class="table table-condensed">
-					<thead>
-						<tr class="cart_menu">
-							<td class="image"></td>
-							<td class="description">商品</td>
-							<td class="price">原价</td>
-							<td class="total">现价</td>
-							<td class="total">数量</td>
-							<td class="total">总价</td>
-							<td></td>
-						</tr>
-					</thead>
-					<tbody>
-
-						<!-- <tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/one.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price"><del>$59</del></p>
-							</td>
-							
-							<td class="cart_total">
-								<p class="cart_total_price" style="color: red">$59</p>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">20</p>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$20</p>
-							</td>
-						</tr> -->
 						<%
 							float totalPrice = 0.0f;
 							int totalNum = 0;
  							Map cart = (Map) session.getAttribute("shopcart");
 							if(cart == null){
-								out.println("购物车为空，请再去逛一逛吧");
+								out.println("<h4>购物车为空，请再去<a href=\"customerIndex.jsp\">逛一逛</a>吧</h4>");
 							}else{
+								out.println("<thead>");
+								out.println("<tr class=\"cart_menu\">");
+								out.println("<td class=\"image\"></td>");
+								out.println("<td class=\"description\">商品</td>");
+								out.println("<td class=\"price\">原价</td>");
+								out.println("<td class=\"total\">现价</td>");
+								out.println("<td class=\"total\">数量</td>");
+								out.println("<td class=\"total\">总价</td>");
+								out.println("<td></td>");
+								out.println("</tr>");
+								out.println("</thead>");
+								out.println("<tbody>");
 								Iterator<Map.Entry<Integer, Integer>> it = cart.entrySet().iterator();
 								DishDAO ff = (DishDAO) DAOFactory.newInstance("DishDAO");
 								while (it.hasNext()) {
 									Map.Entry entry = (Map.Entry) it.next();
-
 									CartItem nc = new CartItem();
 									nc = (CartItem) entry.getKey();
 									Customer cuss = (Customer) session.getAttribute("loginuser");
@@ -154,20 +123,14 @@
 									out.println(" <td class=\"cart_delete\">");
 									out.println(
 											"<a class=\"cart_quantity_delete\" style=\"margin-right:10px\" href=\"action?actiontype=del&dishid="
-													+ String.valueOf(dishid) + "\"><i class=\"fa fa-times\" </i></a>");
-
+													+ String.valueOf(dishid) + "\"><i class=\"fa fa-times\"></i></a>");
 									out.println(" </td>");
 									out.println("</tr>");
 									totalPrice += disnumber * cur.getDiscount();
-
 								}
-							}  
-							
-						%>
-
-
-
-					</tbody>
+								out.println("</tbody>");
+							}  					
+						%>	
 				</table>
 			</div>
 			<div class="container">
