@@ -23,6 +23,13 @@ public class CustomerModifyControl extends baseControl {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		super.doPost(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
 		HttpSession session = req.getSession(true);
 		Customer customer = new Customer();		
 		customer = (Customer) session.getAttribute("loginuser");
@@ -36,19 +43,13 @@ public class CustomerModifyControl extends baseControl {
 		try {
 			CustomerDAO CustomerDAO = (CustomerDAO) DAOFactory.newInstance("CustomerDAO");
 			CustomerDAO.modifyCustomer(customer);
-			resp.sendRedirect("index.jsp");
+			resp.sendRedirect("customerIndex.jsp");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
 	}
 
 }

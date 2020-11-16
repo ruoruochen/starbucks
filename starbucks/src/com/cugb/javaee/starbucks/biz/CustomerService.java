@@ -24,8 +24,15 @@ public class CustomerService {
 	public boolean validateCustomer(Customer customer) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		CustomerDAO CustomerDAO = (CustomerDAO) DAOFactory.newInstance("CustomerDAO");
 		Customer cus = CustomerDAO.findCustomer(customer.getUsername());
-		if(cus.getPassword().equals(customer.getPassword()))
+		if(cus==null)
+		{
+			return false;
+		}
+		else {
+			if(cus.getPassword().equals(customer.getPassword()))
 			return true;
 		else return false;
+		}
+		
 	}
 }

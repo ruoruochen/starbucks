@@ -16,6 +16,15 @@
     <url-pattern>/consumer/LoginControl</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>modifyCusControl</servlet-name>
+    <servlet-class>com.cugb.javaee.starbucks.action.CustomerModifyControl</servlet-class>
+  </servlet>
+    <servlet-mapping>
+    <servlet-name>modifyCusControl</servlet-name>
+    <url-pattern>/consumer/modifyCusControl</url-pattern>
+  </servlet-mapping>
+  
 <servlet>
     <servlet-name>register</servlet-name>
     <servlet-class>com.cugb.javaee.starbucks.action.RegisterControl</servlet-class>

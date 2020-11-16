@@ -43,7 +43,14 @@
 	href="../images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <!--/head-->
-
+<style>
+#guang{
+color:#006439;
+}
+#guang:hover{
+text-decoration:underline;
+}
+</style>
 <body>
 	<jsp:include page="customerHeader.jsp"></jsp:include>
 	
@@ -57,7 +64,7 @@
 							int totalNum = 0;
  							Map cart = (Map) session.getAttribute("shopcart");
 							if(cart == null){
-								out.println("<h4>购物车为空，请再去<a href=\"customerIndex.jsp\">逛一逛</a>吧</h4>");
+								out.println("<h4>购物车为空，请再去<a id=\"guang\" href=\"customerIndex.jsp\">逛一逛</a>吧</h4>");
 							}else{
 								out.println("<thead>");
 								out.println("<tr class=\"cart_menu\">");

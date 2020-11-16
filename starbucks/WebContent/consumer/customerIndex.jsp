@@ -64,7 +64,12 @@ request.setAttribute("pageModel", pagemodel);
 	href="../images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <!--/head-->
-
+<!--  <style>
+img{
+border-radius:50%;
+overflow :hidden;
+}
+</style>-->
 <body>
 
  	<jsp:include page="customerHeader.jsp"></jsp:include>

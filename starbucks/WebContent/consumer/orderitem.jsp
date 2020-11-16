@@ -98,16 +98,16 @@
 								
 								Dish cur = dishdao.findDish(orderitem.getDishid());
 								out.println(" <td class=\"cart_product\">");
-								out.println("  <a href=\"\">1");
-								//out.println("   <img alt=\"\" src=\"" + cur.getImgurl() + "\" width=\"200px\"/>");
+								out.println("  <a href=\"\">");
+								out.println("   <img alt=\"\" src=\"" + cur.getImgurl() + "\" width=\"200px\"/>");
 								out.println("  </a>");
 								out.println(" </td>");
 								
 								out.println(" <td class=\"cart_description\">");
-								out.println("  <h4>1");
-								//out.println(" <a href=\"action?actiontype=detail&dishid=" + String.valueOf(orderitem.getDishid()) + "\">");
-								//out.println(cur.getDishname());
-								//out.println("   </a>");
+								out.println("  <h4>");
+								out.println(" <a href=\"action?actiontype=detail&dishid=" + String.valueOf(orderitem.getDishid()) + "\">");
+								out.println(cur.getDishname());
+								out.println("   </a>");
 								out.println("  </h4>");
 								out.println(" </td>");
 								

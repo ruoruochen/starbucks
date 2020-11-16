@@ -58,30 +58,28 @@
 	<jsp:include page="customerHeader.jsp"></jsp:include>
 	
 	<section id="form" style="margin-top:0px; margin-bottom:100px"><!--form-->
-		<div class="container">
+		<div class="container" >
 			<div class="row">
-				<div class="col-sm-1">
-
-				</div>
-				<div class="col-sm-4">
-					<div class="signup-form"><!--sign up form-->
-						<h2>修改我的信息</h2>
+					<div class="signup-form"  style="margin-left:420px;width:400px"><!--sign up form-->
+						
 						<%
-									Customer cus = (Customer) session.getAttribute("loginuser");
+							Customer cus = (Customer) session.getAttribute("loginuser");
 							if (cus == null) {
-							out.println("<tr >还没登录？<a href=\"login.jsp\">去登录</a></tr><br/><br/><br/><br/><br/><br/><br/><br/>");
+							out.println("<br/><br/><br/><br/><p style=\"font-size:18px;\">您还未登录？<a href=\"customerLogin.jsp\">去登录</a></p><br/><br/><br/><br/><br/><br/><br/><br/>");
+						}else
+						{
+							out.println("<h2 align=\"center\">修改我的信息</h2>");
+							out.println("<form action=\"modifyCusControl\" method=\"POST\" name=\"modifyCusForm\" onSubmit=\"return checkInfo()\">");
+							out.println("<input type=\"text\" disabled=\"true\" value=\"" + cus.getUsername()+"\"/>");
+							out.println("<input type=\"email\" placeholder=\"邮箱\" name=\"modifyEmail\"/>");
+							out.println("<input type=\"password\" placeholder=\"密码\" name=\"modifyPass\"/>");
+							out.println("<input type=\"password\" placeholder=\"确认密码\" name=\"confirmPass\"/>");
+							out.println("<button type=\"submit\" class=\"btn btn-default\" style=\"float:right;\">确认修改</button>");
+							out.println("</form>");
 						}
 						%>
-						<form action="modifyCusControl" method="POST" name="modifyCusForm" onSubmit="return checkInfo()">
-							<%out.println("<input type=\"text\" disabled=\"true\" value=\"" + cus.getUsername()+"\"/>");%>
-							<input type="email" placeholder="邮箱" name="modifyEmail"/>
-							<input type="password" placeholder="密码" name="modifyPass"/>
-							<input type="password" placeholder="确认密码" name="confirmPass"/>
-							<button type="submit" class="btn btn-default">确认修改</button>
-						</form>
 					</div><!--/sign up form-->
 				</div>
-			</div>
 		</div>
 	</section><!--/form-->
 	
