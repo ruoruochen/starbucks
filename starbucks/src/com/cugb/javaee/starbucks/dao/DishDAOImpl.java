@@ -55,4 +55,11 @@ public class DishDAOImpl extends baseDAO implements DishDAO {
 		return (Dish) findObj(sql, null,  Dish.class);
 	}
 
+	@Override
+	public ArrayList<Dish> findDishbyCategoryid(int categoryid) throws SQLException {
+		String sql = "select dishid Dishid, dishname Dishname,categoryid Categoryid, price Price, description Descri, imgurl Imgurl, discount Discount from Dish where categoryid = ?";
+		Object[] params = {categoryid};
+		return findObjs(sql, params,  Dish.class);
+	}
+
 }
