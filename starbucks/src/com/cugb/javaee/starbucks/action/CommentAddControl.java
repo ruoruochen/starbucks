@@ -2,41 +2,43 @@ package com.cugb.javaee.starbucks.action;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cugb.javaee.starbucks.bean.Dish;
-import com.cugb.javaee.starbucks.dao.DishDAO;
+import com.cugb.javaee.starbucks.bean.CommentItem;
+import com.cugb.javaee.starbucks.dao.CommentDAO;
 import com.cugb.javaee.starbucks.utils.DAOFactory;
 
-@WebServlet("/DishAddControl")
-public class DishAddControl extends HttpServlet {
+public class CommentAddControl extends HttpServlet {
 
-	public DishAddControl() {
+	
+	public CommentAddControl() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Dish dish = new Dish();
-		dish.setDescri(request.getParameter("description"));
-		dish.setDiscount(Float.parseFloat(request.getParameter("discount")));
-		dish.setImgurl(request.getParameter("imgURL"));
-		dish.setPrice(Float.parseFloat(request.getParameter("price")));
-		dish.setDishname(request.getParameter("name"));
-		DishDAO disDAO = null;
+		java.util.Date today = new java.util.Date();
+		Timestamp timestamp = new Timestamp(today.getTime());
+		CommentItem commentItem = new CommentItem();
+		commentItem.setCommentid(Integer.parseInt(request.getParameter("commentid")));
+		commentItem.setUsername(request.getParameter("username"));
+		commentItem.setDishid(Integer.parseInt(request.getParameter("dishid")));
+		commentItem.setTime(timestamp);
+		commentItem.setCommenttext(request.getParameter("commenttext"));
+		CommentDAO commentdao= (CommentDAO) DAOFactory.newInstance("CommentDAO");
 		try {
-			disDAO = (DishDAO) DAOFactory.newInstance("DishDAO");
-			disDAO.addDish(dish);
+			commentdao.addComment(commentItem);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 
 	@Override
@@ -44,5 +46,5 @@ public class DishAddControl extends HttpServlet {
 		// TODO Auto-generated method stub
 		super.doPost(req, resp);
 	}
-
+	
 }

@@ -1,9 +1,12 @@
 package com.cugb.javaee.starbucks.bean;
 
+import java.sql.Timestamp;
+
 public class CommentItem {
 	public int commentid;
 	public String username;
 	public int dishid;
+	public Timestamp time;
 	public String commenttext;
 	
 	public int getCommentid() {
@@ -23,6 +26,12 @@ public class CommentItem {
 	}
 	public void setDishid(int dishid) {
 		this.dishid = dishid;
+	}
+	public Timestamp getTime() {
+		return time;
+	}
+	public void setTime(Timestamp time) {
+		this.time = time;
 	}
 	public String getCommenttext() {
 		return commenttext;

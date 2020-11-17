@@ -38,9 +38,7 @@ public class OrderAddControl extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-Order order = new Order();
-		
-		
+		Order order = new Order();
 		//Step1. 取出所有购物车的信息
 		HttpSession session = request.getSession();
 		Customer cus = (Customer) session.getAttribute("loginuser");

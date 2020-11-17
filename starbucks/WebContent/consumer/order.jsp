@@ -93,7 +93,6 @@
 							float totalPrice = 0.0f;
 							int totalNum = 0;
 							for(Order order:arr) {		
-								//System.out.println(order.getRestaurantname());
 								out.println("<tr align=\"center\">");
 								out.println(" <td class=\"description\">");
 								out.println("<a style=\"color:#006439\" href=\"action?actiontype=order&orderid=" + order.getOrderid() + "\">");
