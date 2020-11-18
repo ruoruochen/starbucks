@@ -96,6 +96,7 @@ public class ActionControl extends baseControl {
 			break;
 		case "checkout":
 			checkout(request,response);
+			break;
 		case "search":
 			try {
 				search(request, response);

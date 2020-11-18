@@ -63,10 +63,11 @@
 					</thead>
 					<tbody>
 						<%
-							DishDAO ff = (DishDAO) DAOFactory.newInstance("DishDAO");
+								DishDAO ff = (DishDAO) DAOFactory.newInstance("DishDAO");
 								Customer cuss = (Customer) session.getAttribute("loginuser");
 								int dishid = Integer.parseInt(request.getParameter("dishid"));
-								Dish cur = ff.findDish(dishid);
+								Dish cur = ff.findDish(dishid); 
+								
 								out.println("<tr>");
 								out.println(" <td class=\"cart_product\">");
 								out.println("  <a href=\"\">");

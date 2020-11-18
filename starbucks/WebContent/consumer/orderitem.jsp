@@ -130,7 +130,7 @@
 								out.println(" </td>");
 								
 								out.println(" <td class=\"total\">");
-								out.println("<a class=\"comment\" href=\"action?comment&dishid=" + String.valueOf(orderitem.getDishid())+ "\">");
+								out.println("<a class=\"comment\" href=\"action?actiontype=comment&dishid=" + String.valueOf(orderitem.getDishid())+ "\">");
 								out.println("评论</a>");			 
 								//out.println("1");
 								out.println(" </td>");
