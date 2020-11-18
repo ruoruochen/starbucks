@@ -74,6 +74,7 @@
 					<img src="images/product-details/new.png" class="newarrival" alt="">
 					<h2>${requestScope.current.getDishname()}</h2>
 					<p>菜品ID: ${requestScope.current.getDishid()}</p>
+					<p>菜品分类: ${requestScope.current.getCategoryid()}</p>
 					<p>
 						<span style="font-size: 20px"><del>￥${requestScope.current.getPrice()}</del></span>
 						&nbsp;&nbsp;<span style="color: #FE980F; font-size: 22px">￥${requestScope.current.getDiscount()}</span>

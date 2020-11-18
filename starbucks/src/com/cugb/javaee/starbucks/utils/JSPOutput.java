@@ -9,8 +9,36 @@ import org.apache.jasper.runtime.*;
 
 import com.cugb.javaee.starbucks.bean.Customer;
 import com.cugb.javaee.starbucks.bean.Dish;
-
+import com.cugb.javaee.starbucks.bean.Category;
 public class JSPOutput {
+	public static void outputCategoryAdd(JspWriter out) throws IOException {
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputPassword1\">");
+		out.println("  分类名称");
+		out.println(" </label>");
+		out.println(" <input class=\"form-control\" name=\"name\" placeholder=\"分类名称\" type=\"text\" \">");
+		out.println(" </input>");
+		out.println("</div>");
+	}
+	
+	public static void outputCategory(JspWriter out,Category category) throws IOException {
+		out.println("<tr>");
+		
+		out.println(" <td class=\"cart_product\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(String.valueOf(category.getCategoryid()));
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\">");
+		out.println("  <h4>");
+		out.println(category.getCategoryname());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println("</tr>");
+	}
+	
 	// dishManage
 	public static void outputDish(JspWriter out, Dish dish) throws IOException {
 		out.println("<tr>");
@@ -32,6 +60,11 @@ public class JSPOutput {
 		out.println(" </td>");
 		out.println(" <td class=\"cart_total\">");
 		out.println("  <p class=\"cart_total_price\">");
+		out.println("   " + String.valueOf(dish.getCategoryid()));
+		out.println("  </p>");
+		out.println(" </td>");
+		out.println(" <td class=\"cart_total\">");
+		out.println("  <p class=\"cart_total_price\">");
 		out.println("   ¥" + String.valueOf(dish.getPrice()));
 		out.println("  </p>");
 		out.println(" </td>");
@@ -46,13 +79,13 @@ public class JSPOutput {
 		out.println("  </h5>");
 		out.println(" </td>");
 		out.println(" <td class=\"cart_delete\" width=\"100\">");
-		out.println("  <a class=\"cart_quantity_delete\" href=\"dishModify.jsp?dishid="
+		out.println("  <a class=\"cart_quantity_delete\" href=\"modifyDish.jsp?dishid="
 				+ String.valueOf(dish.getDishid()) + "\">");
 		out.println("   <i class=\"fa fa-pencil\">");
 		out.println("   </i>");
 		out.println("  </a>");
 		out.println(" &nbsp;");
-		out.println("  <a class=\"cart_quantity_delete\" href=\"dishDelete.jsp?dishid="
+		out.println("  <a class=\"cart_quantity_delete\" href=\"deleteDish.jsp?dishid="
 				+ String.valueOf(dish.getDishid()) + "\">");
 		out.println("   <i class=\"fa fa-trash-o fa-fw\">");
 		out.println("   </i>");
@@ -80,6 +113,16 @@ public class JSPOutput {
 				+ dish.getDishname() + "\">");
 		out.println(" </input>");
 		out.println("</div>");
+		
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputPassword1\">");
+		out.println("  菜品分类");
+		out.println(" </label>");
+		out.println(" <input class=\"form-control\" name=\"category\" placeholder=\"菜品分类\" type=\"text\" value=\""
+				+ dish.getCategoryid() + "\">");
+		out.println(" </input>");
+		out.println("</div>");
+		
 		out.println("<div class=\"form-group\">");
 		out.println(" <label for=\"exampleInputPassword1\">");
 		out.println("  原价");
@@ -88,6 +131,7 @@ public class JSPOutput {
 				+ String.valueOf(dish.getPrice()) + "\">");
 		out.println(" </input>");
 		out.println("</div>");
+		
 		out.println("<div class=\"form-group\">");
 		out.println(" <label for=\"exampleInputPassword1\">");
 		out.println("  描述");
@@ -108,7 +152,7 @@ public class JSPOutput {
 		out.println("</div>");
 		out.println("<div class=\"form-group\">");
 		out.println(" <label for=\"exampleInputPassword1\">");
-		out.println("  优惠�??");
+		out.println("  优惠");
 		out.println(" </label>");
 		out.println(" <input class=\"form-control\" name=\"discount\" placeholder=\"1.00\" type=\"text\" value=\""
 				+ String.valueOf(dish.getDiscount()) + "\">");
@@ -125,6 +169,15 @@ public class JSPOutput {
 		out.println(" <input class=\"form-control\" name=\"name\" placeholder=\"菜品名称\" type=\"text\" \">");
 		out.println(" </input>");
 		out.println("</div>");
+		
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputPassword1\">");
+		out.println("  分类");
+		out.println(" </label>");
+		out.println(" <input class=\"form-control\" name=\"category\" placeholder=\"分类\" type=\"text\" \">");
+		out.println(" </input>");
+		out.println("</div>");
+		
 		out.println("<div class=\"form-group\">");
 		out.println(" <label for=\"exampleInputPassword1\">");
 		out.println("  原价");
@@ -208,7 +261,7 @@ public class JSPOutput {
 		out.println("</div>");
 		out.println("<div class=\"form-group\">");
 		out.println(" <label for=\"exampleInputPassword1\">");
-		out.println("  优惠�??");
+		out.println("  优惠");
 		out.println(" </label>");
 		out.println(
 				" <input class=\"form-control\" name=\"discount\" readonly=\"true\" placeholder=\"1.00\" type=\"text\" value=\""
@@ -230,7 +283,7 @@ public class JSPOutput {
 		  out.println(cus.getEmail());
 		  out.println(" </td>");
 		  out.println(" <td width=\"50\">");
-		  out.println("  <a class=\"cart_quantity_delete\" href=\"customerDelete.jsp?username="+cus.getUsername()+"\">");
+		  out.println("  <a class=\"cart_quantity_delete\" href=\"deleteCustomer.jsp?username="+cus.getUsername()+"\">");
 		  out.println("   <i class=\"fa fa-trash-o fa-lg\">");
 		  out.println("   </i>");
 		  out.println("  </a>");
@@ -241,7 +294,7 @@ public class JSPOutput {
 	public static void outputCustomerDelete(JspWriter out, Customer cus) throws IOException{
 		out.println("<div class=\"form-group\">");
 		out.println(" <label for=\"exampleInputEmail1\">");
-		out.println("  用户�??");
+		out.println("  用户");
 		out.println(" </label>");
 		out.println(
 				" <input class=\"form-control\" name=\"dishID\" placeholder=\"用户名\" readonly=\"true\" type=\"email\" value=\""

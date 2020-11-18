@@ -85,7 +85,7 @@ function giveURL()
 						<div class="shopper-info">
 						 <br>
 							<p>菜品信息</p>
-							<form action="DishAddControl" method="post">
+							<form action="dishAdd" method="post">
 								<%
 								Customer admin = (Customer)session.getAttribute("loginuser") ;
 								if(admin == null || !admin.getUsername().equals(ConfigFactory.readProperty("username"))){

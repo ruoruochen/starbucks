@@ -1,39 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>starbucks</display-name>
-    <welcome-file-list>
+  <welcome-file-list>
     <welcome-file>customerIndex.html</welcome-file>
     <welcome-file>customerIndex.htm</welcome-file>
     <welcome-file>customerIndex.jsp</welcome-file>
-  </welcome-file-list> 
-  
-   <servlet>
+  </welcome-file-list>
+  <servlet>
     <servlet-name>LoginControl</servlet-name>
     <servlet-class>com.cugb.javaee.starbucks.action.LoginControl</servlet-class>
   </servlet>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>LoginControl</servlet-name>
     <url-pattern>/consumer/LoginControl</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>llogin</servlet-name>
+    <servlet-class>com.cugb.javaee.starbucks.action.LoginControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>llogin</servlet-name>
+    <url-pattern>/admin/llogin</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>modifyCusControl</servlet-name>
     <servlet-class>com.cugb.javaee.starbucks.action.CustomerModifyControl</servlet-class>
   </servlet>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>modifyCusControl</servlet-name>
     <url-pattern>/consumer/modifyCusControl</url-pattern>
   </servlet-mapping>
-  
-<servlet>
+  <servlet>
     <servlet-name>register</servlet-name>
     <servlet-class>com.cugb.javaee.starbucks.action.RegisterControl</servlet-class>
   </servlet>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>register</servlet-name>
     <url-pattern>/consumer/register</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>action</servlet-name>
     <servlet-class>com.cugb.javaee.starbucks.action.ActionControl</servlet-class>
@@ -42,7 +46,14 @@
     <servlet-name>action</servlet-name>
     <url-pattern>/consumer/action</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>aaction</servlet-name>
+    <servlet-class>com.cugb.javaee.starbucks.action.ActionControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>aaction</servlet-name>
+    <url-pattern>/admin/aaction</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>OrderAdd</servlet-name>
     <servlet-class>com.cugb.javaee.starbucks.action.OrderAddControl</servlet-class>
@@ -51,7 +62,6 @@
     <servlet-name>OrderAdd</servlet-name>
     <url-pattern>/consumer/OrderAdd</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>CommentAdd</servlet-name>
     <servlet-class>com.cugb.javaee.starbucks.action.CommentControl</servlet-class>
@@ -60,32 +70,29 @@
     <servlet-name>CommentAdd</servlet-name>
     <url-pattern>/consumer/CommentAdd</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
-     <servlet-name>dishModify</servlet-name>
-     <servlet-class>com.cugb.javaee.starbucks.action.DishModifyControl</servlet-class>
-   </servlet>
-   <servlet-mapping>
-     <servlet-name>dishModify</servlet-name>
-     <url-pattern>/admin/dishModify</url-pattern>
-   </servlet-mapping>
-   
-   <servlet>
-     <servlet-name>dishAdd</servlet-name>
-     <servlet-class>com.cugb.javaee.starbucks.action.DishAddControl</servlet-class>
-   </servlet>
-   <servlet-mapping>
-     <servlet-name>dishAdd</servlet-name>
-     <url-pattern>/admin/dishAdd</url-pattern>
-   </servlet-mapping>
-   
-   <filter>
-     <filter-name>CharFilter</filter-name>
-     <filter-class>com.cugb.javaee.starbucks.utils.CharsetFilter</filter-class>
-   </filter>
-   <filter-mapping>
-     <filter-name>CharFilter</filter-name>
-     <url-pattern>/*</url-pattern>
-     <dispatcher>REQUEST</dispatcher>
-   </filter-mapping>
+  <servlet>
+    <servlet-name>dishModify</servlet-name>
+    <servlet-class>com.cugb.javaee.starbucks.action.DishModifyControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dishModify</servlet-name>
+    <url-pattern>/admin/dishModify</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>dishAdd</servlet-name>
+    <servlet-class>com.cugb.javaee.starbucks.action.DishAddControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dishAdd</servlet-name>
+    <url-pattern>/admin/dishAdd</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>CharFilter</filter-name>
+    <filter-class>com.cugb.javaee.starbucks.utils.CharsetFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
 </web-app>

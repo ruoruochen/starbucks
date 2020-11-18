@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Checkout | E-Shopper</title>
+<title>星巴克-菜品管理</title>
  <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/prettyPhoto.css" rel="stylesheet">
@@ -68,10 +68,11 @@
 					<tr class="cart_menu">
 						<td class="image" width="15%">菜品图片</td>
 						<td class="description" width="20%">名称</td>
+						<td class="description" width="20%">分类</td>
 						<td class="price" width="10%">价格</td>
 						<td class="price" width="7%">折扣</td>
 						<td class="total" width="40%">描述</td>
-						<td><a class="cart_quantity_delete" href="dishAdd.jsp"> <i
+						<td><a class="cart_quantity_delete" href="addDish.jsp"> <i
 								class="fa fa-plus-circle fa-lg">新增 </i></a></td>
 					</tr>
 				</thead>

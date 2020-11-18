@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Checkout | E-Shopper</title>
+<title>星巴克-菜品删除</title>
  <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/prettyPhoto.css" rel="stylesheet">
@@ -93,9 +93,9 @@
 								response.sendRedirect("login.jsp");
 							}
 							String id = request.getParameter("dishid");
-							if(id == null) response.sendRedirect("dishManage.jsp");
+							if(id == null) response.sendRedirect("manageDish.jsp");
 							%>
-							<form action="dishDelete.jsp?dishid=<%=id %>" method="post">
+							<form action="deleteDish.jsp?dishid=<%=id %>" method="post">
 								<%
 									
 									DishDAO disDAO = (DishDAO) DAOFactory.newInstance("DishDAO");
@@ -117,8 +117,6 @@
 								%>
 								
 							</form>
-
-
 							<br>
 						</div>
 					</div>

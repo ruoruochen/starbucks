@@ -9,7 +9,7 @@ public class DishDAOImpl extends baseDAO implements DishDAO {
 
 	@Override
 	public int addDish(Dish dish) throws SQLException {
-		String sql = "insert into Dish(dishname,categoryid, price, description, imgurl, discount) values ( ?,?, ?, ?, ?, ?);";
+		String sql = "insert into Dish(dishid,dishname,categoryid, price, description, imgurl, discount) values (null,?,?, ?, ?, ?, ?);";
 		Object[] params = {dish.getDishname(),dish.getCategoryid(), dish.getPrice(), dish.getDescri(), dish.getImgurl(), dish.getDiscount()};
 		return modifyObj(sql, params);
 	}

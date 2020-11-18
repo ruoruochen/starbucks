@@ -13,7 +13,7 @@ import com.cugb.javaee.starbucks.bean.Dish;
 import com.cugb.javaee.starbucks.dao.DishDAO;
 import com.cugb.javaee.starbucks.utils.DAOFactory;
 
-@WebServlet("/DishModifyControl")
+//@WebServlet("/DishModifyControl")
 public class DishModifyControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -28,6 +28,7 @@ public class DishModifyControl extends HttpServlet {
 		dish.setDescri(request.getParameter("description"));
 		dish.setDiscount(Float.parseFloat(request.getParameter("discount")));
 		dish.setDishid(Integer.parseInt(request.getParameter("dishID")));
+		dish.setCategoryid(Integer.parseInt(request.getParameter("category")));
 		dish.setImgurl(request.getParameter("imgURL"));
 		dish.setPrice(Float.parseFloat(request.getParameter("price")));
 		dish.setDishname(request.getParameter("name"));
@@ -38,13 +39,14 @@ public class DishModifyControl extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		response.sendRedirect("action?actiontype=detail&dishid="+String.valueOf(dish.getDishid()));
+		response.sendRedirect("aaction?actiontype=detail&dishid="+String.valueOf(dish.getDishid()));
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		doGet(req, resp);
+		
 	}
 
 }

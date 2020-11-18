@@ -20,10 +20,10 @@ public class Dish {
 		this.dishid = dishid;
 	}
 	public int getCategoryid() {
-		return dishid;
+		return categoryid;
 	}
 	public void setCategoryid(int categoryid) {
-		this.dishid =categoryid;
+		this.categoryid =categoryid;
 	}
 	public String getDishname() {
 		return dishname;

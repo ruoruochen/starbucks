@@ -29,6 +29,7 @@ public class DishAddControl extends HttpServlet {
 		dish.setImgurl(request.getParameter("imgURL"));
 		dish.setPrice(Float.parseFloat(request.getParameter("price")));
 		dish.setDishname(request.getParameter("name"));
+		dish.setCategoryid(Integer.parseInt(request.getParameter("category")));
 		DishDAO disDAO = null;
 		try {
 			disDAO = (DishDAO) DAOFactory.newInstance("DishDAO");
@@ -42,7 +43,8 @@ public class DishAddControl extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		//super.doPost(req, resp);
+		doGet(req, resp);
 	}
 
 }

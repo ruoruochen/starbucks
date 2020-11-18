@@ -79,4 +79,8 @@ public interface DishDAO {
 	public int getTotalDishs(String strsql);
 
 	ArrayList<Dish> findDishs(String sql, Object[] params);
+
+	ArrayList<Dish> findDishbyCategoryid(int categoryid) throws SQLException;
+
+
 }

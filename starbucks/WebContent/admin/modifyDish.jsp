@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Checkout | E-Shopper</title>
+<title>星巴克-菜品修改</title>
  <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/prettyPhoto.css" rel="stylesheet">
@@ -88,14 +88,14 @@ function giveURL()
 						<div class="shopper-info">
 						 <br>
 							<p>菜品信息</p>
-							<form action="DishModifyControl" method="post">
+							<form action="dishModify" method="post">
 								<%
 								Customer admin = (Customer)session.getAttribute("loginuser") ;
 								if(admin == null || !admin.getUsername().equals(ConfigFactory.readProperty("username"))){
 									response.sendRedirect("login.jsp");
 								}
 									String id = request.getParameter("dishid");
-									if(id == null) response.sendRedirect("dishManage.jsp");
+									if(id == null) response.sendRedirect("manageDish.jsp");
 									DishDAO disDAO = (DishDAO) DAOFactory.newInstance("DishDAO");
 									Dish dish = disDAO.findDish(Integer.parseInt(id));
 									JSPOutput.outputDishModify(out, dish);
