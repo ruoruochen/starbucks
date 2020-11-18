@@ -16,7 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Checkout | E-Shopper</title>
+<title>星巴克-用户删除</title>
  <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/prettyPhoto.css" rel="stylesheet">
@@ -229,11 +229,11 @@
 							String username = request.getParameter("username");
 							
 							if(username == null){
-								response.sendRedirect("customerManage.jsp");
+								response.sendRedirect("manageCustomer.jsp");
 							}
 							
 							%>
-							<form action="customerDelete.jsp?username=<%=username %>" method="post">
+							<form action="deleteCustomer.jsp?username=<%=username %>" method="post">
 								<%
 									
 									CustomerDAO cusDAO = (CustomerDAO)DAOFactory.newInstance("CustomerDAO");
