@@ -10,6 +10,7 @@ import org.apache.jasper.runtime.*;
 import com.cugb.javaee.starbucks.bean.Customer;
 import com.cugb.javaee.starbucks.bean.Dish;
 import com.cugb.javaee.starbucks.bean.Category;
+import com.cugb.javaee.starbucks.bean.CommentItem;
 public class JSPOutput {
 	public static void outputCategoryAdd(JspWriter out) throws IOException {
 		out.println("<div class=\"form-group\">");
@@ -30,7 +31,7 @@ public class JSPOutput {
 		out.println("  </h4>");
 		out.println(" </td>");
 		
-		out.println(" <td class=\"category_name\">");
+		out.println(" <td class=\"category_name\" width=\"100\">");
 		out.println("  <h4>");
 		out.println(category.getCategoryname());
 		out.println("  </h4>");
@@ -38,6 +39,63 @@ public class JSPOutput {
 		
 		out.println("</tr>");
 	}
+	
+	public static void outputComment(JspWriter out,CommentItem comment) throws IOException {
+		out.println("<tr>");
+		
+		out.println(" <td class=\"cart_product\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(String.valueOf(comment.getCommentid()));
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(comment.getUsername());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(comment.getDishid());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(comment.getTime());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(comment.getCommenttext());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td width=\"50\">");
+		  out.println("  <a class=\"cart_quantity_delete\" href=\"deleteComment.jsp?commentid="+comment.getCommentid()+"\">");
+		  out.println("   <i class=\"fa fa-trash-o fa-lg\">");
+		  out.println("   </i>");
+		  out.println("  </a>");
+		  out.println(" </td>");
+		  
+		  out.println("</tr>");
+	}
+	
+	public static void outputCommentDelete(JspWriter out, CommentItem com) throws IOException{
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputEmail1\">");
+		out.println("  评论id");
+		out.println(" </label>");
+		out.println(
+				" <input class=\"form-control\" name=\"dishID\" placeholder=\"用户名\" readonly=\"true\" type=\"email\" value=\""
+						+ com.getCommentid() + "\">");
+		out.println(" </input>");
+		out.println("</div>");
+		
+}
 	
 	// dishManage
 	public static void outputDish(JspWriter out, Dish dish) throws IOException {

@@ -69,7 +69,7 @@
 						<th>用户名</th>
 						<th>密码</th>
 						<th>邮箱</th>
-						<th></th>
+						<th>删除</th>
 					</tr>
 				</thead>
 				<tbody>

@@ -59,6 +59,7 @@
                                     </ul>
                                 </li> 
                                 <li><a href="manageCategory.jsp">分类管理</a></li>
+                                <li><a href="manageComment.jsp">评论管理</a></li>
 								<li><a href="manageCustomer.jsp">用户管理</a></li>
 								<li class="dropdown"><a href="#">关于我们</i></a></li> 
 								

@@ -6,7 +6,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.cugb.javaee.starbucks.utils.DAOFactory"%>
-<%@page import="com.cugb.javaee.starbucks.bean.Customer"%>
+<%@page import="com.cugb.javaee.starbucks.bean.CommentItem"%>
 <%@page import="com.cugb.javaee.starbucks.dao.*"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,7 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>星巴克-用户删除</title>
+<title>星巴克-评论删除</title>
  <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/prettyPhoto.css" rel="stylesheet">
@@ -176,8 +176,8 @@
 		<div class="breadcrumbs">
 			<ol class="breadcrumb">
 				<li><a href="#">Admin</a></li>
-				<li class="active">用户管理</li>
-				<li class="active">删除用户信息</li>
+				<li class="active">评论管理</li>
+				<li class="active">删除评论</li>
 			</ol>
 		</div>
 		<!--/breadcrums-->
@@ -191,10 +191,10 @@
 
 
 		<div class="review-payment">
-			<h2>用户管理</h2>
+			<h2>评论管理</h2>
 		</div>
 		<div class="step-one">
-			<h2 class="heading">删除用户信息</h2>
+			<h2 class="heading">删除评论</h2>
 		</div>
 
 		<div class="register-req" style="background-color: #FFC0CB;">
@@ -202,7 +202,7 @@
 				<%
 				String check = request.getParameter("check");
 				if(check == null){
-					out.println("请注意，删除之后用户信息无法恢复");
+					out.println("请注意，删除之后无法恢复");
 				}
 				else{
 					out.println("已删除");
@@ -219,27 +219,27 @@
 					<div class="col-sm-4">
 						<div class="shopper-info">
 							<br>
-							<p>用户信息</p>
+							<p>评论信息</p>
 							<%
 							Customer admin = (Customer)session.getAttribute("loginuser") ;
 							if(admin == null || !admin.getUsername().equals(ConfigFactory.readProperty("username"))){
 								response.sendRedirect("login.jsp");
 							}
 							
-							String username = request.getParameter("username");
+							String commentid = request.getParameter("commentid");
 							
-							if(username == null){
-								response.sendRedirect("manageCustomer.jsp");
+							if(commentid == null){
+								response.sendRedirect("manageComment.jsp");
 							}
 							
 							%>
-							<form action="deleteCustomer.jsp?username=<%=username %>" method="post">
+							<form action="deleteComment.jsp?commentid=<%=commentid %>" method="post">
 								<%
 									
-									CustomerDAO cusDAO = (CustomerDAO)DAOFactory.newInstance("CustomerDAO");
-									OrderDAO ordDAO=(OrderDAO)DAOFactory.newInstance("OrderDAO");
-									Customer cus = cusDAO.findCustomer(username);
-									JSPOutput.outputCustomerDelete(out, cus);
+									CommentDAO comDAO = (CommentDAO)DAOFactory.newInstance("CommentDAO");
+								CommentItem com = comDAO.findComment(Integer.parseInt(commentid));
+								
+									JSPOutput.outputCommentDelete(out, com);
 								%>
 
 
@@ -251,7 +251,7 @@
 								}
 								else{
 									
-									cusDAO.removeCustomer(username);
+									comDAO.removeComment(Integer.parseInt(commentid));
 								}
 								%>
 

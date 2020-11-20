@@ -37,6 +37,13 @@ public class CommentDAOImpl extends baseDAO implements CommentDAO {
 	}
 
 	@Override
+	public ArrayList findallComments() throws SQLException {
+		String sql = "select commentid Commentid, dishid Dishid,username Username,time Time, commenttext Commenttext from comment";
+		
+		return findObjs(sql, CommentItem.class);
+	}
+	
+	@Override
 	public CommentItem findComment(int commentid) throws SQLException {
 		String sql = "select commentid Commentid,username Username, dishid Dishid,time Time, commenttext Commenttext from comment where commentid = ?";
 		Object[] params = {commentid};

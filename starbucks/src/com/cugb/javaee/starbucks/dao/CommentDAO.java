@@ -22,4 +22,6 @@ public interface CommentDAO {
 	public ArrayList findComments(int dishid) throws SQLException;
 	
 	public CommentItem findComment(int commentid) throws SQLException;
+
+	ArrayList findallComments() throws SQLException;
 }

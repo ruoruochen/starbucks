@@ -68,11 +68,11 @@
 
 					<%
 					CategoryDAO cateDAO = (CategoryDAO) DAOFactory.newInstance("CategoryDAO");
-						ArrayList<Category> arr = cateDAO.findCategories();
+						ArrayList<Category> arr = cateDAO.findCategorys();
 						for(int i = 0; i < arr.size(); i++){
 							Category category = arr.get(i);
 							JSPOutput.outputCategory(out, category);
-						}						
+						}
 					%>
 					</tbody>
 				</table>
