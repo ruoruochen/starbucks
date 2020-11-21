@@ -79,7 +79,9 @@ ul li {
 	        System.out.println(arr); */
 	        for(Category category:arr) {	
 	          out.println("<li>");
-	          out.println(" <a id=\"side_menu_modern_mixology\" href=\"Category.jsp?categoryid="+category.getCategoryid()+"&categoryname="+category.getCategoryname()+"\">");
+	          /* System.out.println(category.getCategoryid());
+	          System.out.println(category.getCategoryname()); */
+	          out.println(" <a id=\"side_menu_modern_mixology\" href=\"category.jsp?categoryid="+category.getCategoryid()+"\">");
 	          out.println(category.getCategoryname());
 	          out.println("	</a>");
 	          out.println("</li>"); 
@@ -96,9 +98,9 @@ ul li {
 	  	<ul class="grid padded-3 product">
 	  	<%
 	  	DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO");
-	  	//ArrayList<Dish> arr = dishdao.findDishbyCategoryid(Integer.parseInt(request.getParameter("categoryid")));	
-	  	ArrayList<Dish> dishes=dishdao.findDishbyCategoryid(1);
-	  	System.out.println(dishes); 
+	  	ArrayList<Dish> dishes = dishdao.findDishbyCategoryid(Integer.parseInt(request.getParameter("categoryid")));	
+	  	//ArrayList<Dish> dishes=dishdao.findDishbyCategoryid(1);
+	  	System.out.println(request.getParameter("categoryid")); 
  	        for(Dish dish:dishes) {	
 	          out.println("<li>");
 	          out.println("<a id=\"menu-product-related-caramel-espresso-frappuccino\" href=\"action?actiontype=detail&dishid="+dish.getDishid()+"\">");
