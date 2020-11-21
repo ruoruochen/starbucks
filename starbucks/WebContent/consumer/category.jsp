@@ -1,9 +1,9 @@
-<%@page import="java.util.Locale.Category"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.cugb.javaee.starbucks.utils.DAOFactory"%>
 <%@page import="com.cugb.javaee.starbucks.bean.Dish"%>
 <%@page import="com.cugb.javaee.starbucks.bean.Customer"%>
+<%@page import="com.cugb.javaee.starbucks.bean.Category"%>
 <%@page import="com.cugb.javaee.starbucks.dao.*"%>
 <%@page import="com.cugb.javaee.starbucks.utils.*"%>
 <%@page import="java.lang.Math"%>
@@ -68,42 +68,50 @@ ul li {
 	<jsp:include page="customerHeader.jsp"></jsp:include>
 
 	<section style="margin-top: 0px; margin-bottom: 50px" width=100%>
-	<div class="container" width=30%>
-      <nav class="containerleft">
-      <ul class="subcategories">    
-        <%
-        CategoryDAO cgdao = (CategoryDAO) DAOFactory.newInstance("CategoryDAO");
-        ArrayList<Category> arr = cgdao.findCategory();	
-        for(Category category:arr) {	
-        out.println("<li>");
-          out.println("<a id=\"side_menu_modern_mixology\" href=\"Category.jsp?categoryid="+category.getCategoryid()+"&categoryname="+category.getCategoryname()+"\">");
-          out.println(category.getCategoryname());
-          out.println("</a>");
-          out.println("</li>");
-        }
+		<div class="container" width=30%>
+	      <nav class="containerleft">
+	      <ul class="subcategories">    
+	        <%
+	        
+	        CategoryDAO cgdao = (CategoryDAO) DAOFactory.newInstance("CategoryDAO");
+	        ArrayList<Category> arr = cgdao.findCategorys();	
+	        /* System.out.println("哈哈哈哈哈");
+	        System.out.println(arr); */
+	        for(Category category:arr) {	
+	          out.println("<li>");
+	          out.println(" <a id=\"side_menu_modern_mixology\" href=\"Category.jsp?categoryid="+category.getCategoryid()+"&categoryname="+category.getCategoryname()+"\">");
+	          out.println(category.getCategoryname());
+	          out.println("	</a>");
+	          out.println("</li>"); 
+	        }
+	       %>
+	      </ul>
+		</nav>
+	  </div>
+	  
+	  <div class="container" width=70%>
+	  	<h3 class="caption">
+	  		<%=request.getParameter("categoryname")%>
+	  	</h3>
+	  	<ul class="grid padded-3 product">
+	  	<%
+	  	DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO");
+	  	//ArrayList<Dish> arr = dishdao.findDishbyCategoryid(Integer.parseInt(request.getParameter("categoryid")));	
+	  	ArrayList<Dish> dishes=dishdao.findDishbyCategoryid(1);
+	  	System.out.println(dishes); 
+ 	        for(Dish dish:dishes) {	
+	          out.println("<li>");
+	          out.println("<a id=\"menu-product-related-caramel-espresso-frappuccino\" href=\"action?actiontype=detail&dishid="+dish.getDishid()+"\">");
+	          out.println("<div class=\"preview circle\" style=\"background-image: url(&quot;"+dish.getImgurl()+";)\"></div>");
+	          out.println("<strong>"+dish.getDishname()+"</strong>");
+	          out.println("</a>");
+	          out.println("</li>");
+	        }  
+	       
        %>
-      </ul>
-	</nav>
-  </div>
-  <div class="container" width=70%>
-  	<h3 class="caption"><%=request.getParameter("categoryname")%></h3>
-  	<ul class="grid padded-3 product">
-  	<%
-  	DishDAO dishdao =(DishDAO) DAOFactory.newInstance("DishDAO");
-  	ArrayList<Dish> arr = dishdao.findDishbyCategoryid(Integer.parseInt(request.getParameter("categoryid")));	
-        for(Dish dish:arr) {	
-        out.println("<li>");
-          out.println("<a id=\"menu-product-related-caramel-espresso-frappuccino\" href=\"action?actiontype=detail&dishid="+dish.getDishid()+"\">");
-          out.println("<div class=\"preview circle\" style=\"background-image: url(&quot;"+dish.getImgurl()+";)\"></div>");
-          out.println("<strong>"+dish.getDishname()+"</strong>");
-          out.println("</a>");
-          out.println("</li>");
-        }
-       %>
-  	 </ul>
+  	 	</ul>
 	</div>  
-</div>
-	</section>
+  </section>
 
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
