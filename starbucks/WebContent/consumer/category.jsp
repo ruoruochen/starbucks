@@ -98,8 +98,13 @@ ul li {
 	  	<ul class="grid padded-3 product">
 	  	<%
 	  	DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO");
-	  	ArrayList<Dish> dishes = dishdao.findDishbyCategoryid(Integer.parseInt(request.getParameter("categoryid")));	
-	  	//ArrayList<Dish> dishes=dishdao.findDishbyCategoryid(1);
+	  	ArrayList<Dish> dishes;
+	  	if(request.getParameter("categoryid")==null){
+	  		dishes=dishdao.findDishbyCategoryid(1);
+	  	}
+	  	else{
+	  		dishes = dishdao.findDishbyCategoryid(Integer.parseInt(request.getParameter("categoryid")));	
+	  	}
 	  	System.out.println(request.getParameter("categoryid")); 
  	        for(Dish dish:dishes) {	
 	          out.println("<li>");

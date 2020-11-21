@@ -20,5 +20,4 @@ public interface CategoryDAO {
 	
 	public int getTotalCategorys(String strsql);
 	
-	ArrayList<Category> findCategorys(String sql, Object[] params);
 }

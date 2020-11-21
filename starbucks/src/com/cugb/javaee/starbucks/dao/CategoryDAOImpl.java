@@ -42,4 +42,10 @@ public class CategoryDAOImpl extends baseDAO implements CategoryDAO {
 		return (Category) findObj(sql, params,  Category.class);
 	}
 
+	@Override
+	public int getTotalCategorys(String strsql) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
