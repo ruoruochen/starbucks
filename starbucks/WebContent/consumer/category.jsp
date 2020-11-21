@@ -86,7 +86,7 @@ ul li a{
 	          out.println("<li>~");
 	          /* System.out.println(category.getCategoryid());
 	          System.out.println(category.getCategoryname()); */
-	          out.println(" <a onclick=\"return linkClick(this)\" id=\"side_menu_modern_mixology\" href=\"category.jsp?categoryid="+category.getCategoryid()+"&categoryname="+category.getCategoryname()+"\">");
+	          out.println(" <a onclick=\"return linkClick(this)\" id=\"side_menu_modern_mixology\" href=\"category.jsp?categoryid="+category.getCategoryid()+"\">");
 	          out.println(category.getCategoryname());
 	          out.println("	</a>");
 	          out.println("</li>"); 
@@ -147,8 +147,8 @@ ul li a{
 	  		cgn=cgdao.findCategory(1).getCategoryname();
 	  	}
 	  	else{
-	  		dishes = dishdao.findDishbyCategoryid(Integer.parseInt(request.getParameter("categoryid")));	
-	  		cgn=request.getParameter("categoryname");
+	  		dishes = dishdao.findDishbyCategoryid(Integer.parseInt(request.getParameter("categoryid")));
+	  		cgn=cgdao.findCategory(Integer.parseInt(request.getParameter("categoryid"))).getCategoryname();
 	  	}
 	  	//System.out.println(request.getParameter("categoryid")); 
 	  	out.println("<h2 class=\"caption\">");
