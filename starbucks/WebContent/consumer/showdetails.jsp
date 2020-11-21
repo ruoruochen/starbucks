@@ -131,6 +131,8 @@ padding:10px;
 					int dishid = Integer.parseInt(s);
 					CommentDAO commentdao = (CommentDAO) DAOFactory.newInstance("CommentDAO");
 					ArrayList<CommentItem> arr = commentdao.findComments(dishid);	
+					if(arr!=null)
+					{
 						out.println("<thead align=\"center\">");
 						out.println("<tr class=\"cart_menu\">");
 						out.println("<td class=\"total\">用户名</td>");
@@ -141,15 +143,6 @@ padding:10px;
 						out.println("<tbody >");
 						for(CommentItem comment:arr) 
 						{
-							
-							if(comment.getUsername()=="")
-							{
-								out.println("<h4>");
-								out.println("该商品还没有用户评论......");
-								out.println("</h4>");
-							}
-							else
-							{
 							out.println("<tr align=\"center\" style=\"font-size:20px;\">");
 							out.println(" <td class=\"total\">");
 							out.println("<h4>");
@@ -165,14 +158,16 @@ padding:10px;
 							out.println(comment.getTime());
 							out.println(" </td>");
 							
-							out.println("</tr>");	
-							}
-							
-							
-												
+							out.println("</tr>");						
 						}
 						out.println("</tbody>");
-						
+					}
+					else
+					{
+						out.println("<h4>");
+						out.println("该商品还没有用户评论......");
+						out.println("</h4>");
+					}
 					%>
 					
 				</table>

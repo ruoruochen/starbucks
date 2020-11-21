@@ -95,8 +95,7 @@
 						<script>
     				 function test(){
         			 var f = document.getElementsByTagName("form")[1];
-       			  f.action=f.action+"&commenttext="+document.getElementById("texta").value;
-        			 alert(f.action);
+       			  f.action=f.action+"&commenttext="+encodeURI(document.getElementById("texta").value);
    					  }
  						</script>
 					</tbody>
