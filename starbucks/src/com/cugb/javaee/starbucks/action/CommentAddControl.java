@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cugb.javaee.starbucks.bean.CommentItem;
+import com.cugb.javaee.starbucks.bean.Dish;
 import com.cugb.javaee.starbucks.dao.CommentDAO;
+import com.cugb.javaee.starbucks.dao.DishDAO;
 import com.cugb.javaee.starbucks.utils.DAOFactory;
 
 public class CommentAddControl extends HttpServlet {
@@ -41,6 +43,11 @@ public class CommentAddControl extends HttpServlet {
 		CommentDAO commentdao= (CommentDAO) DAOFactory.newInstance("CommentDAO");
 		try {
 			commentdao.addComment(commentItem);
+			Dish current = new Dish();
+			DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO");
+			current = dishdao.findDish(Integer.parseInt(request.getParameter("dishid")));
+			request.setAttribute("current", current);
+			request.getRequestDispatcher("showdetails.jsp").forward(request, response);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

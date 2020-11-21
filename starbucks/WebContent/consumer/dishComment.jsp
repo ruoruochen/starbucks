@@ -83,15 +83,22 @@
 								out.println(" </td>");
 								
 								out.println("<td>");
-								out.println("<form style=\"margin-right:50px;\" action=\"CommentAdd?username="+cuss.getUsername()+",dishid="+dishid+",commentid="+cdao.findComments(dishid).size()+"\" method=\"POST\" name=\"commentForm\">");
-								out.println("<textarea  name=\"commenttext\"   cols=\"45\" rows=\"8\" value=\"请输入您对商品的评论...\">");
+								out.println("<form style=\"margin-right:50px;\" action=\"CommentAdd?username="+cuss.getUsername()+",dishid="+dishid+",commentid="+(cdao.findComments(dishid).size()+1)+"\" method=\"POST\" name=\"commentForm\">");
+								out.println("<textarea id=\"texta\"  name=\"commenttext\"   cols=\"45\" rows=\"8\" value=\"请输入您对商品的评论...\">");
 								out.println("</textarea>");
 								out.println("<input type=\"hidden\" name=\"actiontype\" value=\"addcomment\">");
-								out.println("<button style=\"float:right;margin-top:20px;\" type=\"submit\" class=\"btn btn-default\">提交</button>");
+								out.println("<button onClick=\"test()\" style=\"float:right;margin-top:20px;\" type=\"submit\" class=\"btn btn-default\">提交</button>");
 								out.println("</form>");
 								out.println("</td>");
 								out.println("</tr>");
 						%>
+						<script>
+    				 function test(){
+        			 var f = document.getElementsByTagName("form")[1];
+       			  f.action=f.action+",commenttext="+document.getElementById("texta").value;
+        			 alert(f.action);
+   					  }
+ 						</script>
 					</tbody>
 				</table>
 			</div>
