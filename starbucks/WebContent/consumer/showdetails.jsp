@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.cugb.javaee.starbucks.utils.DAOFactory"%>
 <%@page import="com.cugb.javaee.starbucks.bean.Dish"%>
+<%@page import="com.cugb.javaee.starbucks.bean.CommentItem"%>
 <%@page import="com.cugb.javaee.starbucks.bean.Customer"%>
 <%@page import="com.cugb.javaee.starbucks.dao.*"%>
 <%@page import="com.cugb.javaee.starbucks.utils.*"%>
@@ -19,17 +20,14 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>商品详情</title>
- <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/prettyPhoto.css" rel="stylesheet">
-    <link href="../css/price-range.css" rel="stylesheet">
-    <link href="../css/animate.css" rel="stylesheet">
-	<link href="../css/main.css" rel="stylesheet">
-	<link href="../css/responsive.css" rel="stylesheet">
-<!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="../css/prettyPhoto.css" rel="stylesheet">
+<link href="../css/price-range.css" rel="stylesheet">
+<link href="../css/animate.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/responsive.css" rel="stylesheet">
+
 <link rel="shortcut icon" href="../images/ico/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
 	href="../images/ico/apple-touch-icon-144-precomposed.png">
@@ -41,6 +39,24 @@
 	href="../images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <!--/head-->
+<style>
+.cart_menu {
+    background: #006439;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+}
+table{
+	    border-collapse: separate;
+    
+	border:solid #F0F0F0 1px;
+}
+.table-condensed>thead>tr>td
+{
+padding:10px;
+}
+</style>
 <body>
 	<jsp:include page="customerHeader.jsp"></jsp:include>
 
@@ -54,7 +70,6 @@
 				</div>
 				<div id="similar-product" class="carousel slide"
 					data-ride="carousel">
-
 					<a class="left item-control" href="#similar-product"
 						data-slide="prev"> <i class="fa fa-angle-left"></i>
 					</a> <a class="right item-control" href="#similar-product"
@@ -106,28 +121,62 @@
 			</div>
 		</div>
 		<!--/product-details-->
-
-		<div class="product-details"
-			style="margin-left: 100px; margin-right: 100px;">	
-			<h3 align="center">商品评论</h3>
+		<div class="container" style="margin-left: 100px; margin-right: 100px;">
+		<h3 align="center" style="color:#006439">商品评论</h3>	
+			<div class="table-responsive cart_info">
+				<table class="table table-condensed">
 					<%
 					DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO");
-					ArrayList<Comment> arr = commentdao.findComments(dishid);	
-							for(Comment comment:arr) 
+					String s= request.getParameter("dishid");
+					int dishid = Integer.parseInt(s);
+					CommentDAO commentdao = (CommentDAO) DAOFactory.newInstance("CommentDAO");
+					ArrayList<CommentItem> arr = commentdao.findComments(dishid);	
+						out.println("<thead align=\"center\">");
+						out.println("<tr class=\"cart_menu\">");
+						out.println("<td class=\"total\">用户名</td>");
+						out.println("<td class=\"total\">评论</td>");
+						out.println("<td class=\"total\">时间</td>");
+						out.println("</tr>");
+						out.println("</thead>");
+						out.println("<tbody >");
+						for(CommentItem comment:arr) 
+						{
+							
+							if(comment.getUsername()=="")
 							{
-								out.println("<div class=\"product-details\" style=\"margin-left: 100px; margin-right: 100px; border:1px solid gray\">");
 								out.println("<h4>");
-								out.println(comment.getUsername());
+								out.println("该商品还没有用户评论......");
 								out.println("</h4>");
-								out.println("<p>&nbsp;&nbsp;");
-								out.println(comment.getCommenttext());
-								out.println("</p>");
-								out.println("<p align=\"right\">");
-								out.println(comment.getTime());
-								out.println("</p>");
-								out.println("</div>");						
 							}
+							else
+							{
+							out.println("<tr align=\"center\" style=\"font-size:20px;\">");
+							out.println(" <td class=\"total\">");
+							out.println("<h4>");
+							out.println(comment.getUsername());
+							out.println("</h4>");
+							out.println(" </td>");
+							
+							out.println(" <td class=\"total\">");
+							out.println(comment.getCommenttext());
+							out.println(" </td>");
+							
+							out.println(" <td class=\"total\">");
+							out.println(comment.getTime());
+							out.println(" </td>");
+							
+							out.println("</tr>");	
+							}
+							
+							
+												
+						}
+						out.println("</tbody>");
+						
 					%>
+					
+				</table>
+			</div>
 			</div>
 	</section>
 

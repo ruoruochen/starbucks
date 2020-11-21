@@ -38,6 +38,12 @@ public class OrderAddControl extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		super.doPost(request, response);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		Order order = new Order();
 		//Step1. 取出所有购物车的信息
 		HttpSession session = request.getSession();
@@ -55,9 +61,7 @@ public class OrderAddControl extends HttpServlet {
 		float totalPrice = (float) session.getAttribute("price");
 		int count = 0;
 		ArrayList<OrderItem> arr = new ArrayList<OrderItem>();
-		
-	
-		
+			
 		//Step2. 添加到订单表
 				order.setOrderid(orderID);
 				order.setUsername(cus.getUsername());
@@ -125,13 +129,7 @@ public class OrderAddControl extends HttpServlet {
 			}
 		}
 		
-		response.sendRedirect("mine.jsp");
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doGet(req, resp);
+		response.sendRedirect("order.jsp");
 	}
 
 }

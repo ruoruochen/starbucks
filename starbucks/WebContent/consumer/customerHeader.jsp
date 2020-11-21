@@ -62,6 +62,7 @@
 						<ul class="nav navbar-nav collapse navbar-collapse">
 							<li><a href="customerIndex.jsp">首页</a></li>
 							<li><a href="order.jsp">我的订单</a></li>
+							<li><a href="category.jsp">商品分类</a></li>
 							<li><a href="modifyInformation.jsp">修改信息</a></li>
 							<li class="dropdown"><a href="about.jsp">关于我们</i></a></li>
 						</ul>

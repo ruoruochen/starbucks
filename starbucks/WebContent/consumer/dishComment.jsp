@@ -55,10 +55,9 @@
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
-							<td class="image"></td>
+							<td class="img"></td>
 							<td class="description">商品</td>
-							<td class="price">评论</td>
-							<td></td>
+							<td class="price" style="padding-left:200px;">评论</td>
 						</tr>
 					</thead>
 					<tbody>
@@ -74,23 +73,23 @@
 								out.println("   <img alt=\"\" src=" + cur.getImgurl() + " width=\"256px\" height=\"256px\"/>");
 								out.println("  </a>");
 								out.println(" </td>");
+								
+								
 								out.println(" <td class=\"cart_description\">");
-								out.println("  <h4>");
-								out.println("   <a href=\"action?actiontype=detail&dishid=" + String.valueOf(dishid) + "\">");
+								out.println(" <a style=\"color:black;\" href=\"action?actiontype=detail&dishid=" + String.valueOf(dishid) + "\">");
 								out.println(cur.getDishname());
 								out.println("   </a>");
-								out.println("  </h4>");
 								out.println(" </td>");
 								
 								out.println("<td>");
-								out.println("<form action=\"CommentAdd\" method=\"POST\" name=\"commentForm\">");
-								out.println("<textarea cols=\"50\" rows=\"5\" value=\"请输入您对商品的评论...\">");
+								out.println("<form style=\"margin-right:50px;\" action=\"CommentAdd\" method=\"POST\" name=\"commentForm\">");
+								out.println("<textarea   cols=\"45\" rows=\"8\" value=\"请输入您对商品的评论...\">");
 								out.println("</textarea>");
 								out.println("<input type=\"hidden\" name=\"actiontype\" value=\"addComment\">");
-								out.println("<button type=\"submit\" class=\"btn btn-default\">提交</button>");
+								out.println("<button style=\"float:right;margin-top:20px;\" type=\"submit\" class=\"btn btn-default\">提交</button>");
 								out.println("</form>");
 								out.println("</td>");
-								
+								out.println("</tr>");
 						%>
 					</tbody>
 				</table>

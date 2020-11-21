@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>下提交订单</title>
+	<title>提交订单</title>
  <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/prettyPhoto.css" rel="stylesheet">
@@ -153,7 +153,7 @@
 						<div class="shopper-info">
 							<p>收货人信息</p>
 						</div>
-						<form class="form-horizontal" method="post" action="OrderAdd">
+						<form class="form-horizontal" method="post" action="OrderAdd" name="formname">
 								<div class="col-sm-6">
 									<div class="form-group">
 										<label for="inputPassword3" class="col-sm-2 control-label">送餐地址:</label>
@@ -175,7 +175,6 @@
 										<div class="col-sm-8">
 											<select class="form-control" name="paymethod">
 												<option value="alipay">支付宝</option>
-												<option value="wechat">微信支付</option>
 											</select>
 										</div>
 										
@@ -183,7 +182,18 @@
 								</div>
 								<div class="col-sm-10"></div>
 								
-								<button type="submit" class="btn btn-primary col-sm-2">立刻下单</button>
+								<a  onclick="js_method()" target="_blank"><img border="0" src="../images/b4.gif"></a>
+								<script language="javascript">
+								function js_method()
+								{
+									if(document.all.formname.address.value=="")
+										 window.alert ('  送餐地址不能为空！ ');
+									else if(document.all.formname.tel.value=="")
+										 window.alert ('  联系电话不能为空！ ');
+									else
+										window.open("../index.jsp");
+								}
+								</script>
 							</form>
 					</div>
 

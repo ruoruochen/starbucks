@@ -23,6 +23,13 @@ public class CommentAddControl extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		super.doGet(request, response);
+		
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		java.util.Date today = new java.util.Date();
 		Timestamp timestamp = new Timestamp(today.getTime());
 		CommentItem commentItem = new CommentItem();
@@ -38,13 +45,6 @@ public class CommentAddControl extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
 	}
 	
 }
