@@ -63,6 +63,7 @@
 					<tbody>
 						<%
 								DishDAO ff = (DishDAO) DAOFactory.newInstance("DishDAO");
+						CommentDAO cdao = (CommentDAO) DAOFactory.newInstance("CommentDAO");
 								Customer cuss = (Customer) session.getAttribute("loginuser");
 								int dishid = Integer.parseInt(request.getParameter("dishid"));
 								Dish cur = ff.findDish(dishid); 
@@ -82,10 +83,10 @@
 								out.println(" </td>");
 								
 								out.println("<td>");
-								out.println("<form style=\"margin-right:50px;\" action=\"CommentAdd\" method=\"POST\" name=\"commentForm\">");
-								out.println("<textarea   cols=\"45\" rows=\"8\" value=\"请输入您对商品的评论...\">");
+								out.println("<form style=\"margin-right:50px;\" action=\"CommentAdd?username="+cuss.getUsername()+",dishid="+dishid+",commentid="+cdao.findComments(dishid).size()+"\" method=\"POST\" name=\"commentForm\">");
+								out.println("<textarea  name=\"commenttext\"   cols=\"45\" rows=\"8\" value=\"请输入您对商品的评论...\">");
 								out.println("</textarea>");
-								out.println("<input type=\"hidden\" name=\"actiontype\" value=\"addComment\">");
+								//out.println("<input type=\"hidden\" name=\"actiontype\" value=\"addcomment\">");
 								out.println("<button style=\"float:right;margin-top:20px;\" type=\"submit\" class=\"btn btn-default\">提交</button>");
 								out.println("</form>");
 								out.println("</td>");

@@ -64,7 +64,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>CommentAdd</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.CommentControl</servlet-class>
+    <servlet-class>com.cugb.javaee.starbucks.action.CommentAddControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CommentAdd</servlet-name>
