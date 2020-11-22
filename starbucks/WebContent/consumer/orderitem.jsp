@@ -58,6 +58,46 @@
 	 <jsp:include page="customerHeader.jsp"></jsp:include>
 	
 	<section id="cart_items" style="margin-bottom: 20px">
+	<script>
+    function linkClick(linkObject) {
+        
+    	     var formObject = document.createElement('form');  
+    	      document.body.appendChild(formObject);  
+    	       formObject.setAttribute('method', 'post');  
+    	       var url = linkObject.href;  
+    	       var uri = '';  
+    	       var i = url.indexOf('?');  
+    	               
+    	      if(i == -1) {
+        
+    	        formObject.action = url;  
+    	      } else {
+        
+    	         formObject.action = url.substring(0, i);  
+    	      }  
+    	               
+    	      if( i >= 0 && url.length >= i + 1) {
+        
+    	         uri = url.substring(i + 1, url.length);  
+    	      }  
+    	   
+          var sa = uri.split('&');  
+    	               
+    	      for(var i = 0; i < sa.length; i++) {
+        
+    	        var isa = sa[i].split('=');        
+    	        var inputObject = document.createElement('input');  
+    	        inputObject.setAttribute('type', 'hidden');  
+    	        inputObject.setAttribute('name', isa[0]);  
+    	        inputObject.setAttribute('value', isa[1]);  
+    	        formObject.appendChild(inputObject);  
+    	      }  
+    	               
+    	      formObject.submit();  
+    	              
+    	      return false;  
+    	 }  
+    </script>
 		<div class="container">
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
@@ -105,7 +145,7 @@
 								
 								out.println(" <td class=\"cart_description\">");
 								out.println("  <h4>");
-								out.println(" <a href=\"action?actiontype=detail&dishid=" + String.valueOf(orderitem.getDishid()) + "\">");
+								out.println(" <a onclick=\"return linkClick(this)\" href=\"action?actiontype=detail&dishid=" + String.valueOf(orderitem.getDishid()) + "\">");
 								out.println(cur.getDishname());
 								out.println("   </a>");
 								out.println("  </h4>");
@@ -130,7 +170,7 @@
 								out.println(" </td>");
 								
 								out.println(" <td class=\"total\">");
-								out.println("<a class=\"comment\" href=\"action?actiontype=comment&dishid=" + String.valueOf(orderitem.getDishid())+ "\">");
+								out.println("<a class=\"comment\" onclick=\"return linkClick(this)\" href=\"action?actiontype=comment&dishid=" + String.valueOf(orderitem.getDishid())+ "\">");
 								out.println("评论</a>");			 
 								//out.println("1");
 								out.println(" </td>");

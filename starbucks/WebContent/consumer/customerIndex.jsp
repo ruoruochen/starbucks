@@ -144,7 +144,7 @@ overflow :hidden;
     <li><a name="btnNextPage" id="btnNextPage"
 									href="customerIndex.jsp?pageNO=${requestScope.pageModel.nextPageNO}" >下一页</a></li>
     <li><a name="btnBottomPage"	id="btnBottomPage"
-									href="customeIindex.jsp?pageNO=${requestScope.pageModel.bottomPageNO}">尾页</a></li>
+									href="customerIndex.jsp?pageNO=${requestScope.pageModel.bottomPageNO}">尾页</a></li>
 </ul>
 					</tr>
 						</table>

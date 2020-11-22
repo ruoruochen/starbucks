@@ -83,7 +83,7 @@
 								out.println(" </td>");
 								
 								out.println("<td>");
-								out.println("<form style=\"margin-right:50px;\" action=\"CommentAdd?username="+cuss.getUsername()+",dishid="+dishid+",commentid="+(cdao.findComments(dishid).size()+1)+"\" method=\"POST\" name=\"commentForm\">");
+								out.println("<form style=\"margin-right:50px;\" action=\"CommentAdd?username="+cuss.getUsername()+"&dishid="+dishid+"\" method=\"POST\" name=\"commentForm\">");
 								out.println("<textarea id=\"texta\"  name=\"commenttext\"   cols=\"45\" rows=\"8\" value=\"请输入您对商品的评论...\">");
 								out.println("</textarea>");
 								out.println("<input type=\"hidden\" name=\"actiontype\" value=\"addcomment\">");
@@ -95,8 +95,7 @@
 						<script>
     				 function test(){
         			 var f = document.getElementsByTagName("form")[1];
-       			  f.action=f.action+",commenttext="+document.getElementById("texta").value;
-        			 alert(f.action);
+       			  f.action=f.action+"&commenttext="+encodeURI(document.getElementById("texta").value);
    					  }
  						</script>
 					</tbody>

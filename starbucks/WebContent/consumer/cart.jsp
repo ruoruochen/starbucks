@@ -50,6 +50,26 @@ color:#006439;
 #guang:hover{
 text-decoration:underline;
 }
+  .num-jian,
+   .input-num,
+   .num-jia {
+       display: inline-block;
+       width: 28px;
+       height: 28px;
+       line-height: 28px;
+       text-align: center;
+       font-size: 18px;
+       color: #999;
+       cursor: pointer;
+       border: 1px solid #e6e6e6;
+   }
+    .input-num {
+       width: 58px;
+       height: 26px;
+       color: #333;
+       border-left: 0;
+       border-right: 0;
+   }
 </style>
 <body>
 	<jsp:include page="customerHeader.jsp"></jsp:include>
@@ -59,6 +79,47 @@ text-decoration:underline;
 		<div class="container">
 			<div class="table-responsive cart_info">
 				<table class="table table-condensed">
+				<script>
+    function linkClick(linkObject) {
+        
+    	     var formObject = document.createElement('form');  
+    	      document.body.appendChild(formObject);  
+    	       formObject.setAttribute('method', 'post');  
+    	       var url = linkObject.href;  
+    	       var uri = '';  
+    	       var i = url.indexOf('?');  
+    	               
+    	      if(i == -1) {
+        
+    	        formObject.action = url;  
+    	      } else {
+        
+    	         formObject.action = url.substring(0, i);  
+    	      }  
+    	               
+    	      if( i >= 0 && url.length >= i + 1) {
+        
+    	         uri = url.substring(i + 1, url.length);  
+    	      }  
+    	   
+          var sa = uri.split('&');  
+    	               
+    	      for(var i = 0; i < sa.length; i++) {
+        
+    	        var isa = sa[i].split('=');        
+    	        var inputObject = document.createElement('input');  
+    	        inputObject.setAttribute('type', 'hidden');  
+    	        inputObject.setAttribute('name', isa[0]);  
+    	        inputObject.setAttribute('value', isa[1]);  
+    	        formObject.appendChild(inputObject);  
+    	      }  
+    	               
+    	      formObject.submit();  
+    	              
+    	      return false;  
+    	 }  
+    </script>
+    
 						<%
 							float totalPrice = 0.0f;
 							int totalNum = 0;
@@ -100,7 +161,7 @@ text-decoration:underline;
 									out.println(" </td>");
 									out.println(" <td class=\"cart_description\">");
 									out.println("  <h4>");
-									out.println("   <a href=\"action?actiontype=detail&dishid=" + String.valueOf(dishid) + "\">");
+									out.println("   <a onclick=\"return linkClick(this)\" href=\"action?actiontype=detail&dishid=" + String.valueOf(dishid) + "\">");
 									out.println(cur.getDishname());
 									out.println("   </a>");
 									out.println("  </h4>");
@@ -118,9 +179,12 @@ text-decoration:underline;
 									out.println("  </p>");
 									out.println(" </td>");
 									out.println(" <td class=\"cart_total\">");
+									//out.println("<span id=\"num-jian\" onclick=\"jian()\" class=\"num-jian\">-</span>");
 									out.println("  <p class=\"cart_total_price\">");
 									out.println(disnumber);
+									//out.println("<input type=\"text\" class=\"input-num\" id=\"input-num\" value="+String.valueOf(disnumber)+" name=\"number\" />");
 									out.println("  </p>");
+									//out.println("<span id=\"num-jia\" onclick=\"jia()\" class=\"num-jia\">+</span>");
 									out.println(" </td>");
 									out.println(" <td class=\"cart_total\">");
 									out.println("  <p class=\"cart_total_price\">");
@@ -129,7 +193,7 @@ text-decoration:underline;
 									out.println(" </td>");
 									out.println(" <td class=\"cart_delete\">");
 									out.println(
-											"<a class=\"cart_quantity_delete\" style=\"margin-right:10px\" href=\"action?actiontype=del&dishid="
+											"<a onclick=\"return linkClick(this)\" class=\"cart_quantity_delete\" style=\"margin-right:10px\" href=\"action?actiontype=del&dishid="
 													+ String.valueOf(dishid) + "\"><i class=\"fa fa-times\"></i></a>");
 									out.println(" </td>");
 									out.println("</tr>");
@@ -140,6 +204,7 @@ text-decoration:underline;
 						%>	
 				</table>
 			</div>
+			
 			<div class="container">
 				<div class="heading">
 					<h3>去买单？</h3>

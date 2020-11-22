@@ -10,8 +10,12 @@ public class CommentDAOImpl extends baseDAO implements CommentDAO {
 
 	@Override
 	public int addComment(CommentItem comment) throws SQLException {
+		String sql0 = "select commentid Commentid, dishid Dishid,username Username,time Time, commenttext Commenttext from comment";
+		ArrayList<CommentItem> arr=findObjs(sql0, CommentItem.class);
+
+		System.out.print(arr.size());
 		String sql = "insert into comment(commentid,username, dishid, time, commenttext) values (?, ?, ?, ?, ?);";
-		Object[] params = {comment.getCommentid(),comment.getUsername(),comment.getDishid(),comment.getTime(),comment.getCommenttext()};
+		Object[] params = {arr.size()+1,comment.getUsername(),comment.getDishid(),comment.getTime(),comment.getCommenttext()};
 		return modifyObj(sql, params);
 	}
 
@@ -39,7 +43,6 @@ public class CommentDAOImpl extends baseDAO implements CommentDAO {
 	@Override
 	public ArrayList findallComments() throws SQLException {
 		String sql = "select commentid Commentid, dishid Dishid,username Username,time Time, commenttext Commenttext from comment";
-		
 		return findObjs(sql, CommentItem.class);
 	}
 	
