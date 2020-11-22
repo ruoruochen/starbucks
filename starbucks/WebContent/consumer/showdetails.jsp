@@ -112,7 +112,7 @@ padding:10px;
 							</p>
 					</div>
 					<form action="action" method="POST" name="loginForm">
-					<p class="col-sm-2" style="margin-left: -40px;margin-top:-10px;">
+					<p class="col-sm-4" style="margin-left: -40px;margin-top:-10px;">
 						<!-- <select class="form-control" name="number" >
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -167,7 +167,7 @@ padding:10px;
 			</div>
 		</div>
 		<!--/product-details-->
-		<div class="container" style="margin-left: 100px; margin-right: 100px;">
+		<div class="container" style="margin-left: 200px; margin-right: 100px;">
 		<h3 align="center" style="color:#006439">商品评论</h3>	
 			<div class="table-responsive cart_info">
 				
