@@ -100,7 +100,7 @@ public class JSPOutput {
 		
 		
 		out.println(" <td class=\"category_name\" width=\"100\">");
-		out.println("  <a href=\"modifyOrder.jsp?orderid=\"+order.getOrderid()+\"\">");
+		out.println("  <a href=\"modifyOrder.jsp?orderid="+order.getOrderid()+"\">");
 		out.println("详情…");
 		out.println("  </a>");
 		out.println(" </td>");
