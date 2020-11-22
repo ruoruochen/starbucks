@@ -131,7 +131,8 @@ padding:10px;
 					int dishid = Integer.parseInt(s);
 					CommentDAO commentdao = (CommentDAO) DAOFactory.newInstance("CommentDAO");
 					ArrayList<CommentItem> arr = commentdao.findComments(dishid);	
-					if(arr!=null)
+					System.out.println(arr.size());
+					if(arr.size()!=0)
 					{
 						out.println("<thead align=\"center\">");
 						out.println("<tr class=\"cart_menu\">");
