@@ -124,7 +124,7 @@ padding:10px;
 		<div class="container" style="margin-left: 100px; margin-right: 100px;">
 		<h3 align="center" style="color:#006439">商品评论</h3>	
 			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
+				
 					<%
 					DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO");
 					String s= request.getParameter("dishid");
@@ -133,7 +133,8 @@ padding:10px;
 					ArrayList<CommentItem> arr = commentdao.findComments(dishid);	
 					System.out.println(arr.size());
 					if(arr.size()!=0)
-					{
+					{			
+						out.println("<table class=\"table table-condensed\">");
 						out.println("<thead align=\"center\">");
 						out.println("<tr class=\"cart_menu\">");
 						out.println("<td class=\"total\">用户名</td>");
@@ -162,6 +163,7 @@ padding:10px;
 							out.println("</tr>");						
 						}
 						out.println("</tbody>");
+						out.println("</table>");
 					}
 					else
 					{
@@ -171,7 +173,7 @@ padding:10px;
 					}
 					%>
 					
-				</table>
+				
 			</div>
 			</div>
 	</section>
