@@ -182,7 +182,7 @@
 								</div>
 								<div class="col-sm-10"></div>
 								
-								<a  onclick="js_method()" target="_blank"><img border="0" src="../images/b4.gif"></a>
+								<button  style="width:128px;height:21px;border:0;background-image:url(../images/b4.gif);"></button>
 								<script language="javascript">
 								function js_method()
 								{
@@ -191,7 +191,10 @@
 									else if(document.all.formname.tel.value=="")
 										 window.alert ('  联系电话不能为空！ ');
 									else
-										window.open("../index.jsp");
+										{
+											window.open("../index.jsp");
+											form.action="OrderAdd";
+										}
 								}
 								</script>
 							</form>
