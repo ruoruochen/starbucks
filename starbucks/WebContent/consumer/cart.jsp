@@ -50,6 +50,26 @@ color:#006439;
 #guang:hover{
 text-decoration:underline;
 }
+  .num-jian,
+   .input-num,
+   .num-jia {
+       display: inline-block;
+       width: 28px;
+       height: 28px;
+       line-height: 28px;
+       text-align: center;
+       font-size: 18px;
+       color: #999;
+       cursor: pointer;
+       border: 1px solid #e6e6e6;
+   }
+    .input-num {
+       width: 58px;
+       height: 26px;
+       color: #333;
+       border-left: 0;
+       border-right: 0;
+   }
 </style>
 <body>
 	<jsp:include page="customerHeader.jsp"></jsp:include>
@@ -99,6 +119,7 @@ text-decoration:underline;
     	      return false;  
     	 }  
     </script>
+    
 						<%
 							float totalPrice = 0.0f;
 							int totalNum = 0;
@@ -158,9 +179,12 @@ text-decoration:underline;
 									out.println("  </p>");
 									out.println(" </td>");
 									out.println(" <td class=\"cart_total\">");
+									//out.println("<span id=\"num-jian\" onclick=\"jian()\" class=\"num-jian\">-</span>");
 									out.println("  <p class=\"cart_total_price\">");
 									out.println(disnumber);
+									//out.println("<input type=\"text\" class=\"input-num\" id=\"input-num\" value="+String.valueOf(disnumber)+" name=\"number\" />");
 									out.println("  </p>");
+									//out.println("<span id=\"num-jia\" onclick=\"jia()\" class=\"num-jia\">+</span>");
 									out.println(" </td>");
 									out.println(" <td class=\"cart_total\">");
 									out.println("  <p class=\"cart_total_price\">");
@@ -180,6 +204,7 @@ text-decoration:underline;
 						%>	
 				</table>
 			</div>
+			
 			<div class="container">
 				<div class="heading">
 					<h3>去买单？</h3>

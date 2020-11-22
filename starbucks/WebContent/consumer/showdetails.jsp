@@ -56,7 +56,28 @@ table{
 {
 padding:10px;
 }
+              
+  .num-jian,
+   .input-num,
+   .num-jia {
+       display: inline;
+       width: 28px;
+       height: 28px;
+       line-height: 28px;
+       text-align: center;
+       font-size: 18px;
+       color: #999;
+       cursor: pointer;
+       border: 1px solid #e6e6e6;
+       
+   }
+    .input-num {
+       width: 58px;
+       height: 26px;
+       color: #333;
+   }
 </style>
+
 <body>
 	<jsp:include page="customerHeader.jsp"></jsp:include>
 
@@ -88,12 +109,11 @@ padding:10px;
 					</p>
 					<div class="col-sm-2">
 						<p style="padding-top: 5px; font-size: 16px">数量
-						<form action="action" method="POST" name="loginForm">
 							</p>
 					</div>
-					<p class="col-sm-2" style="margin-left: -40px">
-
-						<select class="form-control" name="number" >
+					<form action="action" method="POST" name="loginForm">
+					<p class="col-sm-2" style="margin-left: -40px;margin-top:-10px;">
+						<!-- <select class="form-control" name="number" >
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -102,17 +122,43 @@ padding:10px;
 							<option value="6">6</option>
 							<option value="7">7</option>
 							<option value="8">8</option>
-						</select>
+						</select> -->
+						<span id="num-jian" onclick="jian()" class="num-jian">-</span>
+						<input type="text" class="input-num" id="input-num" value="1" name="number" />
+						<span id="num-jia" onclick="jia()" class="num-jia">+</span>
 					</p>
+					<script>
+					function jian()
+					{
+					        var input_num = document.getElementById("input-num");
+					        
+					        if(parseInt(input_num.value)==1)
+					        	{
+					        	alert("数量不能低于1！");
+					        	}
+					        else
+					        	{
+					        	input_num.value = parseInt(input_num.value) - 1;
+					        	}
+					}
+					function jia()
+					{
+						 
+					        var input_num = document.getElementById("input-num");
+					        input_num.value = parseInt(input_num.value) + 1;
+					        
+					}
+					</script>
 					<input type="hidden" name="dishid"
 						value=${requestScope.current.getDishid()}>
 
 					<input type="hidden" name="actiontype" value="cart">
+				
 					<button type="submit" class="btn btn-default cart">
 						<i class="fa fa-shopping-cart fa-lg"></i>&nbsp;&nbsp;&nbsp;加入购物车
 					</button>
 					</form>
-					<p></p>
+					</br>
 					<p>
 						<b>描述:</b> ${requestScope.current.getDescri()}
 					</p>
