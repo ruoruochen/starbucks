@@ -62,6 +62,7 @@
 						<td class="description" width="20%">类目名称</td>
 						<td><a class="cart_quantity_delete" href="addCategory.jsp"> <i
 								class="fa fa-plus-circle fa-lg">新增 </i></a></td>
+						
 					</tr>
 				</thead>
 				<tbody>

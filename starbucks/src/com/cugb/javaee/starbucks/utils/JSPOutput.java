@@ -9,6 +9,7 @@ import org.apache.jasper.runtime.*;
 
 import com.cugb.javaee.starbucks.bean.Customer;
 import com.cugb.javaee.starbucks.bean.Dish;
+import com.cugb.javaee.starbucks.bean.Order;
 import com.cugb.javaee.starbucks.bean.Category;
 import com.cugb.javaee.starbucks.bean.CommentItem;
 public class JSPOutput {
@@ -17,7 +18,7 @@ public class JSPOutput {
 		out.println(" <label for=\"exampleInputPassword1\">");
 		out.println("  分类名称");
 		out.println(" </label>");
-		out.println(" <input class=\"form-control\" name=\"name\" placeholder=\"分类名称\" type=\"text\" \">");
+		out.println(" <input class=\"form-control\" name=\"categoryname\" placeholder=\"分类名称\" type=\"text\" \">");
 		out.println(" </input>");
 		out.println("</div>");
 	}
@@ -39,6 +40,132 @@ public class JSPOutput {
 		
 		out.println("</tr>");
 	}
+	
+	public static void outputOrder(JspWriter out,Order order) throws IOException {
+		out.println("<tr>");
+		
+		out.println(" <td class=\"cart_product\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(order.getOrderid());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(order.getUsername());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(order.getTime());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(order.getCount());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(order.getTotalprice());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(order.getPaystatus());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(order.getAddress());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(order.getTel());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(order.getRestaurantid());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <a href=\"modifyOrder.jsp?orderid=\"+order.getOrderid()+\"\">");
+		out.println("详情…");
+		out.println("  </a>");
+		out.println(" </td>");
+		
+		out.println("</tr>");
+	}
+	
+	public static void outputOrderModify(JspWriter out, Order order) throws IOException {
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputEmail1\">");
+		out.println("  订单ID");
+		out.println(" </label>");
+		out.println(" <input class=\"form-control\" name=\"orderid\" placeholder=\"菜品ID\" readonly=\"true\"  value=\""
+						+ String.valueOf(order.getOrderid()) + "\">");
+		out.println(" </input>");
+		out.println("</div>");
+		
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputPassword1\">");
+		out.println("  用户名");
+		out.println(" </label>");
+		out.println(" <input class=\"form-control\" name=\"name\" readonly=\"true\" type=\"text\" value=\""
+				+ order.getUsername() + "\">");
+		out.println(" </input>");
+		out.println("</div>");
+		
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputPassword1\">");
+		out.println("  提交时间");
+		out.println(" </label>");
+		out.println(" <input class=\"form-control\" name=\"category\" readonly=\"true\" value=\""
+				+ order.getTime() + "\">");
+		out.println(" </input>");
+		out.println("</div>");
+		
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputPassword1\">");
+		out.println("  餐品数量");
+		out.println(" </label>");
+		out.println(" <input class=\"form-control\" name=\"price\" readonly=\"true\" type=\"text\" value=\""
+				+ String.valueOf(order.getCount()) + "\">");
+		out.println(" </input>");
+		out.println("</div>");
+		
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputPassword1\">");
+		out.println("  总价");
+		out.println(" </label>");
+		out.println(" <input class=\"form-control\" name=\"description\" readonly=\"true\" \">"
+				+ order.getTotalprice() + "</textarea>");
+		out.println(" </input>");
+		out.println("</div>");
+		
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputPassword1\">");
+		out.println("  支付状态");
+		out.println(" </label>");
+		out.println(" <input class=\"form-control\" name=\"paystatus\" placeholder=\"1.00\" type=\"text\" value=\""
+				+ order.getPaystatus() + "\">");
+		out.println(" </input>");
+		out.println("</div>");
+		
+		
+	}
+	
 	
 	public static void outputComment(JspWriter out,CommentItem comment) throws IOException {
 		out.println("<tr>");
@@ -262,7 +389,7 @@ public class JSPOutput {
 		out.println("</div>");
 		out.println("<div class=\"form-group\">");
 		out.println(" <label for=\"exampleInputPassword1\">");
-		out.println("  优惠�??");
+		out.println("  优惠");
 		out.println(" </label>");
 		out.println(" <input class=\"form-control\" name=\"discount\" placeholder=\"1.00\" type=\"text\" value=\"\">");
 		out.println(" </input>");

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.cugb.javaee.starbucks.bean.OrderItem;
 import com.cugb.javaee.starbucks.dao.OrderItemDAO;
 import com.cugb.javaee.starbucks.utils.DAOFactory;
+import com.cugb.javaee.starbucks.bean.Dish;
 import com.cugb.javaee.starbucks.bean.Order;
 
 public class OrderDAOImpl extends baseDAO implements OrderDAO {
@@ -37,6 +38,33 @@ public class OrderDAOImpl extends baseDAO implements OrderDAO {
 		// TODO Auto-generated method stub
 		String sql = "select orderid Orderid,  username Username, time Time, count Count, totalprice Totalprice, paystatus Paystatus,"
 				+ "address Address, tel Tel ,restaurantid Restaurantid from orders where username = \"" + userId + "\" order by time DESC";
+		ArrayList<Order> arr = findObjs(sql, Order.class);
+		for(int i = 0; i < arr.size(); i++){
+			Order ord = arr.get(i);
+			OrderItemDAO orderitemdao = (OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
+			ArrayList<OrderItem> oit = orderitemdao.findOrderItems(ord.getOrderid());
+			arr.get(i).setItems(oit);
+		}
+		return arr;
+	}
+	
+	@Override
+	public Order findOrder(String orderId) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		// TODO Auto-generated method stub
+		String sql = "select orderid Orderid,  username Username, time Time, count Count, totalprice Totalprice, paystatus Paystatus,"
+				+ "address Address, tel Tel ,restaurantid Restaurantid from orders where orderid =? order by time DESC";
+		Object[] params = {orderId};
+			OrderItemDAO orderitemdao = (OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
+			return (Order)findObj(sql,params, Order.class);
+			
+		
+	}
+
+	@Override
+	public ArrayList findOrders() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		// TODO Auto-generated method stub
+		String sql = "select orderid Orderid,  username Username, time Time, count Count, totalprice Totalprice, paystatus Paystatus,"
+				+ "address Address, tel Tel ,restaurantid Restaurantid from orders order by time DESC";
 		ArrayList<Order> arr = findObjs(sql, Order.class);
 		for(int i = 0; i < arr.size(); i++){
 			Order ord = arr.get(i);

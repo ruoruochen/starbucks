@@ -86,6 +86,22 @@
     <servlet-name>dishAdd</servlet-name>
     <url-pattern>/admin/dishAdd</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>categoryAdd</servlet-name>
+    <servlet-class>com.cugb.javaee.starbucks.action.CategoryAddControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>categoryAdd</servlet-name>
+    <url-pattern>/admin/categoryAdd</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>orderModify</servlet-name>
+    <servlet-class>com.cugb.javaee.starbucks.action.OrderModifyControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>orderModify</servlet-name>
+    <url-pattern>/admin/orderModify</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>CharFilter</filter-name>
     <filter-class>com.cugb.javaee.starbucks.utils.CharsetFilter</filter-class>

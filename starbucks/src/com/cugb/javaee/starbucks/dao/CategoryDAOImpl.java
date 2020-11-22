@@ -10,8 +10,8 @@ public class CategoryDAOImpl extends baseDAO implements CategoryDAO {
 
 	@Override
 	public int addCategory(Category category) throws SQLException {
-		String sql = "insert into category(categoryid,categoryname) values ( ?,?);";
-		Object[] params = {category.getCategoryid(),category.getCategoryname()};
+		String sql = "insert into category(categoryid,categoryname) values (0,?);";
+		Object[] params = {category.getCategoryname()};
 		return modifyObj(sql, params);
 	}
 

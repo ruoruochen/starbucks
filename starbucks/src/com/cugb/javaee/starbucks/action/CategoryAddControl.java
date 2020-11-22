@@ -22,21 +22,22 @@ public class CategoryAddControl extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Category category = new Category();
-		category.setCategoryid(Integer.parseInt(request.getParameter("categoryid")));
+		category.setCategoryid(0);
 		category.setCategoryname(request.getParameter("categoryname"));
 		CategoryDAO categorydao= (CategoryDAO) DAOFactory.newInstance("CategoryDAO");
 		try {
 			categorydao.addCategory(category);
+			request.getRequestDispatcher("manageCategory.jsp").forward(request, response);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		doGet(req, resp);
 	}
 
 

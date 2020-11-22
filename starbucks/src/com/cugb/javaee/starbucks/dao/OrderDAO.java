@@ -40,4 +40,8 @@ public interface OrderDAO {
 	 * @throws InstantiationException 
 	 */
 	public ArrayList findOrders(String userId) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
+
+	public ArrayList findOrders() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
+
+	Order findOrder(String orderId) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
 }
