@@ -1,7 +1,7 @@
 package com.cugb.javaee.starbucks.bean;
 
 public class Restaurant {
-	public String restaurantid;
+	public int restaurantid;
 	public String restaurantname;
 	
 	public String getRestaurantname() {
@@ -11,10 +11,10 @@ public class Restaurant {
 		this.restaurantname = res;
 	}
 	
-	public String getRestaurantid() {
+	public int getRestaurantid() {
 		return restaurantid;
 	}
-	public void setRestaurantid(String id) {
+	public void setRestaurantid(int id) {
 		this.restaurantid = id;
 	}
 }

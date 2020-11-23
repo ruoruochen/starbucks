@@ -4,6 +4,7 @@
 <%@page import="com.cugb.javaee.starbucks.dao.*"%>
 <%@page import="com.cugb.javaee.starbucks.utils.*"%>
 <%@page import="com.cugb.javaee.starbucks.bean.Dish"%>
+<%@page import="com.cugb.javaee.starbucks.bean.Restaurant"%>
 <%@page import="com.cugb.javaee.starbucks.bean.CartItem"%>
 <%@page import="com.cugb.javaee.starbucks.bean.Customer"%>
 
@@ -158,8 +159,27 @@
 									<div class="form-group">
 										<label for="inputPassword3" class="col-sm-2 control-label">送餐地址:</label>
 										<div class="col-sm-8">
-											<textarea name="address" class="form-control" rows="3" placeholder="您的送餐地址"></textarea>
+											<textarea name="address" class="form-control" rows="2" placeholder="您的送餐地址"></textarea>
 										</div>
+									</div>
+									<div class="form-group">
+
+										<label for="inputPassword3" class="col-sm-2 control-label">下单餐厅:</label>
+										<div class="col-sm-8">
+											<select class="form-control" name="restaurant">
+											<%
+											RestaurantDAO resdao=(RestaurantDAO) DAOFactory.newInstance("RestaurantDAO");	
+											ArrayList<Restaurant> arr = resdao.findRestaurants();	
+											for(Restaurant res:arr)
+											{
+												out.println("<option value=\""+res.getRestaurantname()+"\">");
+												out.println(res.getRestaurantname());
+												out.println("</option>");
+											}
+											%>
+											</select>
+										</div>
+										
 									</div>
 								</div>
 								<div class="col-sm-6">

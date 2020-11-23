@@ -1,3 +1,4 @@
+<%@page import="com.cugb.javaee.starbucks.bean.Restaurant"%>
 <%@page import="com.cugb.javaee.starbucks.bean.OrderItem"%>
 <%@page import="com.cugb.javaee.starbucks.bean.Order"%>
 <%@page import="com.cugb.javaee.starbucks.bean.CartItem"%>
@@ -172,9 +173,10 @@
 								out.println("  </h4>");
 								out.println(" </td>");
 								
+								Restaurant res = resdao.findRestaurant(order.getRestaurantid());
 								out.println(" <td class=\"total\">");
 								out.println("  <h4>");
-								out.println(1);
+								out.println(res.getRestaurantname());
 								out.println("  </h4>");
 								out.println(" </td>");								
 								
