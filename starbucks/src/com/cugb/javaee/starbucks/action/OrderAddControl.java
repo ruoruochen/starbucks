@@ -54,6 +54,11 @@ public class OrderAddControl extends HttpServlet {
 		String address = request.getParameter("address");
 		String tel = request.getParameter("tel");
 		
+		if(tel==""|| address =="") {
+			response.sendRedirect("checkout.jsp");
+			return;
+		}
+		
 		Map cart = (Map) session.getAttribute("shopcart");
 		Iterator<Map.Entry<Integer, Integer>> it = cart.entrySet().iterator();
 		DishDAO ff = null;
@@ -86,6 +91,7 @@ public class OrderAddControl extends HttpServlet {
 				oit.setCount(disnumber);
 				oit.setDishid(dish.getDishid());
 				oit.setFinalprice(cur.getDiscount());
+				oit.setPrice(cur.getPrice());
 				oit.setOrderid(orderID);
 				arr.add(oit);
 				oi.addOrderItem(oit);
@@ -100,7 +106,7 @@ public class OrderAddControl extends HttpServlet {
 		order.setOrderid(orderID);
 		order.setUsername(cus.getUsername());
 		order.setTime(timestamp);
-		order.setPaystatus("Î´Ö§¸¶");
+		order.setPaystatus("ÒÑÖ§¸¶");
 		order.setItems(arr);
 		order.setTel(tel);
 		order.setAddress(address);
