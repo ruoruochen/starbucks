@@ -119,7 +119,7 @@ function giveURL()
 							<p>图片预览</p>
 							<img id="dishImg"
 								<%
-									out.println("src="+dish.getImgurl());
+									out.println("src="+request.getParameter("imgURL"));
 								%>
 								height="335" width="335">
 

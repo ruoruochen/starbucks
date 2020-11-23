@@ -71,7 +71,10 @@ public class LoginControl extends HttpServlet {
 				//否则重新登录
 				PrintWriter out = response.getWriter();
 				String a = URLEncoder.encode("用户名或密码错误，请重新登录！", "UTF-8");  
-		        out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='customerLogin.jsp'</script>");
+				if (username.equals(adminUsername) )
+					out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='adminLogin.jsp'</script>");
+				else
+					out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='customerLogin.jsp'</script>");
 			}
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block

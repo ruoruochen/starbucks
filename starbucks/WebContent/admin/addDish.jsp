@@ -87,6 +87,7 @@ function giveURL()
 							<p>菜品信息</p>
 							<form action="dishAdd" method="post">
 								<%
+								String picurl=request.getParameter("imgURL");
 								Customer admin = (Customer)session.getAttribute("loginuser") ;
 								if(admin == null || !admin.getUsername().equals(ConfigFactory.readProperty("username"))){
 									response.sendRedirect("login.jsp");
@@ -111,7 +112,7 @@ function giveURL()
 						 
 							<br>
 							<p>图片预览</p>
-							<img id="dishImg" src="#" height="335" width="335">
+							<img id="dishImg" src=picurl height="335" width="335">
 
 
 						</div>

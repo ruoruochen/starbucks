@@ -92,7 +92,39 @@
 						</div>
 					</div>
 					
+					<div class="col-sm-5">
+						<div class="shopper-info">
+						 <br>
+							<p>订单包含：</p>
+							<table class="table table-striped">
+							<thead>
+							<tr>
+								<td>菜品编号</td>
+								<td>菜品数量</td>
+								<td>单价</td>
+								<td>总价</td>
+							</tr>
+							</thead>
+							<tbody>
+								<%
 
+									OrderItemDAO orderitemDAO=(OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
+								ArrayList<OrderItem> arr =orderitemDAO.findOrderItems(request.getParameter("orderid"));
+								for (int i = 0; i < arr.size(); i++) {
+									OrderItem orderitem = arr.get(i);
+									JSPOutput.outputOrderItem(out, orderitem);
+								}
+								%>
+							</tbody>
+							</table>
+								
+
+								
+
+
+							<br>
+						</div>
+					</div>
 
 				</div>
 			</div>

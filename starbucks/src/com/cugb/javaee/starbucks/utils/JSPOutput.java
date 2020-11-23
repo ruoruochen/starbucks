@@ -10,9 +10,41 @@ import org.apache.jasper.runtime.*;
 import com.cugb.javaee.starbucks.bean.Customer;
 import com.cugb.javaee.starbucks.bean.Dish;
 import com.cugb.javaee.starbucks.bean.Order;
+import com.cugb.javaee.starbucks.bean.OrderItem;
+import com.alibaba.druid.sql.visitor.functions.Substring;
 import com.cugb.javaee.starbucks.bean.Category;
 import com.cugb.javaee.starbucks.bean.CommentItem;
 public class JSPOutput {
+	public static void outputOrderItem(JspWriter out,OrderItem orderitem) throws IOException {
+		out.println("<tr>");
+		
+		out.println(" <td class=\"cart_product\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(orderitem.getDishid());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(orderitem.getCount());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(orderitem.getPrice());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(orderitem.getFinalprice());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println("</tr>");
+	}
+	
 	public static void outputCategoryAdd(JspWriter out) throws IOException {
 		out.println("<div class=\"form-group\">");
 		out.println(" <label for=\"exampleInputPassword1\">");
@@ -38,6 +70,7 @@ public class JSPOutput {
 		out.println("  </h4>");
 		out.println(" </td>");
 		
+		
 		out.println("</tr>");
 	}
 	
@@ -58,7 +91,7 @@ public class JSPOutput {
 		
 		out.println(" <td class=\"category_name\" width=\"100\">");
 		out.println("  <h4>");
-		out.println(order.getTime());
+		out.println(order.getTime().toString().substring(0, 19));
 		out.println("  </h4>");
 		out.println(" </td>");
 		
@@ -132,7 +165,7 @@ public class JSPOutput {
 		out.println("  提交时间");
 		out.println(" </label>");
 		out.println(" <input class=\"form-control\" name=\"category\" readonly=\"true\" value=\""
-				+ order.getTime() + "\">");
+				+ order.getTime().toString().substring(0, 19) + "\">");
 		out.println(" </input>");
 		out.println("</div>");
 		
@@ -140,7 +173,7 @@ public class JSPOutput {
 		out.println(" <label for=\"exampleInputPassword1\">");
 		out.println("  餐品数量");
 		out.println(" </label>");
-		out.println(" <input class=\"form-control\" name=\"price\" readonly=\"true\" type=\"text\" value=\""
+		out.println(" <input class=\"form-control\" name=\"count\" readonly=\"true\" type=\"text\" value=\""
 				+ String.valueOf(order.getCount()) + "\">");
 		out.println(" </input>");
 		out.println("</div>");
@@ -149,17 +182,22 @@ public class JSPOutput {
 		out.println(" <label for=\"exampleInputPassword1\">");
 		out.println("  总价");
 		out.println(" </label>");
-		out.println(" <input class=\"form-control\" name=\"description\" readonly=\"true\" \">"
-				+ order.getTotalprice() + "</textarea>");
+		out.println(" <input class=\"form-control\" name=\"price\" readonly=\"true\" type=\"text\" value=\""
+				+ order.getTotalprice() + "\">");
 		out.println(" </input>");
 		out.println("</div>");
 		
 		out.println("<div class=\"form-group\">");
 		out.println(" <label for=\"exampleInputPassword1\">");
-		out.println("  支付状态");
+		out.println("  订单状态");
 		out.println(" </label>");
-		out.println(" <input class=\"form-control\" name=\"paystatus\" placeholder=\"1.00\" type=\"text\" value=\""
-				+ order.getPaystatus() + "\">");
+		//out.println(" <input class=\"form-control\" name=\"paystatus\" placeholder=\"1.00\" type=\"text\" value=\""
+				//+ order.getPaystatus() + "\">");
+		out.println(" <select id=\"paystatus\" name=\"paystatus\">");
+		out.println("<option value=\"备餐中\">备餐中</option>");
+		out.println("<option value=\"配送中\">配送中</option>");
+		out.println("<option value=\"已送达\">已送达</option>");
+		out.println("</select>");
 		out.println(" </input>");
 		out.println("</div>");
 		

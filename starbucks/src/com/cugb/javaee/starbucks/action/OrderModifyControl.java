@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.cugb.javaee.starbucks.bean.Order;
 import com.cugb.javaee.starbucks.dao.DishDAO;
 import com.cugb.javaee.starbucks.dao.OrderDAO;
+import com.cugb.javaee.starbucks.dao.OrderItemDAO;
 import com.cugb.javaee.starbucks.utils.DAOFactory;
 
 //@WebServlet("/DishModifyControl")
@@ -30,6 +31,7 @@ public class OrderModifyControl extends HttpServlet {
 			
 			OrderDAO orderDAO = (OrderDAO) DAOFactory.newInstance("OrderDAO");
 			orderDAO.modifyOrder(request.getParameter("orderid"),request.getParameter("paystatus"));
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

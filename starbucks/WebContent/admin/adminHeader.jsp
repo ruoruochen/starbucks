@@ -22,7 +22,7 @@
 									String adminUsername = ConfigFactory.readProperty("username");
 									
 									if(cus.getUsername().equals(adminUsername) ){
-										out.println("<li><a href=\"\"></i>欢迎管理员："+cus.getUsername()+"</a></li>");
+										out.println("<li><a href=\"adminIndex.jsp\"></i>欢迎管理员："+cus.getUsername()+"</a></li>");
 									}
 									else{
 										response.sendRedirect("login.jsp");
@@ -55,22 +55,20 @@
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="#"></a></li>
 										<li><a href="manageDish.jsp"  class="active">菜品详情</a></li> 
-										<li><a href="#">新增菜品</a></li> 
+										<li><a href="addDish.jsp">新增菜品</a></li> 
                                     </ul>
                                 </li> 
                                 <li><a href="manageCategory.jsp">分类管理</a></li>
                                 <li><a href="manageComment.jsp">评论管理</a></li>
                                 <li><a href="manageOrder.jsp">订单管理</a></li>
 								<li><a href="manageCustomer.jsp">用户管理</a></li>
-								<li class="dropdown"><a href="#">关于我们</i></a></li> 
+								<li class="dropdown"><a href="https://www.starbucks.com.cn/about/">关于我们</i></a></li> 
 								
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="搜索美味"/>
-						</div>
+						
 					</div>
 				</div>
 			</div>

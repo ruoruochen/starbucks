@@ -54,8 +54,11 @@
 			<h2>评论管理</h2>
 		</div>
 
-		<div class="table-responsive cart_info">
-			<table class="table table-striped">
+
+<div class="table-responsive cart_info">
+
+		<div class="table-responsive cart_info  col-sm-8">
+			<table class="table table-condensed">
 				<thead>
 					<tr>
 						<th>评论编号</th>
@@ -64,7 +67,7 @@
 						<th>时间</th>
 						<th>评论内容</th>
 						<th>删除评论</th>
-						<th></th>
+						
 					</tr>
 				</thead>
 				<tbody>
