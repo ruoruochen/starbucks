@@ -138,7 +138,7 @@ public class OrderAddControl extends HttpServlet {
 			}
 		}
 		
-		response.sendRedirect("order.jsp");
+		//response.sendRedirect("order.jsp");
 	}
 
 }
