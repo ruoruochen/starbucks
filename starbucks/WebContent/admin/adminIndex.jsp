@@ -71,46 +71,6 @@ request.setAttribute("pageModel", pagemodel);
 <body>
 <jsp:include page="adminHeader.jsp"></jsp:include>
 <section>
-<script>
-    function linkClick(linkObject) {
-        
-    	     var formObject = document.createElement('form');  
-    	      document.body.appendChild(formObject);  
-    	       formObject.setAttribute('method', 'post');  
-    	       var url = linkObject.href;  
-    	       var uri = '';  
-    	       var i = url.indexOf('?');  
-    	               
-    	      if(i == -1) {
-        
-    	        formObject.action = url;  
-    	      } else {
-        
-    	         formObject.action = url.substring(0, i);  
-    	      }  
-    	               
-    	      if( i >= 0 && url.length >= i + 1) {
-        
-    	         uri = url.substring(i + 1, url.length);  
-    	      }  
-    	   
-          var sa = uri.split('&');  
-    	               
-    	      for(var i = 0; i < sa.length; i++) {
-        
-    	        var isa = sa[i].split('=');        
-    	        var inputObject = document.createElement('input');  
-    	        inputObject.setAttribute('type', 'hidden');  
-    	        inputObject.setAttribute('name', isa[0]);  
-    	        inputObject.setAttribute('value', isa[1]);  
-    	        formObject.appendChild(inputObject);  
-    	      }  
-    	               
-    	      formObject.submit();  
-    	              
-    	      return false;  
-    	 }  
-    </script>
 		<div class="container">
 			<div class="row">
 				
@@ -131,10 +91,10 @@ request.setAttribute("pageModel", pagemodel);
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<a onclick=\"return linkClick(this)\"  href="aaction?actiontype=detail&dishid=${currentdish.getDishid()}"><img src="${currentdish.getImgurl()}" alt="" width="256px" height="256px"></a>													
+													<a   href="aaction?actiontype=detail&dishid=${currentdish.getDishid()}"><img src="${currentdish.getImgurl()}" alt="" width="256px" height="256px"></a>													
 													<h2>¥${currentdish.getPrice()}</h2>
-													<a onclick=\"return linkClick(this)\" href="aaction?actiontype=detail&dishid=${currentdish.getDishid()}"><p>${currentdish.getDishname()}</p></a>
-													<a onclick=\"return linkClick(this)\" href="aaction?actiontype=detail&dishid=${currentdish.getDishid()}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>详情</a>
+													<a  href="aaction?actiontype=detail&dishid=${currentdish.getDishid()}"><p>${currentdish.getDishname()}</p></a>
+													<a  href="aaction?actiontype=detail&dishid=${currentdish.getDishid()}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>详情</a>
 													&nbsp;
 													
 												</div>

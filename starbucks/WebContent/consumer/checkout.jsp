@@ -153,7 +153,7 @@
 						<div class="shopper-info">
 							<p>收货人信息</p>
 						</div>
-						<form class="form-horizontal" method="post" action="OrderAdd" name="formname">
+						<form class="form-horizontal" method="post" action="OrderAdd"  name="formname">
 								<div class="col-sm-6">
 									<div class="form-group">
 										<label for="inputPassword3" class="col-sm-2 control-label">送餐地址:</label>
@@ -182,7 +182,7 @@
 								</div>
 								<div class="col-sm-10"></div>
 								
-								<button  style="width:128px;height:21px;border:0;background-image:url(../images/b4.gif);"></button>
+								<button onClick="js_method()"  style="width:128px;height:21px;border:0;background-image:url(../images/b4.gif);"></button>
 								<script language="javascript">
 								function js_method()
 								{
@@ -191,9 +191,9 @@
 									else if(document.all.formname.tel.value=="")
 										 window.alert ('  联系电话不能为空！ ');
 									else
+										
 										{
 											window.open("../index.jsp");
-											form.action="OrderAdd";
 										}
 								}
 								</script>
