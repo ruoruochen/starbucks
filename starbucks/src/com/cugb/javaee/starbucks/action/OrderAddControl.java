@@ -62,26 +62,7 @@ public class OrderAddControl extends HttpServlet {
 		int count = 0;
 		ArrayList<OrderItem> arr = new ArrayList<OrderItem>();
 			
-		//Step2. 添加到订单表
-				order.setOrderid(orderID);
-				order.setUsername(cus.getUsername());
-				order.setTime(timestamp);
-				order.setPaystatus("未支付");
-				order.setItems(arr);
-				order.setTel(tel);
-				order.setAddress(address);
-				order.setCount(3);
-				order.updateCount();
-				order.setTotalprice(totalPrice);;
-				
-				OrderDAO orderdao;
-				try {
-					orderdao = (OrderDAO) DAOFactory.newInstance("OrderDAO");
-					orderdao.addOrder(order);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		
 		//Step3. 添加到订单项表
 		while(it.hasNext()){
 			try {
@@ -114,6 +95,28 @@ public class OrderAddControl extends HttpServlet {
 			}
 		}
 		
+//		System.out.println(arr);
+		//Step2. 添加到订单表
+		order.setOrderid(orderID);
+		order.setUsername(cus.getUsername());
+		order.setTime(timestamp);
+		order.setPaystatus("未支付");
+		order.setItems(arr);
+		order.setTel(tel);
+		order.setAddress(address);
+		order.updateCount();
+		order.setTotalprice(totalPrice);
+		
+		System.out.println("order.getItems:"+order.getItems());
+		
+		OrderDAO orderdao;
+		try {
+			orderdao = (OrderDAO) DAOFactory.newInstance("OrderDAO");
+			orderdao.addOrder(order);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//Step4.删除购物车信息
 		Customer cuss = (Customer) session.getAttribute("loginuser");
 

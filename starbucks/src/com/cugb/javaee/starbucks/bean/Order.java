@@ -85,7 +85,7 @@ public class Order {
 	public int getRestaurantid() {
 		return restaurantid;
 	}
-	public void setRestaurantname(int restaurantid) {
+	public void setRestaurantid(int restaurantid) {
 		this.restaurantid = restaurantid;
 	}
 	public ArrayList<OrderItem> getItems() {

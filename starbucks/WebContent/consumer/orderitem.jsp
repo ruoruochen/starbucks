@@ -125,7 +125,8 @@
 						OrderItemDAO orderitemdao = (OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
 						DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO"); 
 						String orderid=request.getParameter("orderid");		
-						ArrayList<OrderItem> arr =orderitemdao.findOrderItems(orderid) ;							
+						ArrayList<OrderItem> arr =orderitemdao.findOrderItems(orderid) ;
+						System.out.println("orderid的orderitem:"+arr);
 							float totalPrice = 0.0f;
 							int totalNum = 0;
 							for(OrderItem orderitem:arr) {		
