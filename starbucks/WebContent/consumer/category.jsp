@@ -70,7 +70,7 @@ ul li a{
 <body>
 	<jsp:include page="customerHeader.jsp"></jsp:include>
 
-	<section style="margin-top: 0px; margin-left:140px;margin-right:80px; margin-bottom: 50px" width=100%>
+	<section style="margin-top: 0px;margin-bottom: 50px" width=100%>
 		<div class="container" style="margin-top: 100px;width:20%;float:left;" >
 	      <nav class="containerleft">
 	      <ul class="subcategories">   
