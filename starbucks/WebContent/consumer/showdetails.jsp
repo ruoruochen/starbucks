@@ -203,7 +203,7 @@ padding:10px;
 							out.println(" </td>");
 							
 							out.println(" <td class=\"total\">");
-							out.println(comment.getTime());
+							out.println(comment.getTime().toString().substring(0, 19));
 							out.println(" </td>");
 							
 							out.println("</tr>");						
