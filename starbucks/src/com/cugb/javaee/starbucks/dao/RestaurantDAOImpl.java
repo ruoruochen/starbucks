@@ -36,4 +36,5 @@ public class RestaurantDAOImpl extends baseDAO implements RestaurantDAO {
 	public ArrayList findRestaurants() throws SQLException {
 		String sql = "select restaurantid Restaurantid, restaurantname Restaurantname from restaurant";
 		return findObjs(sql, Restaurant.class);
-	}}
+	}
+}
