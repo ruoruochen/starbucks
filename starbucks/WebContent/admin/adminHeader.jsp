@@ -28,7 +28,7 @@
 										response.sendRedirect("login.jsp");
 									}
 								%>	
-								<li><a href="action?actiontype=logOut" >注销</a></li>
+								<li><a href="aaction?actiontype=logOut" >注销</a></li>
 							</ul>
 						</div>
 					</div>
@@ -59,6 +59,7 @@
                                     </ul>
                                 </li> 
                                 <li><a href="manageCategory.jsp">分类管理</a></li>
+                                <li><a href="manageRestaurant.jsp">餐厅管理</a></li>
                                 <li><a href="manageComment.jsp">评论管理</a></li>
                                 <li><a href="manageOrder.jsp">订单管理</a></li>
 								<li><a href="manageCustomer.jsp">用户管理</a></li>

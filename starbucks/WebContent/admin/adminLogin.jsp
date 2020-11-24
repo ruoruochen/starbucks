@@ -55,6 +55,7 @@
 		</div>
 		<div class="col-md-6 column">
 			<div class="login-form"><!--login form-->
+			<h1>欢迎您，管理员！</h1>
 			<h2>登录到您的账户</h2>
 			<form action="llogin" method="POST" name="loginForm" onSubmit="return checkUserInfo()">
 				<input type="text" placeholder="用户名" name="loginName"/>

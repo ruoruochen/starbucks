@@ -11,10 +11,69 @@ import com.cugb.javaee.starbucks.bean.Customer;
 import com.cugb.javaee.starbucks.bean.Dish;
 import com.cugb.javaee.starbucks.bean.Order;
 import com.cugb.javaee.starbucks.bean.OrderItem;
+import com.cugb.javaee.starbucks.bean.Restaurant;
 import com.alibaba.druid.sql.visitor.functions.Substring;
 import com.cugb.javaee.starbucks.bean.Category;
 import com.cugb.javaee.starbucks.bean.CommentItem;
 public class JSPOutput {
+	
+	public static void outputRestaurant(JspWriter out,Restaurant restaurant) throws IOException {
+		out.println("<tr>");
+		
+		out.println(" <td class=\"cart_product\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(String.valueOf(restaurant.getRestaurantid()));
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println("  <h4>");
+		out.println(restaurant.getRestaurantname());
+		out.println("  </h4>");
+		out.println(" </td>");
+		
+		out.println(" <td width=\"50\">");
+		  out.println("  <a class=\"cart_quantity_delete\" href=\"deleteRestaurant.jsp?restaurantid="+restaurant.getRestaurantid()+"\">");
+		  out.println("   <i class=\"fa fa-trash-o fa-lg\">");
+		  out.println("   </i>");
+		  out.println("  </a>");
+		  out.println(" </td>");
+		
+		out.println("</tr>");
+	}
+	
+	public static void outputRestaurantAdd(JspWriter out) throws IOException {
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputPassword1\">");
+		out.println("  餐厅名称");
+		out.println(" </label>");
+		out.println(" <input class=\"form-control\" name=\"restaurantname\" placeholder=\"餐厅名称\" type=\"text\" \">");
+		out.println(" </input>");
+		out.println("</div>");
+	}
+	
+	public static void outputRestaurantDelete(JspWriter out, Restaurant restaurant) throws IOException{
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputEmail1\">");
+		out.println("  餐厅编号");
+		out.println(" </label>");
+		out.println(
+				" <input class=\"form-control\" name=\"categoryid\" placeholder=\"分类名\" readonly=\"true\" type=\"email\" value=\""
+						+ restaurant.getRestaurantid()+ "\">");
+		out.println(" </input>");
+		out.println("</div>");
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputEmail1\">");
+		out.println("  餐厅地址");
+		out.println(" </label>");
+		out.println(
+				" <input class=\"form-control\" name=\"categoryname\" placeholder=\"分类名\" readonly=\"true\" type=\"email\" value=\""
+						+ restaurant.getRestaurantname() + "\">");
+		out.println(" </input>");
+		out.println("</div>");
+		
+	}
+	
 	public static void outputOrderItem(JspWriter out,OrderItem orderitem) throws IOException {
 		out.println("<tr>");
 		
@@ -55,6 +114,29 @@ public class JSPOutput {
 		out.println("</div>");
 	}
 	
+	public static void outputCategoryDelete(JspWriter out, Category category) throws IOException{
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputEmail1\">");
+		out.println("  分类编号");
+		out.println(" </label>");
+		out.println(
+				" <input class=\"form-control\" name=\"categoryid\" placeholder=\"分类名\" readonly=\"true\" type=\"email\" value=\""
+						+ category.getCategoryid() + "\">");
+		out.println(" </input>");
+		out.println("</div>");
+		out.println("<div class=\"form-group\">");
+		out.println(" <label for=\"exampleInputEmail1\">");
+		out.println("  分类名");
+		out.println(" </label>");
+		out.println(
+				" <input class=\"form-control\" name=\"categoryname\" placeholder=\"分类名\" readonly=\"true\" type=\"email\" value=\""
+						+ category.getCategoryname() + "\">");
+		out.println(" </input>");
+		out.println("</div>");
+		
+	}
+
+	
 	public static void outputCategory(JspWriter out,Category category) throws IOException {
 		out.println("<tr>");
 		
@@ -70,6 +152,12 @@ public class JSPOutput {
 		out.println("  </h4>");
 		out.println(" </td>");
 		
+		out.println(" <td width=\"50\">");
+		  out.println("  <a class=\"cart_quantity_delete\" href=\"deleteCategory.jsp?categoryid="+category.getCategoryid()+"\">");
+		  out.println("   <i class=\"fa fa-trash-o fa-lg\">");
+		  out.println("   </i>");
+		  out.println("  </a>");
+		  out.println(" </td>");
 		
 		out.println("</tr>");
 	}
@@ -228,12 +316,12 @@ public class JSPOutput {
 		
 		out.println(" <td class=\"category_name\" width=\"100\">");
 		out.println("  <h4>");
-		out.println(comment.getTime());
+		out.println(comment.getTime().toString().substring(0, 19));
 		out.println("  </h4>");
 		out.println(" </td>");
 		
 		
-		out.println(" <td class=\"category_name\" width=\"100\">");
+		out.println(" <td class=\"category_name\" width=\"400\">");
 		out.println("  <h4>");
 		out.println(comment.getCommenttext());
 		out.println("  </h4>");

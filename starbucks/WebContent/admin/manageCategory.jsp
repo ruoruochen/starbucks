@@ -60,6 +60,7 @@
 					<tr class="cart_menu">
 						<td class="id" width="15%">类目编号</td>
 						<td class="description" width="20%">类目名称</td>
+						<td class="delete" width="20%">删除</td>
 						<td><a class="cart_quantity_delete" href="addCategory.jsp"> <i
 								class="fa fa-plus-circle fa-lg">新增 </i></a></td>
 						

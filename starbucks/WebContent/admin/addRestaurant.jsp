@@ -1,12 +1,12 @@
-<%@page import="com.cugb.javaee.starbucks.bean.Customer"%>
 <%@page import="com.cugb.javaee.starbucks.utils.JSPOutput"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.cugb.javaee.starbucks.utils.*"%>
-<%@page import="com.cugb.javaee.starbucks.bean.CommentItem"%>
+<%@page import="com.cugb.javaee.starbucks.bean.*"%>
 <%@page import="com.cugb.javaee.starbucks.dao.*"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Checkout | E-Shopper</title>
+<title>星巴克-餐厅添加</title>
  <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/prettyPhoto.css" rel="stylesheet">
@@ -35,70 +35,77 @@
 	href="../images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
 	href="../images/ico/apple-touch-icon-57-precomposed.png">
+<script>
+
+</script>
 </head>
 <!--/head-->
 <body>
+	<jsp:include page="adminHeader.jsp"></jsp:include>
 
-<jsp:include page="adminHeader.jsp"></jsp:include>
 	<section id="cart_items">
 	<div class="container">
 		<div class="breadcrumbs">
 			<ol class="breadcrumb">
 				<li><a href="#">Admin</a></li>
-				<li class="active">评论管理</li>
+				<li class="active">餐厅管理</li>
+				<li class="active">新增餐厅信息</li>
 			</ol>
 		</div>
 		
 
 		<div class="review-payment">
-			<h2>评论管理</h2>
+			<h2>餐厅管理</h2>
+		</div>
+		<div class="step-one">
+			<h2 class="heading">新增餐厅信息</h2>
 		</div>
 
-
-<div class="table-responsive cart_info">
-
-		<div class="table-responsive cart_info  col-sm-11">
-			<table class="table table-condensed">
-				<thead>
-					<tr>
-						<th>评论编号</th>
-						<th>用户名</th>
-						<th width="300px">菜品编号</th>
-						<th width="400px">时间</th>
-						<th width="900px">评论内容</th>
-						<th>删除评论</th>
-						
-					</tr>
-				</thead>
-				<tbody>
-					<%
-						Customer admin = (Customer)session.getAttribute("loginuser") ;
-						if(admin == null || !admin.getUsername().equals(ConfigFactory.readProperty("username"))){
-							response.sendRedirect("login.jsp");
-						}
-						CommentDAO comDAO = (CommentDAO) DAOFactory
-								.newInstance("CommentDAO");
-						ArrayList<CommentItem> arr = comDAO.findallComments();
-						for (int i = 0; i < arr.size(); i++) {
-							CommentItem com = arr.get(i);
-							JSPOutput.outputComment(out, com);
-						}
-					%>
+		<div class="table-responsive cart_info">
 
 
-				</tbody>
-			</table>
+			<div class="shopper-informations">
+				<div class="row">
+					<div class="col-sm-1"></div>
+					<div class="col-sm-5">
+						<div class="shopper-info">
+						 <br>
+							<p>餐厅信息</p>
+							<form action="restaurantAdd" method="post">
+								<%
+								Customer admin = (Customer)session.getAttribute("loginuser") ;
+								if(admin == null || !admin.getUsername().equals(ConfigFactory.readProperty("username"))){
+									response.sendRedirect("adminLogin.jsp");
+								}
+								JSPOutput.outputRestaurantAdd(out);
+								%>
+								
+
+
+								<button type="submit" class="btn btn-primary" width="80"
+									padding="20">增加餐厅</button>
+							</form>
+
+
+							<br>
+						</div>
+					</div>
+					
+					
+
+
+				</div>
+			</div>
+
+
+
 		</div>
 
 	</div>
 	</section>
 	<!--/#cart_items-->
 
-
-
-	
-
-	<jsp:include page="../footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 </html>

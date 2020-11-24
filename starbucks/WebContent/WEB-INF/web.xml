@@ -102,6 +102,14 @@
     <servlet-name>orderModify</servlet-name>
     <url-pattern>/admin/orderModify</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>restaurantAdd</servlet-name>
+    <servlet-class>com.cugb.javaee.starbucks.action.RestaurantAddControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>restaurantAdd</servlet-name>
+    <url-pattern>/admin/restaurantAdd</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>CharFilter</filter-name>
     <filter-class>com.cugb.javaee.starbucks.utils.CharsetFilter</filter-class>
@@ -111,5 +119,4 @@
     <url-pattern>/*</url-pattern>
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
-  
 </web-app>
