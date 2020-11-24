@@ -53,6 +53,9 @@ public class OrderAddControl extends HttpServlet {
 		String orderID = String.valueOf((new java.util.Date()).getTime());
 		String address = request.getParameter("address");
 		String tel = request.getParameter("tel");
+		int restaurantid=Integer.parseInt(request.getParameter("restaurant"));
+		
+		System.out.println(restaurantid);
 		
 		if(tel==""|| address =="") {
 			response.sendRedirect("checkout.jsp");
@@ -90,8 +93,8 @@ public class OrderAddControl extends HttpServlet {
 				OrderItem oit = new OrderItem();
 				oit.setCount(disnumber);
 				oit.setDishid(dish.getDishid());
-				oit.setFinalprice(cur.getDiscount());
-				oit.setPrice(cur.getPrice());
+				oit.setFinalprice(cur.getDiscount()*disnumber);
+				oit.setPrice(cur.getDiscount());
 				oit.setOrderid(orderID);
 				arr.add(oit);
 				oi.addOrderItem(oit);
@@ -112,6 +115,7 @@ public class OrderAddControl extends HttpServlet {
 		order.setAddress(address);
 		order.updateCount();
 		order.setTotalprice(totalPrice);
+		order.setRestaurantid(restaurantid);
 		
 		System.out.println("order.getItems:"+order.getItems());
 		

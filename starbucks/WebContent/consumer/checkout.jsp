@@ -172,7 +172,7 @@
 											ArrayList<Restaurant> arr = resdao.findRestaurants();	
 											for(Restaurant res:arr)
 											{
-												out.println("<option value=\""+res.getRestaurantname()+"\">");
+												out.println("<option value=\""+res.getRestaurantid()+"\">");
 												out.println(res.getRestaurantname());
 												out.println("</option>");
 											}

@@ -13,9 +13,9 @@ public class OrderDAOImpl extends baseDAO implements OrderDAO {
 	
 	@Override
 	public int addOrder(Order order) throws SQLException {
-		String sql = "insert into orders(orderid,username,time,count,totalprice,paystatus,address,tel,restaurantid) values (?, ?, ?, ?, ?, ?, ?,?,1)";
+		String sql = "insert into orders(orderid,username,time,count,totalprice,paystatus,address,tel,restaurantid) values (?, ?, ?, ?, ?, ?, ?,?,?)";
 		Object[] params = {order.getOrderid(), order.getUsername(), order.getTime(), order.getCount(), order.getTotalprice(), 
-				order.getPaystatus(), order.getAddress(), order.getTel()};
+				order.getPaystatus(), order.getAddress(), order.getTel(),order.getRestaurantid()};
 		OrderItemDAO orderItemDAO = (OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
 		ArrayList<OrderItem> items = order.getItems();
 		System.out.println(items);
