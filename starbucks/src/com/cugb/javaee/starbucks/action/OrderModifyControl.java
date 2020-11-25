@@ -31,6 +31,7 @@ public class OrderModifyControl extends HttpServlet {
 			
 			OrderDAO orderDAO = (OrderDAO) DAOFactory.newInstance("OrderDAO");
 			orderDAO.modifyOrder(request.getParameter("orderid"),request.getParameter("paystatus"));
+			response.sendRedirect("manageOrder.jsp");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
