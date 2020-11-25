@@ -285,6 +285,7 @@ public class JSPOutput {
 		out.println("<option value=\"备餐中\">备餐中</option>");
 		out.println("<option value=\"配送中\">配送中</option>");
 		out.println("<option value=\"已送达\">已送达</option>");
+		out.println("<option value=\"已退单\">已退单</option>");
 		out.println("</select>");
 		out.println(" </input>");
 		out.println("</div>");

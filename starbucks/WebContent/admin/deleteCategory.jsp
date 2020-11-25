@@ -88,7 +88,7 @@
 					<div class="col-sm-4">
 						<div class="shopper-info">
 							<br>
-							<p>用户信息</p>
+							<p>分类信息</p>
 							<%
 							Customer admin = (Customer)session.getAttribute("loginuser") ;
 							if(admin == null || !admin.getUsername().equals(ConfigFactory.readProperty("username"))){
