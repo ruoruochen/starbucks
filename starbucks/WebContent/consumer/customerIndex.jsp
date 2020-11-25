@@ -62,6 +62,19 @@ request.setAttribute("pageModel", pagemodel);
 	href="../images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="./apple-touch-icon-precomposed"
 	href="../images/ico/apple-touch-icon-57-precomposed.png">
+
+<link rel="stylesheet" href="../css/slide.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/slide.js"></script>
+    <style>
+        .ck-slide {
+            width:100%;
+            height:400px;
+        }
+        .ck-slide ul.ck-slide-wrapper {
+            height:400px;
+        }
+    </style>
 </head>
 <!--/head-->
 <!--  <style>
@@ -70,10 +83,10 @@ border-radius:50%;
 overflow :hidden;
 }
 </style>-->
+
 <body>
 
  	<jsp:include page="customerHeader.jsp"></jsp:include>
- 
  	
  <section>
  <script>
@@ -117,6 +130,46 @@ overflow :hidden;
     	 }  
     </script>
 		<div class="container">
+		<div class="row col-sm-12">
+			<div class="ck-slide">
+        <ul class="ck-slide-wrapper">
+            <li>
+                <a href="http://createthink.net"><img src="../images/1.jpg" alt=""  ></a>
+            </li>
+            <li style="display:none">
+                <a href="http://www.oschina.net"><img src="../images/2.jpg" alt="" ></a>
+            </li>
+            <li style="display:none">
+                <a href="javascript:;"><img src="../images/3.jpg" alt="" ></a>
+            </li>
+            <li style="display:none">
+                <a href="javascript:;"><img src="../images/4.jpg" alt=""></a>
+            </li>
+            <li style="display:none">
+                <a href="javascript:;"><img src="../images/5.jpg" alt=""></a>
+            </li>
+        </ul>
+        <a href="javascript:;" class="ctrl-slide ck-prev">上一张</a>
+        <a href="javascript:;" class="ctrl-slide ck-next">下一张</a>
+        <div class="ck-slidebox">
+            <div class="slideWrap">
+                <ul class="dot-wrap">
+                    <li class="current"><em>1</em></li>
+                    <li><em>2</em></li>
+                    <li><em>3</em></li>
+                    <li><em>4</em></li>
+                    <li><em>5</em></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.ck-slide').ckSlide({
+            autoPlay:true
+            /*dir:"x"*/
+        });
+    </script>			
+		</div>
 			<div class="row">
 				
 				
