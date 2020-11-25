@@ -210,10 +210,10 @@
 										 window.alert ('  送餐地址不能为空！ ');
 									else if(document.all.formname.tel.value=="")
 										 window.alert ('  联系电话不能为空！ ');
-									else
-										
+									else	
 										{
-											window.open("../index.jsp");
+											String t = totalPrice.toString();
+											window.open("../index.jsp?totalp="+t);
 										}
 								}
 								</script>

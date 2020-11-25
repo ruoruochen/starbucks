@@ -219,7 +219,7 @@ h2 {
 					<hr class="one_line">
 					<dt>付款金额 ：</dt>
 					<dd>
-						<input id="WIDtotal_amount" name="WIDtotal_amount" />
+						<input id="WIDtotal_amount" name="WIDtotal_amount" value="<%=request.getParameter("totalp") %>" />
 					</dd>
 					<hr class="one_line">
 					<dt>商品描述：</dt>
