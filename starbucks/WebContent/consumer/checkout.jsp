@@ -123,9 +123,7 @@
 								totalPrice += disnumber * cur.getDiscount();
 								session.setAttribute("price", totalPrice);
 							}
-						}
-
-						 
+						}		 
 					%>
 
 
@@ -212,8 +210,7 @@
 										 window.alert ('  联系电话不能为空！ ');
 									else	
 										{
-											String t = totalPrice.toString();
-											window.open("../index.jsp?totalp="+t);
+											window.open("../index.jsp?total="+<% out.println(totalPrice); %>);
 										}
 								}
 								</script>

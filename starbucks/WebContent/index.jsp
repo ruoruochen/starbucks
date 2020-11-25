@@ -219,7 +219,7 @@ h2 {
 					<hr class="one_line">
 					<dt>付款金额 ：</dt>
 					<dd>
-						<input id="WIDtotal_amount" name="WIDtotal_amount" value="<%=request.getParameter("totalp") %>" />
+						<input id="WIDtotal_amount" name="WIDtotal_amount" value="<%=request.getParameter("total") %>" />
 					</dd>
 					<hr class="one_line">
 					<dt>商品描述：</dt>
@@ -394,8 +394,8 @@ h2 {
 		sNow += String(vNow.getSeconds());
 		sNow += String(vNow.getMilliseconds());
 		document.getElementById("WIDout_trade_no").value =  sNow;
-		document.getElementById("WIDsubject").value = "测试";
-		document.getElementById("WIDtotal_amount").value = "0.01";
+		document.getElementById("WIDsubject").value = "星巴克订单";
+		document.getElementById("WIDtotal_amount").value = <%=request.getParameter("total") %>;
 	}
 	GetDateNow();
 </script>
