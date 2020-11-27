@@ -2,9 +2,9 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>starbucks</display-name>
   <welcome-file-list>
-    <welcome-file>customerIndex.html</welcome-file>
-    <welcome-file>customerIndex.htm</welcome-file>
-    <welcome-file>customerIndex.jsp</welcome-file>
+    <welcome-file>/consumer/customerIndex.html</welcome-file>
+    <welcome-file>/consumer/customerIndex.htm</welcome-file>
+    <welcome-file>/consumer/customerIndex.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <servlet-name>LoginControl</servlet-name>

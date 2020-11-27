@@ -35,13 +35,17 @@
 	<script language="javascript">
 	function checkUserInfo() {
 	 if(document.loginForm.loginName.value==""){
-	    alert("用户名不能为空");
+	    alert("用户名不能为空!");
 	    return false;
 	 }
 	 if(document.loginForm.loginPass.value==""){
-	    alert("密码不能为空");
+	    alert("密码不能为空!");
 	    return false;
 	 }
+	 if(document.loginForm.code.value==""){
+		    alert("验证码不能为空!");
+		    return false;
+		 }
 	}
 	function checkUserInfo2() {
 		 if(document.registerForm.registerName.value==""){
@@ -57,7 +61,10 @@
 		    return false;
 		 }
 		}
-	
+	function refresh() {  
+        //IE 存在缓存，需要 new Date () 实现更换路径的作用  
+        document.getElementById("imagee").src="image.jsp?"+new Date().getTime();  
+    }  
 	</script>
 </head><!--/head-->
 
@@ -74,6 +81,8 @@
 						<form action="LoginControl" method="POST" name="loginForm" onSubmit="return checkUserInfo()">
 							<input type="text" placeholder="用户名" name="loginName"/>
 							<input type="password" placeholder="密码" name="loginPass"/>	
+							<input type="text"  placeholder="验证码" name="code" >  
+        					<img width="80px" height="40px" id="imagee" border="0"  onclick="refresh()" src="image.jsp" title="点击更换图片">  
 							<input type="hidden" name="actiontype" value="login">						
 							<button type="submit" class="btn btn-default">登录</button>
 						</form>
