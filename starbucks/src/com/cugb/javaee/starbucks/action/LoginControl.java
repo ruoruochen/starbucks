@@ -50,7 +50,7 @@ public class LoginControl extends HttpServlet {
 //		HttpSession session = request.getSession(true);
 //		String code=session.getAttribute("code").toString();
 //		System.out.println(code);
-		String inputcode=request.getParameter("code");
+		String inputcode=request.getParameter("code").toLowerCase();
 		Customer loginuser = new Customer();
 		loginuser.setUsername(username);
 		loginuser.setPassword(password);
@@ -59,7 +59,7 @@ public class LoginControl extends HttpServlet {
 		CustomerService cService = new CustomerService();
 		try {
 			HttpSession session = request.getSession(true);
-			String code=session.getAttribute("code").toString();
+			String code=session.getAttribute("code").toString().toLowerCase();
 			System.out.println(code);
 			System.out.println(inputcode);
 			if(inputcode.equals(code))
