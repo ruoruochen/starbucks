@@ -68,7 +68,7 @@ request.setAttribute("pageModel", pagemodel);
     <script src="../js/slide.js"></script>
     <style>
         .ck-slide {
-            width:100%;
+            width:96%;
             height:400px;
         }
         .ck-slide ul.ck-slide-wrapper {

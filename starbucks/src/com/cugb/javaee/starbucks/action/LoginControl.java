@@ -47,6 +47,10 @@ public class LoginControl extends HttpServlet {
 		
 		String username = request.getParameter("loginName");
 		String password = request.getParameter("loginPass");
+//		HttpSession session = request.getSession(true);
+//		String code=session.getAttribute("code").toString();
+//		System.out.println(code);
+		String inputcode=request.getParameter("code");
 		Customer loginuser = new Customer();
 		loginuser.setUsername(username);
 		loginuser.setPassword(password);
@@ -54,28 +58,40 @@ public class LoginControl extends HttpServlet {
 		//数据库验证
 		CustomerService cService = new CustomerService();
 		try {
-			if (username.equals(adminUsername) && password.equals(adminPassword)) {
-				//管理员 验证通过
-				HttpSession session = request.getSession(true);
-				session.setAttribute("loginuser", loginuser);
-				session.setAttribute("admin", true);
-				request.getRequestDispatcher("adminIndex.jsp").forward(request, response);
-			} else if (cService.validateCustomer(loginuser)) {
-				//普通用户 验证通过
-				HttpSession session = request.getSession(true);
-				session.setAttribute("loginuser", loginuser);
-				session.setAttribute("admin", false);
-				request.getRequestDispatcher("customerIndex.jsp").forward(request, response);
-			}
-			else {
+			HttpSession session = request.getSession(true);
+			String code=session.getAttribute("code").toString();
+			System.out.println(code);
+			System.out.println(inputcode);
+			if(inputcode.equals(code))
+			{
+				if (username.equals(adminUsername) && password.equals(adminPassword)) {
+					//管理员 验证通过
+					session.setAttribute("loginuser", loginuser);
+					session.setAttribute("admin", true);
+					request.getRequestDispatcher("adminIndex.jsp").forward(request, response);
+				} else if (cService.validateCustomer(loginuser)) {
+					//普通用户 验证通过
+					session.setAttribute("loginuser", loginuser);
+					session.setAttribute("admin", false);
+					request.getRequestDispatcher("customerIndex.jsp").forward(request, response);
+				}
+				else {
+					//否则重新登录
+					PrintWriter out = response.getWriter();
+					String a = URLEncoder.encode("用户名或密码错误，请重新登录！", "UTF-8");  
+					if (username.equals(adminUsername) )
+						out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='adminLogin.jsp'</script>");
+					else
+						out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='customerLogin.jsp'</script>");
+				}
+			}else {
 				//否则重新登录
 				PrintWriter out = response.getWriter();
-				String a = URLEncoder.encode("用户名或密码错误，请重新登录！", "UTF-8");  
-				if (username.equals(adminUsername) )
-					out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='adminLogin.jsp'</script>");
-				else
-					out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='customerLogin.jsp'</script>");
+				String a = URLEncoder.encode("验证码错误，请重新登录！", "UTF-8");  
+				out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='customerLogin.jsp'</script>");
 			}
+			
+			
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
