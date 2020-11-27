@@ -60,6 +60,10 @@
 		    alert("密码不能为空");
 		    return false;
 		 }
+		 if(document.registerForm.registerconfirmPass.value==""){
+			    alert("确认密码不能为空");
+			    return false;
+			 }
 		}
 	function refresh() {  
         //IE 存在缓存，需要 new Date () 实现更换路径的作用  
@@ -82,7 +86,7 @@
 							<input type="text" placeholder="用户名" name="loginName"/>
 							<input type="password" placeholder="密码" name="loginPass"/>	
 							<input type="text"  placeholder="验证码" name="code" >  
-        					<img width="80px" height="40px" id="imagee" border="0"  onclick="refresh()" src="image.jsp" title="点击更换图片">  
+        					<img width="80px" height="30px" id="imagee" border="0"  onclick="refresh()" src="image.jsp" title="点击更换图片">  
 							<input type="hidden" name="actiontype" value="login">						
 							<button type="submit" class="btn btn-default">登录</button>
 						</form>
@@ -97,7 +101,8 @@
 						<form action="register" method="POST" name="registerForm" onSubmit="return checkUserInfo2()">
 							<input type="text" placeholder="用户名" name="registerName"/>
 							<input type="email" placeholder="邮箱" name="registerEmail"/>
-							<input type="password" placeholder="密码" name="registerPass"/>								
+							<input type="password" placeholder="密码" name="registerPass"/>
+							<input type="password" placeholder="确认密码" name="registerconfirmPass"/>								
 							<input type="hidden" name="actiontype" value="register">		
 							<button type="submit" class="btn btn-default">注册</button>
 						</form>
