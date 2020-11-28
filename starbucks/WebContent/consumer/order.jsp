@@ -125,6 +125,7 @@
 							out.println("<td class=\"total\" >电&nbsp;&nbsp;话</td>");
 							out.println("<td class=\"total\" >餐&nbsp;&nbsp;厅</td>");
 							out.println("<td class=\"total\" >状&nbsp;&nbsp;态</td>");
+							out.println("<td class=\"total\" >&nbsp;&nbsp;</td>");
 							out.println("</tr>");
 							out.println("</thead>");
 							out.println("<tbody>");
@@ -184,7 +185,13 @@
 								out.println("  <h4>");
 								out.println(order.getPaystatus());
 								out.println("  </h4>");
-								out.println(" </td>");								
+								out.println(" </td>");
+								
+								out.println(" <td style=\"margin-top:10px;\" class=\"cart_delete\">");
+								out.println(
+										"<a onclick=\"return linkClick(this)\" class=\"cart_quantity_delete\" style=\"margin-right:10px;\" href=\"action?actiontype=delorder&orderid="
+												+order.getOrderid() + "\"><i class=\"fa fa-times\"></i></a>");
+								out.println(" </td>");
 								out.println("</tr>");
 							
 						}out.println("点击订单号查看详情");
