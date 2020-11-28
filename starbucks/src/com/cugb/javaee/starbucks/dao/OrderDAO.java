@@ -9,19 +9,25 @@ import com.cugb.javaee.starbucks.bean.Order;
 public interface OrderDAO {
 	/**
 	 * 	
-	 * @param order 插入的一行詳情
+	 * @param order
 	 * @return
 	 * @throws SQLException
 	 */
 	public int addOrder(Order order) throws SQLException;
 
 	/**
+	 * 	
+	 * @param order
+	 * @return
+	 * @throws SQLException
+	 */
+	/**
 	 * 
 	 * @param string
 	 * @return 
 	 * @throws SQLException
 	 */
-	//public int removeOrder(String string) throws SQLException;
+	public int removeOrder(String orderid) throws SQLException;
 
 	/**
 	 * 

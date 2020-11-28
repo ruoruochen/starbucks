@@ -80,5 +80,14 @@ public class OrderDAOImpl extends baseDAO implements OrderDAO {
 		return arr;
 	}
 
+	@Override
+	public int removeOrder(String orderid) throws SQLException {
+		String sql = "delete from Orders where orderid = ?";
+		Object[] params = {orderid};
+		return modifyObj(sql, params);
+	}
+
+
+
 
 }

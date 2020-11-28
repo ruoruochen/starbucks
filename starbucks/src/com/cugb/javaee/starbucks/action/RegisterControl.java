@@ -34,6 +34,7 @@ public class RegisterControl extends baseControl {
 		// TODO Auto-generated method stub
 		String username = req.getParameter("registerName");
 		String password = req.getParameter("registerPass");
+		String password2 = req.getParameter("registerconfirmPass");
 		String email = req.getParameter("registerEmail");
 		Customer customer = new Customer();
 		customer.setUsername(username);
@@ -43,19 +44,28 @@ public class RegisterControl extends baseControl {
 		CustomerService cService = new CustomerService();
 		RequestDispatcher rd = null;
 		try {
-			if(cService.isExistCustomer(username)){
-				//如果用户已存在
+			if(password.equals(password2))
+			{
+				if(cService.isExistCustomer(username)){
+					//如果用户已存在
+					PrintWriter out = resp.getWriter();
+					String a = URLEncoder.encode("用户已经存在，请登录！", "UTF-8");  
+			        out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='customerLogin.jsp'</script>"); 		
+				}
+				else{
+					//注册成功
+					CustomerDAOImpl cuMySqlImpl = new CustomerDAOImpl();
+					cuMySqlImpl.addCustomer(customer);
+					String a = URLEncoder.encode("注册成功，请登陆！", "UTF-8");  
+					resp.getWriter().print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='customerLogin.jsp'</script>");
+				}
+			}
+			else {
 				PrintWriter out = resp.getWriter();
-				String a = URLEncoder.encode("用户已经存在，请登录！", "UTF-8");  
+				String a = URLEncoder.encode("两次密码不一致，请重新输入！", "UTF-8");  
 		        out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='customerLogin.jsp'</script>"); 		
 			}
-			else{
-				//注册成功
-				CustomerDAOImpl cuMySqlImpl = new CustomerDAOImpl();
-				cuMySqlImpl.addCustomer(customer);
-				String a = URLEncoder.encode("注册成功，请登陆！", "UTF-8");  
-				resp.getWriter().print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='customerLogin.jsp'</script>");
-			}
+			
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

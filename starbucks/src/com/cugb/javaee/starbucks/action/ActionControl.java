@@ -42,6 +42,7 @@ public class ActionControl extends baseControl {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String actiontype = request.getParameter("actiontype");
+//		System.out.println("进入doGet");
 		switch (actiontype) {
 		case "detail":
 			try {
@@ -86,6 +87,14 @@ public class ActionControl extends baseControl {
 				e1.printStackTrace();
 			}
 			break;
+		case "delorder":
+			try {
+//				System.out.println("进入函数");
+				delorder(request,response);
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 		case "comment":
 			try {
 				comment(request,response);
@@ -285,6 +294,15 @@ public class ActionControl extends baseControl {
 		String orderid=request.getParameter("orderid");
 		request.setAttribute("orderid", orderid);
 		request.getRequestDispatcher("orderitem.jsp").forward(request, response);
+	}
+	
+	private void delorder(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ServletException{
+		//获取订单号
+		String orderid=request.getParameter("orderid");
+		OrderDAO orderdao=(OrderDAO)DAOFactory.newInstance("OrderDAO");
+		System.out.println(orderid);
+		orderdao.removeOrder(orderid);
+		response.sendRedirect("order.jsp");
 	}
 	
 	private void comment(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ServletException{
