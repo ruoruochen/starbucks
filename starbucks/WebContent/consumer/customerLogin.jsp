@@ -67,7 +67,7 @@
 		}
 	function refresh() {  
         //IE 存在缓存，需要 new Date () 实现更换路径的作用  
-        document.getElementById("imagee").src="image.jsp?"+new Date().getTime();  
+        document.getElementById("imagee").src="../image.jsp?"+new Date().getTime();  
     }  
 	</script>
 </head><!--/head-->
@@ -86,7 +86,7 @@
 							<input type="text" placeholder="用户名" name="loginName"/>
 							<input type="password" placeholder="密码" name="loginPass"/>	
 							<input type="text"  placeholder="验证码" name="code" >  
-        					<img width="80px" height="30px" id="imagee" border="0"  onclick="refresh()" src="image.jsp" title="点击更换图片">  
+        					<img width="80px" height="30px" id="imagee" border="0"  onclick="refresh()" src="../image.jsp" title="点击更换图片">  
 							<input type="hidden" name="actiontype" value="login">						
 							<button type="submit" class="btn btn-default">登录</button>
 						</form>
