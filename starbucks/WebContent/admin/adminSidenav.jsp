@@ -5,7 +5,7 @@
 		<div class="header-bottom"><!--header-bottom-->
 					<div class="col-sm-2" >
 						<div class="list-group">
-								<div class="list-group-item active"><a href="adminIndex.jsp">首页</a></div>
+								<a class="list-group-item active" href="adminIndex.jsp">首页</a>
 								<div class="list-group-item dropdown" data-toggle="dropdown"><a href="manageDish.jsp">菜品管理</a>                                </div> 
                                 
                                 <div class="list-group-item"><a href="manageCategory.jsp">分类管理</a></div>
