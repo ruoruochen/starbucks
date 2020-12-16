@@ -39,6 +39,10 @@
 	    alert("密码不能为空");
 	    return false;
 	 }
+	 if(document.loginForm.code.value==""){
+		    alert("验证码不能为空!");
+		    return false;
+		 }
 	}
 	
 	

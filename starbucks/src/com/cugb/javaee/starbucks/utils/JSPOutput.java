@@ -344,11 +344,38 @@ public class JSPOutput {
 		out.println("  评论id");
 		out.println(" </label>");
 		out.println(
-				" <input class=\"form-control\" name=\"dishID\" placeholder=\"用户名\" readonly=\"true\" type=\"email\" value=\""
+				" <input class=\"form-control\" name=\"commentID\" placeholder=\"用户名\" readonly=\"true\" type=\"email\" value=\""
 						+ com.getCommentid() + "\">");
 		out.println(" </input>");
+		out.println(" <label for=\"exampleInputEmail1\">");
+		out.println("  评论内容");
+		out.println(" </label>");
+		out.println(
+				" <input class=\"form-control\" name=\"commentID\" placeholder=\"用户名\" readonly=\"true\" type=\"email\" value=\""
+						+ com.getCommenttext() + "\">");
+		out.println(" </input>");
+		out.println(" <label for=\"exampleInputEmail1\">");
+		out.println("  用户名");
+		out.println(" </label>");
+		out.println(
+				" <input class=\"form-control\" name=\"commentID\" placeholder=\"用户名\" readonly=\"true\" type=\"email\" value=\""
+						+ com.getUsername() + "\">");
+		out.println(" </input>");
+		out.println(" <label for=\"exampleInputEmail1\">");
+		out.println("  菜品id");
+		out.println(" </label>");
+		out.println(
+				" <input class=\"form-control\" name=\"commentID\" placeholder=\"用户名\" readonly=\"true\" type=\"email\" value=\""
+						+ com.getDishid() + "\">");
+		out.println(" </input>");
+		out.println(" <label for=\"exampleInputEmail1\">");
+		out.println("  评论时间");
+		out.println(" </label>");
+		out.println(
+				" <input class=\"form-control\" name=\"commentID\" placeholder=\"用户名\" readonly=\"true\" type=\"email\" value=\""
+						+ com.getTime()+ "\">");
+		out.println(" </input>");
 		out.println("</div>");
-		
 }
 	
 	// dishManage

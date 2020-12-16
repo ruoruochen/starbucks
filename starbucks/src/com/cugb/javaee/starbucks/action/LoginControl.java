@@ -88,6 +88,9 @@ public class LoginControl extends HttpServlet {
 				//否则重新登录
 				PrintWriter out = response.getWriter();
 				String a = URLEncoder.encode("验证码错误，请重新登录！", "UTF-8");  
+				if (username.equals(adminUsername) )
+					out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='adminLogin.jsp'</script>");
+				else
 				out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='customerLogin.jsp'</script>");
 			}
 			
