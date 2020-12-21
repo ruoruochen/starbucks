@@ -125,6 +125,135 @@
 							<br>
 						</div>
 					</div>
+					
+					
+					
+					<section id="cart_items" style="margin-bottom: 20px" class="col-sm-12">
+	<script>
+    function linkClick(linkObject) {
+        
+    	     var formObject = document.createElement('form');  
+    	      document.body.appendChild(formObject);  
+    	       formObject.setAttribute('method', 'post');  
+    	       var url = linkObject.href;  
+    	       var uri = '';  
+    	       var i = url.indexOf('?');  
+    	               
+    	      if(i == -1) {
+        
+    	        formObject.action = url;  
+    	      } else {
+        
+    	         formObject.action = url.substring(0, i);  
+    	      }  
+    	               
+    	      if( i >= 0 && url.length >= i + 1) {
+        
+    	         uri = url.substring(i + 1, url.length);  
+    	      }  
+    	   
+          var sa = uri.split('&');  
+    	               
+    	      for(var i = 0; i < sa.length; i++) {
+        
+    	        var isa = sa[i].split('=');        
+    	        var inputObject = document.createElement('input');  
+    	        inputObject.setAttribute('type', 'hidden');  
+    	        inputObject.setAttribute('name', isa[0]);  
+    	        inputObject.setAttribute('value', isa[1]);  
+    	        formObject.appendChild(inputObject);  
+    	      }  
+    	               
+    	      formObject.submit();  
+    	              
+    	      return false;  
+    	 }  
+    </script>
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+					
+				</ol>
+			</div>
+
+			<div class="table-responsive cart_info">
+				
+				<table class="table table-condensed">
+				<thead align="center">
+				<tr class="cart_menu">
+				<td class="description">订单号</td>
+				<td class="image"></td>
+				<td class="description">商&nbsp;&nbsp;品</td>
+				<td class="total" >总&nbsp;&nbsp;数</td>
+				<td class="total" >价&nbsp;&nbsp;格</td>
+				<td class="total" >总&nbsp;&nbsp;价</td>
+				<td class="total" >评&nbsp;&nbsp;论</td>
+				</tr>
+				</thead>
+				<tbody>
+					<%
+						OrderItemDAO orderitemdao = (OrderItemDAO) DAOFactory.newInstance("OrderItemDAO");
+						DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO"); 
+						String orderid=request.getParameter("orderid");		
+						ArrayList<OrderItem> arr1 =orderitemdao.findOrderItems(orderid) ;
+						System.out.println("orderid的orderitem:"+arr1);
+							float totalPrice = 0.0f;
+							int totalNum = 0;
+							for(OrderItem orderitem:arr1) {		
+								out.println("<tr align=\"center\">");
+								out.println(" <td class=\"description\">");
+								out.println("  <h4>");
+								out.println(orderid);
+								out.println("  </h4>");
+								out.println(" </td>");
+								
+								Dish cur = dishdao.findDish(orderitem.getDishid());
+								out.println(" <td class=\"cart_product\">");
+								out.println("  <a href=\"\">");
+								out.println("   <img alt=\"\" src=\"" + cur.getImgurl() + "\" width=\"200px\"/>");
+								out.println("  </a>");
+								out.println(" </td>");
+								
+								out.println(" <td class=\"cart_description\">");
+								out.println("  <h4>");
+								out.println(" <a onclick=\"return linkClick(this)\" href=\"action?actiontype=detail&dishid=" + String.valueOf(orderitem.getDishid()) + "\">");
+								out.println(cur.getDishname());
+								out.println("   </a>");
+								out.println("  </h4>");
+								out.println(" </td>");
+								
+								out.println(" <td class=\"total\">");
+								out.println("  <h4>");
+								out.println(orderitem.getCount());
+								out.println("  </h4>");
+								out.println(" </td>");
+								
+								out.println(" <td class=\"total\">");
+								out.println("  <h4>¥");
+								out.println(orderitem.getPrice());
+								out.println("  </h4>");
+								out.println(" </td>");
+								
+								out.println(" <td class=\"total\">");
+								out.println("  <h4>¥");
+								out.println(orderitem.getFinalprice());
+								out.println("  </h4>");
+								out.println(" </td>");
+								
+								out.println(" <td class=\"total\">");
+								out.println("<a class=\"comment\" onclick=\"return linkClick(this)\" href=\"action?actiontype=comment&dishid=" + String.valueOf(orderitem.getDishid())+ "\">");
+								out.println("评论</a>");			 
+								//out.println("1");
+								out.println(" </td>");
+								out.println("</tr>");
+							}
+						%>	
+				</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+					
 
 				</div>
 			</div>

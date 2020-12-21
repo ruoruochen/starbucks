@@ -6,6 +6,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.cugb.javaee.starbucks.utils.*"%>
 <%@page import="com.cugb.javaee.starbucks.bean.Order"%>
+<%@page import="com.cugb.javaee.starbucks.bean.Dish"%>
 <%@page import="com.cugb.javaee.starbucks.bean.OrderItem"%>
 <%@page import="com.cugb.javaee.starbucks.dao.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -91,7 +92,8 @@
 				</tbody>
 			</table>
 		</div>
-
+		
+		
 	</div>
 	</section>
 	<!--/#cart_items-->

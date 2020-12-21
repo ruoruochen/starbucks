@@ -70,9 +70,21 @@
 						{
 							out.println("<h2 align=\"center\">修改我的信息</h2>");
 							out.println("<form action=\"modifyCusControl\" method=\"POST\" name=\"modifyCusForm\" onSubmit=\"return checkInfo()\">");
+							out.println(" <label for=\"exampleInputPassword1\">");
+							out.println("  用户名");
+							out.println(" </label>");
 							out.println("<input type=\"text\" disabled=\"true\" value=\"" + cus.getUsername()+"\"/>");
+							out.println(" <label for=\"exampleInputPassword1\">");
+							out.println("  邮箱");
+							out.println(" </label>");
 							out.println("<input type=\"email\" placeholder=\"邮箱\" name=\"modifyEmail\"/>");
+							out.println(" <label for=\"exampleInputPassword1\">");
+							out.println("  新密码");
+							out.println(" </label>");
 							out.println("<input type=\"password\" placeholder=\"密码\" name=\"modifyPass\"/>");
+							out.println(" <label for=\"exampleInputPassword1\">");
+							out.println("  确认密码");
+							out.println(" </label>");
 							out.println("<input type=\"password\" placeholder=\"确认密码\" name=\"confirmPass\"/>");
 							out.println("<button type=\"submit\" class=\"btn btn-default\" style=\"float:right;\">确认修改</button>");
 							out.println("</form>");
